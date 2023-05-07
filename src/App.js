@@ -7,7 +7,7 @@ import Home from './pages/home/Home';
 
 
 function App() {
-  const footerStyle: React.CSSProperties = {
+ /* const footerStyle: React.CSSProperties = {
     textAlign: 'center',
     color: '#fff',
     backgroundColor: '#7dbcea',
@@ -20,7 +20,7 @@ function App() {
       </main>
       <Footer />
     </>
-  )
+  )*/
 }
   export default App
  /*const { Header, Footer, Sider, Content } = Layout;
