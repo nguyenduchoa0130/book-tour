@@ -1,4 +1,13 @@
-footer {
-  backgroundColor: '#7dbcea',
+.footer {
+  width : 1500px;  
+  height : 400px; 
+  background-color: #d6d9db;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+.contact {
+
+}
+
 

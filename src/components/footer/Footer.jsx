@@ -9,30 +9,30 @@ function Footer() {
     },
   ]
   return (
-   <> 
-    <List
-    grid={{ gutter: 30, column: 1 }}
-    dataSource={data}
-    renderItem={(item) => (
-      <List.Item>
-        <Card 
-         style={{right :24,}}// 20-23khong dich sang phai ?
-         title={item.title}>
-         Bạn cần trợ giúp hãy liên lạc với chúng tôi:
-         <p><b>0865081605</b></p>
-        </Card>
-        <FacebookFilled style={{ fontSize: '30px', color :"#4096ff", right: 24}} /> 
+   <>
+   <div className='footer'> 
+     
+      <div>
+        <div classname = 'logo'>
+          <img src="//cdn1.ivivu.com/bocongthuong.png" alt ="ivivu"></img>
+        </div>
+        <div classname = "contact" style ={{ color : "#faad14"}} > 1900 2045</div>
+        <div>
+          <a href ='www.facebook.com'>
+            <FacebookFilled style={{ fontSize: '30px', color :"#69b1ff"}} />
+          </a>
+        </div>
         <LinkedinFilled style={{ fontSize: '30px', color :"#0958d9"}}/>
-        <InstagramFilled style={{ fontSize: '30px', color :"#ff4d4f"}}/>
+        <InstagramFilled style={{ fontSize: '30px', color :"#cf1322"}}/>
         <FloatButton 
         icon = {<QuestionCircleFilled />}
         style ={{fontSize: '30px'}}
         />
-      </List.Item>
-    )}
-  />
+      </div>
+    
+  </div>
    </>
-
+  
     )
 }
 
