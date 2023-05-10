@@ -11,19 +11,23 @@ function Footer() {
   return (
    <>
    <div className='footer'> 
-
+    <div className = 'icons'>
+      <ul>
        <a href ='www.facebook.com'>
         <FacebookFilled style={{ fontSize: '30px', color :"#4267b2"}} />
        </a>
-
+      
+    
         <a href ='www.linkedin.com'>
         <LinkedinFilled style={{ fontSize: '30px', color :"#0958d9"}}/>
         </a>
-
+      
+      
         <a href = 'wwww.instagram.com'>
         <InstagramFilled style={{ fontSize: '30px', color :"#E95950"}}/>
         </a>
-
+      </ul>
+    </div>    
         <FloatButton 
           icon = {<QuestionCircleFilled  />}
           style ={{fontSize: '10px'}}/>
