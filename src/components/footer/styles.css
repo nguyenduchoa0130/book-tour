@@ -1,13 +1,35 @@
 .footer {
-  width : 1500px;  
-  height : 400px; 
-  background-color: #d6d9db;
+  width : 1500px;  /* rộng */
   display: flex;
+  height : 370.75px; 
+  background-color: #d6d9db;
+  margin: 40px 0px 0x; 
+  padding: 10px 15px;
+  margin-right: 50%; 
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
-.icons {
-  
+
+.logo1 {
+  width: 1140px;
+  height: 138.5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+
+
+.logo2 {
+  width: 960px;
+  height: 292.25px;
+  margin: 40px 100px 15px;
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: row;
+ justify-content: space-between; 
 }
 
 
