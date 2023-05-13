@@ -1,13 +1,12 @@
-import React from "react";
-import "./styles.css";
-import { Card, FloatButton, List } from "antd";
 import {
-  LinkedinFilled,
   FacebookFilled,
   InstagramFilled,
+  LinkedinFilled,
   QuestionCircleFilled,
 } from "@ant-design/icons";
-import { Col, Row } from "antd";
+import { Col, FloatButton, Row } from "antd";
+import React from "react";
+import "./styles.css";
 function Footer() {
   return (
     <>
@@ -22,6 +21,7 @@ function Footer() {
                     width="55"
                     class="loading"
                     data-was-processed="true"
+                    alt='Logo'
                   ></img>
                 </p>
                 <b>Được chứng nhận</b>
@@ -33,6 +33,7 @@ function Footer() {
                   class="loading"
                   width="25"
                   src="https://res.ivivu.com/hotel/img/apea.png"
+                  alt='Logo 2'
                 ></img>
                 <b>APEA Inspirational Brand Award</b>
               </div>
@@ -84,7 +85,7 @@ function Footer() {
                   </b>
                   <p>
                     <a
-                      href="#"
+                      href="!#"
                       style={{
                         fontSize: "40px",
                         face: "Comic sans MS",
