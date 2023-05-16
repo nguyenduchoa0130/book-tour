@@ -2,7 +2,7 @@ import {Route, Routes} from 'react-router-dom'
 import './App.css';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
-
+import Home from './pages/home/Home';
 import Register from './pages/register/Register';
 
 /*import { Layout, Space } from 'antd';*/
@@ -19,6 +19,7 @@ function App() {
     <>
       <Header />
       <main>
+        <Home/>
         <Routes>
            <Route path='/register' element={<Register />} />
         </Routes>
