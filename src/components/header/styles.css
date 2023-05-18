@@ -1,21 +1,17 @@
 .header {
-  width: 1500px;
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 150px 0px 150px ; /* tren phai duoi trai padding cua 3 phan tu logo , menu, account-infor */
-  margin : 0px ;
-  background-color: #003C71;
+  margin: 0;
+  padding: 16px 36px;
+  background-color: #003c71;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
   width: 80px;
   height: 50px;
-  padding-left: 50px;/* logo dich sang phải*/
-  padding-right: 50px;
-
 }
 
 .menu {
@@ -23,13 +19,13 @@
   display: inline-block;
   list-style: none;
   margin: 0;
-  padding-left:  80px;
+  padding-left: 80px;
 }
 
 .menu li {
   display: inline-block;
   margin-right: 25px;
-  
+
   padding-top: 15px;
 }
 
@@ -49,28 +45,25 @@
 }
 
 .account {
-
   font-size: 18px;
   display: inline-block;
   list-style: none;
   margin: 0;
-  padding-top:  0px;
+  padding-top: 0px;
 
   align-items: center;
   justify-content: space-between;
-
 }
 .account img {
   width: 38px;
   height: auto;
   margin-left: 50px; /*logo dịch chuyển sang bên phải*/
- 
 }
 .taikhoan {
-  background-color: #003C71; /* Green background */
+  background-color: #003c71; /* Green background */
   border: none; /* Remove border */
   color: white; /* White text */
-  padding: 15px 10px 15px ; /* Padding for button tren  phai duoi trai*/
+  padding: 15px 10px 15px; /* Padding for button tren  phai duoi trai*/
 
   text-align: center; /* Center text */
   text-decoration: none; /* Remove underline */
@@ -81,7 +74,7 @@
   border-radius: 10px; /* Add border radius */
 }
 
-.taikhoan:hover{
+.taikhoan:hover {
   display: inline-block;
   color: #26bed6;
 }
@@ -89,11 +82,12 @@
 .contact {
   display: inline-block;
   align-items: center;
-  color:burlywood;
+  color: burlywood;
   font-size: 20px;
   padding: 70px 0px 70px 100px;
 }
-.contact:hover{
+.contact:hover {
   display: inline-block;
   color: #26bed6;
 }
+
