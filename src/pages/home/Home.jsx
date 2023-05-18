@@ -1,11 +1,20 @@
 import React from 'react';
 import './styles.css';
-import video from '../../Assets/beach-153167.mp4';
+import PromotionSection from './promotion-section/PromotionSection';
+import { configs } from './configs';
+
 const Home = () => {
   return (
     <section className='home'>
-      <div className='overlay'></div>
-      <video src={video} muted autoPlay loop type='video/mp4'></video>
+      {configs.map((config, idx) => (
+        <div key={`section-${idx}`} className='home__section'>
+          <PromotionSection
+            primaryTitle={config.primaryTitle}
+            secondaryTitle={config.secondaryTitle}
+            cards={config.cards}
+          />
+        </div>
+      ))}
     </section>
   );
 };
