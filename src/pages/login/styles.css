@@ -5,22 +5,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
+ .card {
+   display: flex;
+   flex-direction: column;
+   align-items: center; /* bắt đầu căn chỉnh vị trí trung tâm */
+   justify-content: center;
+   text-align: center; /* căn text*/
+ }
 
 .login h1 {
   padding: 16px;
   text-transform: uppercase;
 }
-<<<<<<< HEAD
-/*.card{
- width : 600px;
- height : 400px
-}*/
-=======
 
->>>>>>> e880b7af40a14972caf1d7e0894189c49d53afd5
 .login-form {
-  width: 500px;
+  width: 600px;
 }
 
 .login-form-forgot {
@@ -28,7 +29,7 @@
 }
 
 .login-form-button {
-  width: 100%;
+  width: 400px;
 }
 
 .login-form-button {
