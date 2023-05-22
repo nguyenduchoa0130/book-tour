@@ -1,34 +1,32 @@
 .header {
-  width: 1500px;
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 150px 0px 150px ; /* tren phai duoi trai padding cua 3 phan tu logo , menu, account-infor */
-  margin : 0px 12.2px;
-  background-color: #003C71;
+  margin: 0;
+  padding: 16px 36px;
+  background-color: #003c71;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
   width: 80px;
   height: 50px;
-  padding-left: 10px;
-  padding-right: 10px;
-
 }
 
 .menu {
   font-size: 18px;
   display: inline-block;
   list-style: none;
-  margin: 0;
-  padding:  0px;
+ 
+  padding-left: 100px;
 }
 
 .menu li {
+
   display: inline-block;
   margin-right: 25px;
+  position: relative;
   padding-top: 15px;
 }
 
@@ -41,40 +39,69 @@
   text-decoration: none;
   color: #fff;
 }
-
+.menu li a:hover subnav {
+     display: block;   
+}
 .menu li a:hover {
   display: inline-block;
   color: #26bed6;
 }
-
 .account {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  color:#fbf8f8;
-  padding : 0px 20px 0px 20px;
-}
-
-.account {
+  font-size: 18px;
   display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding-top: 0px;
+
   align-items: center;
-  font-size: 15px;
-  
+  justify-content: space-between;
 }
 .account img {
-  width: 32px;
-  height: 32px;
-  margin-left: 13px;
+  width: 38px;
+  height: auto;
+  margin-left: 50px; /*logo dịch chuyển sang bên phải*/
+}
+.taikhoan {
+  background-color: #003c71; /* Green background */
+  border: none; /* Remove border */
+  color: white; /* White text */
+  padding: 15px 10px 15px; /* Padding for button tren  phai duoi trai*/
+
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make display inline */
+
+  margin: 4px 2px; /* Add margin */
+  cursor: pointer; /* Add cursor pointer */
+  border-radius: 10px; /* Add border radius */
+}
+
+.taikhoan:hover {
+  display: inline-block;
+  color: #26bed6;
 }
 
 .contact {
   display: inline-block;
   align-items: center;
-  color:burlywood;
+  color: burlywood;
   font-size: 20px;
   padding: 70px 0px 70px 100px;
 }
-.contact:hover{
+.contact:hover {
   display: inline-block;
+  color: #26bed6;
+}
+.subnav{
+  display: none;
+  width: 120px;
+  padding-left: 8px;
+  position: absolute;
+  background-color: #003c71;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subnav a:hover {
   color: #26bed6;
 }
