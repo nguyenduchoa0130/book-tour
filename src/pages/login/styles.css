@@ -1,0 +1,22 @@
+.login{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    algin-items: center;
+
+}
+.login-form {
+    max-width: 400px;
+}
+
+.login-form-forgot {
+    float: center;
+}
+
+.login-form-button {
+    width: 100%;
+}
+.login-form-button{
+ background-color: #84fab0;
+}

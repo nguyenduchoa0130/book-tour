@@ -16,7 +16,7 @@
   align-items: center;/* bắt đầu căn chỉnh vị trí trung tâm */
   justify-content: center;
 }
-.hover:hover { /* tsao khong được*/
+.hover:hover { 
   color: black;
   
 }
