@@ -1,26 +1,40 @@
-.login{
-    width:100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    algin-items: center;
-
+.login {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.card{
+
+.login h1 {
+  padding: 16px;
+  text-transform: uppercase;
+}
+<<<<<<< HEAD
+/*.card{
  width : 600px;
  height : 400px
-}
+}*/
+=======
+
+>>>>>>> e880b7af40a14972caf1d7e0894189c49d53afd5
 .login-form {
-    max-width: 400px;
+  width: 500px;
 }
 
 .login-form-forgot {
-    float: center;
+  float: center;
 }
 
 .login-form-button {
-    width: 100%;
+  width: 100%;
 }
-.login-form-button{
- background-color: #84fab0;
+
+.login-form-button {
+  background-color: #84fab0;
+}
+
+.login-container {
+  width: 100%;
 }
