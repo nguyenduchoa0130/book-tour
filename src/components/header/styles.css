@@ -1,5 +1,5 @@
 .header {
-  height: 60px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -92,7 +92,7 @@
   color: #26bed6;
 }
 .subnav{
- 
+  display: none;
   width: 120px;
   padding-left: 8px;
   position: absolute;
@@ -106,7 +106,8 @@
 }
 
 .user-account{
- top:055px;
+  display: none;
+  top:055px;
   width: 246px;
   position: absolute;
   color:black;
