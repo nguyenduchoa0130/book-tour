@@ -71,7 +71,7 @@ function Footer() {
             <Col span={12}>
               <div className="center-box">
                 <ul>
-                  <b style={{ fontSize: '16px' }}>Bạn cần trợ giúp? Hãy gọi ngay</b>
+                  <b style={{ fontSize: '14px' }}>Bạn cần trợ giúp? Hãy gọi ngay</b>
                   <p>
                     <div
                       className="hover"

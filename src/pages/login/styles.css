@@ -1,5 +1,5 @@
 .login {
-  height: 500px;
+  height: 700px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,9 @@
    align-items: center; /* bắt đầu căn chỉnh vị trí trung tâm */
    justify-content: center;
    text-align: center; /* căn text*/
-  height: casc(100vh-60px-60px);
+    margin-top: 100px;/* Khoảng trống ở trên */
+    margin-bottom: 100px;/* Khoảng trống ở dưới */
+  
  }
 
 .login h1 {
