@@ -5,7 +5,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  
+}
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
  .card {
    display: flex;
@@ -13,6 +22,7 @@
    align-items: center; /* bắt đầu căn chỉnh vị trí trung tâm */
    justify-content: center;
    text-align: center; /* căn text*/
+  height: casc(100vh-60px-60px);
  }
 
 .login h1 {
