@@ -39,9 +39,7 @@
   text-decoration: none;
   color: #fff;
 }
-.menu li a:hover subnav {
-     display: block;   
-}
+
 .menu li a:hover {
   display: inline-block;
   color: #26bed6;
@@ -59,9 +57,10 @@
 .account img {
   width: 38px;
   height: auto;
-  margin-left: 50px; /*logo dịch chuyển sang bên phải*/
+  margin-left: 50px; 
 }
 .taikhoan {
+  position: relative;
   background-color: #003c71; /* Green background */
   border: none; /* Remove border */
   color: white; /* White text */
@@ -93,7 +92,7 @@
   color: #26bed6;
 }
 .subnav{
-  display: none;
+ 
   width: 120px;
   padding-left: 8px;
   position: absolute;
@@ -104,4 +103,44 @@
 
 .subnav a:hover {
   color: #26bed6;
+}
+
+.user-account{
+ top:055px;
+  width: 246px;
+  position: absolute;
+  color:black;
+  background: #fff;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  list-style: none; /*bo dau cham the li */
+  margin: 8px -15px 0px 0px;
+  padding: 8px 0px;
+}
+.btn-login-header{
+  width: 246px;
+  padding : 8px 12px 12px;
+}
+
+.btn-login{
+  width:222px;
+  color:#fff;
+  font-size: 16px;
+  background: #26bed6;
+  padding: 8px;
+}
+.btn-login:hover{
+  color:#003c71
+}
+.register-text{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.register-link{
+  color :#26bed6;
+
+}
+.register-link:hover{
+  color :#003c71;
+
 }
