@@ -3,7 +3,7 @@
   display: flex;
   height: 300px;
   background-color: #d6d9db;
-  margin: 40px 10px 0x;
+  margin: 40px 10px 0x;/* tren phải dưới trái */
   padding: 10px 15px;
   margin-right: 50%;
   display: flex;
@@ -17,7 +17,10 @@
   justify-content: center;
 }
 .hover:hover {
-  /* Thuộc tính của phần tử khi con trỏ chuột đi qua */
-  color: red;
+  color: black;/* Thay đổi màu sắc khi di chuột vào */
+  font-size: 40px;
+  font-family: VNI-Pagon;
+      
 }
+
 

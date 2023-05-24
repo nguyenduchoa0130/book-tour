@@ -13,7 +13,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;/*điều chỉnh cách một phần tử HTML hiển thị bên trong khung chứa*/
   z-index: -1;
 }
  .card {

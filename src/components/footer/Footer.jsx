@@ -11,19 +11,19 @@ import { Col, Row } from 'antd';
 function Footer() {
   return (
     <>
-      <div className="footer">
+      <div className="footer" style={{ fontFamily: 'VNI-Pagon' }}>
         <div>
           <Row>
             <Col span={12}>
               <div className="center-box">
-                <p>
+                <p style={{ marginTop: '10px' }}>
                   <img
                     src="https://res.ivivu.com/hotel/img/ivv-agency-winner.svg"
                     width="55"
                     class="loading"
                     data-was-processed="true"></img>
                 </p>
-                <b>Được chứng nhận</b>
+                <b style={{ marginTop: '15px' }}>Được chứng nhận</b>
               </div>
             </Col>
             <Col span={12}>
@@ -41,18 +41,19 @@ function Footer() {
         <div>
           <Row>
             <Col span={12}>
-              <div className="center-box">
+              <div className="center-box" style={{ fontFamily: 'VNI-Pagon', fontSize: '20px' }}>
                 <ul>
                   <p>
                     <b>HN: </b> Đại học Bách Khoa Hà Nội{' '}
                   </p>
                   <p>
-                    <b>HCM: </b>Lầu 2, Tòa nhà Anh Đăng, Quận 3, Tp. Hồ Chí Minh{' '}
+                    <b> HCM: </b>
+                    Lầu 2, Tòa nhà Anh Đăng, Quận 3, Tp. Hồ Chí Minh{' '}
                   </p>
                   <p>
-                    <b>HCM: </b>Tầng 7 - Toà Nha Q. Ninh Kiều, TP. Cần Thơ
+                    <b>Đà Nẵng: </b>Tầng 7 - Toà Nha Q. Ninh Kiều, TP. Đà Nẵng
                   </p>
-                  <p>
+                  <p style={{ margin: '0 auto' }}>
                     <a href="https://facebook.com">
                       <FacebookFilled style={{ fontSize: '30px', color: '#4267b2' }} />
                     </a>
@@ -69,16 +70,16 @@ function Footer() {
               </div>
             </Col>
             <Col span={12}>
-              <div className="center-box">
+              <div className="center-box" style={{ fontFamily: 'VNI-Pagon' }}>
                 <ul>
-                  <b style={{ fontSize: '14px' }}>Bạn cần trợ giúp? Hãy gọi ngay</b>
+                  <b style={{ fontSize: '16px', fontFamily: 'VNI-Pagon' }}>
+                    Bạn cần trợ giúp? Hãy gọi ngay
+                  </b>
                   <p>
                     <div
-                      className="hover"
+                      className="hover "
                       href="#"
                       style={{
-                        fontSize: '40px',
-                        face: 'Comic sans MS',
                         color: '#f79321'
                       }}>
                       1900 2045

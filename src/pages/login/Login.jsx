@@ -18,7 +18,6 @@ function Login() {
           <h1
             style={{
               marginTop: '50px',
-              fontFamily: 'VNI-Pagon',
               color: '',
               fontFamily: 'VNI-Pagon'
             }}>
@@ -61,7 +60,12 @@ function Login() {
                   message: 'Please input your Password!'
                 }
               ]}
-              style={{ width: '500px', margin: '0 auto', marginTop: '20px', marginBottom: '20px' }}>
+              style={{
+                width: '500px',
+                margin: '0 auto',
+                marginTop: '20px',
+                marginBottom: '20px' /*dưới  */
+              }}>
               <Input
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"
@@ -79,33 +83,43 @@ function Login() {
                 style={{
                   color: '#1f1f1f',
                   fontWeight: 'bolder',
+                  fontFamily: 'VNI-Pagon',
                   marginLeft: '300px' // Khoảng cách trái
                 }}>
                 Forgot password
               </a>
             </Form.Item>
-            <div className="button">
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                  style={{ color: '#000000', marginBottoms: '20px', fontFamily: 'VNI-Pagon' }}>
-                  Log in
-                </Button>
-                <p style={{ marginBottom: '20px', marginTop: '20px' }}>
-                  Or{' '}
-                  <a
-                    href=""
-                    style={{
-                      color: '#1f1f1f',
-                      fontWeight: 'bolder'
-                    }}>
-                    Register now!
-                  </a>
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <Form.Item>
+          </Form>
+          <div className="button">
+            <Form.Item>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                style={{
+                  color: '#000000',
+                  marginBottoms: '20px' /*khoảng cách dưới 20px*/,
+                  fontFamily: 'VNI-Pagon'
+                }}>
+                Log in
+              </Button>
+
+              <p style={{ marginBottom: '20px', marginTop: '20px', fontFamily: 'VNI-Pagon' }}>
+                Or{' '}
+                <a
+                  href=""
+                  style={{
+                    color: '#1f1f1f',
+                    fontWeight: 'bolder',
+                    fontFamily: 'VNI-Pagon'
+                  }}>
+                  Register now!
+                </a>
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <Form.Item>
+                  <a href="https://facebook.com">
                     <Button
                       type="primary"
                       htmlType="submit"
@@ -113,8 +127,11 @@ function Login() {
                       style={{ color: '#000000', fontFamily: 'VNI-Pagon' }}>
                       Continue with Facebook
                     </Button>
-                  </Form.Item>
-                  <Form.Item>
+                  </a>
+                </Form.Item>
+
+                <Form.Item>
+                  <a href="https://google.com">
                     <Button
                       type="primary"
                       htmlType="submit"
@@ -122,11 +139,11 @@ function Login() {
                       style={{ color: '#000000', fontFamily: 'VNI-Pagon' }}>
                       Continue with Google
                     </Button>
-                  </Form.Item>
-                </div>
-              </Form.Item>
-            </div>
-          </Form>
+                  </a>
+                </Form.Item>
+              </div>
+            </Form.Item>
+          </div>
         </div>
       </div>
     </>
