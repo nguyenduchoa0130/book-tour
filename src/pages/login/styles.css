@@ -8,7 +8,8 @@
   
 }
 .background-video {
-  position: absolute;
+  position: absolute; /* Thiết lập phần tử có vị trí tuyệt đối,
+    tức là nó sẽ được vị trí theo tọa độ xác định bằng thuộc tính "top","left","right" và "bottom" */
   top: 0;
   left: 0;
   width: 100%;
