@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.css';
 import { Card, FloatButton, List } from 'antd';
 import {
+  PhoneFilled,
   LinkedinFilled,
   FacebookFilled,
   InstagramFilled,
@@ -70,20 +71,14 @@ function Footer() {
               </div>
             </Col>
             <Col span={12}>
-              <div className="center-box" style={{ fontFamily: 'VNI-Pagon' }}>
+              <div className="center-box">
                 <ul>
-                  <b style={{ fontSize: '16px', fontFamily: 'VNI-Pagon' }}>
-                    Bạn cần trợ giúp? Hãy gọi ngay
-                  </b>
+                  <b>Bạn cần trợ giúp? Hãy gọi ngay</b>
                   <p>
-                    <div
-                      className="hover "
-                      href="#"
-                      style={{
-                        color: '#f79321'
-                      }}>
+                    <a className="hover " href="#">
+                      <PhoneFilled className="name" />
                       1900 2045
-                    </div>
+                    </a>
                   </p>
                 </ul>
               </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import mountain from '../../Assets/mountain.mp4'
+import mountain from '../../Assets/audio/mountain.mp4';
 function Login() {
   const onFinish = values => {
     console.log('Received values of form: ', values);
@@ -15,14 +15,7 @@ function Login() {
         </video>
 
         <div className="card">
-          <h1
-            style={{
-              marginTop: '50px',
-              color: '',
-              fontFamily: 'VNI-Pagon'
-            }}>
-            Login
-          </h1>
+          <h1>Login</h1>
 
           <Form
             name="normal_login"
@@ -40,7 +33,7 @@ function Login() {
                 }
               ]}
               style={{
-                width: '500px',
+                width: '600px',
                 margin: '0 auto',
                 marginTop: '20px',
                 color: ''
@@ -108,7 +101,7 @@ function Login() {
                   <a
                     href=""
                     style={{
-                      color: '#1f1f1f',
+                      color: '#ffffff',
                       fontWeight: 'bolder',
                       fontFamily: 'VNI-Pagon'
                     }}>

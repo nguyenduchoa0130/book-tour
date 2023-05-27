@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 }
 .background-video {
   position: absolute; /* Thiết lập phần tử có vị trí tuyệt đối,
@@ -29,6 +30,8 @@
 .login h1 {
   padding: 16px;
   text-transform: uppercase;
+  color: aliceblue !important;
+
 }
 
 .login-form {
@@ -49,4 +52,7 @@
 
 .login-container {
   width: 100%;
+}
+.button p{
+  color: aliceblue !important
 }
