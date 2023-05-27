@@ -5,7 +5,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 }
 .background-video {
   position: absolute; /* Thiết lập phần tử có vị trí tuyệt đối,
@@ -14,19 +13,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;/*điều chỉnh cách một phần tử HTML hiển thị bên trong khung chứa*/
+  object-fit: cover; /*điều chỉnh cách một phần tử HTML hiển thị bên trong khung chứa*/
   z-index: -1;
 }
- .card {
-   display: flex;
-   flex-direction: column;
-   align-items: center; /* bắt đầu căn chỉnh vị trí trung tâm */
-   justify-content: center;
-   text-align: center; /* căn text*/
-    margin-top: 100px;/* Khoảng trống ở trên */
-    margin-bottom: 100px;/* Khoảng trống ở dưới */
-  
- }
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* bắt đầu căn chỉnh vị trí trung tâm */
+  justify-content: center;
+  text-align: center; /* căn text*/
+  margin-top: 100px; /* Khoảng trống ở trên */
+  margin-bottom: 100px; /* Khoảng trống ở dưới */
+}
 
 .login h1 {
   padding: 16px;
