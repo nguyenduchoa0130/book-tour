@@ -5,7 +5,9 @@ import Header from './components/header/Header';
 import Register from './pages/register/Register';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
-import Tours from  './pages/tours/Tours'
+import Tours from './pages/tours/Tours';
+import Hotel from './pages/hotel/Hotel';
+
 function App() {
   return (
     <>
@@ -14,8 +16,9 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
           <Route path="/tours" element={<Tours />} />
+          <Route path="/hotel" element={<Hotel />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </main>
       <Footer />
