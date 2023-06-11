@@ -3,6 +3,7 @@ import './styles.css';
 import { DatePicker, Space } from 'antd';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import beach1 from '../../Assets/image/beach1.jpg';
 dayjs.extend(customParseFormat);
 function Tours() {
   const { RangePicker } = DatePicker;
@@ -29,6 +30,9 @@ function Tours() {
               name="fname"
               placeholder="Bạn muốn đi đâu ?
               "
+              style={{
+                width: '360px'
+              }}
             />
             <br />
             <Space direction="vertical" size={12}>
@@ -36,7 +40,12 @@ function Tours() {
             </Space>
             <input type="text" placeholder="Khởi hành từ"></input>
 
-            <input type="submit" value="Tìm"></input>
+            <input
+              type="submit"
+              value="Tìm"
+              style={{
+                width: '50px'
+              }}></input>
           </div>
         </div>
       </form>
@@ -55,9 +64,10 @@ function Tours() {
         </div>
       </form>
       <form>
-        <div class="card">
-          <img class="card-img" src="path_to_image.jpg" alt="1" />
-          <h2 class="card-title">Card with Image</h2>
+        <div>
+          <h5 class="card-title">
+            Tour Singapore 3N2Đ: Khám Phá Quốc Đảo Sư Tử - Công Viên Fort Canning
+          </h5>
           <p class="card-content">This is the content of the card.</p>
         </div>
       </form>

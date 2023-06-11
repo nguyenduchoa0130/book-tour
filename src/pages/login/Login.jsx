@@ -33,7 +33,7 @@ function Login() {
                 }
               ]}
               style={{
-                width: '600px',
+                width: '700px',
                 margin: '0 auto',
                 marginTop: '20px',
                 color: ''
@@ -54,7 +54,7 @@ function Login() {
                 }
               ]}
               style={{
-                width: '500px',
+                width: '700px',
                 margin: '0 auto',
                 marginTop: '20px',
                 marginBottom: '20px' /*dưới  */

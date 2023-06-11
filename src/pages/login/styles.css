@@ -26,7 +26,6 @@
   margin-top: 100px; /* Khoảng trống ở trên */
   margin-bottom: 100px; /* Khoảng trống ở dưới */
 }
-
 .login h1 {
   padding: 16px;
   text-transform: uppercase;
@@ -53,6 +52,4 @@
 .login-container {
   width: 100%;
 }
-.button p{
-  color: aliceblue !important
-}
+

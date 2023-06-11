@@ -21,7 +21,7 @@ function Footer() {
                   <img
                     src="https://res.ivivu.com/hotel/img/ivv-agency-winner.svg"
                     width="55"
-                    class="loading"
+                    className="loading"
                     data-was-processed="true"></img>
                 </p>
                 <b style={{ marginTop: '15px' }}>Được chứng nhận</b>
@@ -30,7 +30,7 @@ function Footer() {
             <Col span={12}>
               <div className="center-box">
                 <img
-                  class="loading"
+                  className="loading"
                   width="25"
                   src="https://res.ivivu.com/hotel/img/apea.png"></img>
                 <b>APEA Inspirational Brand Award</b>
