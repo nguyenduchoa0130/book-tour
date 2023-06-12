@@ -1,31 +1,28 @@
 .gradient-custom-3 {
-    color: aliceblue;
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url("../../Assets/beach1.jpg");
-
-    }
-    .gradient-custom-4 {
-   
-    background: #99FFFF;
-    
-    
-    background: -webkit-linear-gradient(to right, rgb(79, 164, 174), rgba(143, 211, 244, 1));
-    
-    
-    background: linear-gradient(to right, rgb(92, 146, 174), rgb(127, 161, 178))
-    }
-
-    .card {
-      border-radius: 15px;
-      background-color: #0000004d;
-    }
-.form-check label a u:hover{
-  color:#99FFFF
+  color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+  /* background-image: url("../../Assets/beach1.jpg"); */
 }
-.end p{
+.gradient-custom-4 {
+  background: #99ffff;
+
+  background: -webkit-linear-gradient(to right, rgb(79, 164, 174), rgba(143, 211, 244, 1));
+
+  background: linear-gradient(to right, rgb(92, 146, 174), rgb(127, 161, 178));
+}
+
+.card {
+  border-radius: 15px;
+  background-color: #0000004d;
+}
+
+.form-check label a u:hover {
+  color: #99ffff;
+}
+
+.end p {
   color: azure;
 }
-.end p a u:hover{
-  color:#99FFFF;
+.end p a u:hover {
+  color: #99ffff;
 }
-   
