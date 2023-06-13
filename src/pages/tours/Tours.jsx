@@ -18,7 +18,7 @@ function Tours() {
       .format(weekFormat)}`;
   return (
     <>
-      <form>
+      <form1>
         <div className="imageContent">
           <h1>Du lịch theo cá tính</h1>
           <p>Trải nghiệm trọn vẹn - Giá cả phải chăng</p>
@@ -28,28 +28,35 @@ function Tours() {
               type="text"
               id="fname"
               name="fname"
-              placeholder="Bạn muốn đi đâu ?
+              placeholder=" Bạn muốn đi đâu ?
               "
               style={{
-                width: '360px'
+                width: '700px',
+                height: '40px'
               }}
             />
             <br />
-            <Space direction="vertical" size={12}>
-              <DatePicker placeholder="Chọn ngày" />
-            </Space>
-            <input type="text" placeholder="Khởi hành từ"></input>
+            <div className="ant-picker-input ">
+              <Space direction="vertical" size={12}>
+                <DatePicker placeholder="Chọn ngày" style={{ height: '40px' }} />
+              </Space>
+              <input
+                type="text"
+                placeholder=" Khởi hành từ"
+                style={{ width: '430px', height: '40px' }}></input>
 
-            <input
-              type="submit"
-              value="Tìm"
-              style={{
-                width: '50px'
-              }}></input>
+              <input
+                type="submit"
+                value="Tìm"
+                style={{
+                  width: '50px',
+                  height: '40px'
+                }}></input>
+            </div>
           </div>
         </div>
-      </form>
-      <form>
+      </form1>
+      <form1>
         <div>
           <h5>Tư Vấn Chuyên Nghiệp</h5>
           <p>Hỗ trợ nhiệt tình, chăm sóc chu đáo</p>
@@ -62,15 +69,15 @@ function Tours() {
           <h5>Thanh Toán An Toàn</h5>
           <p>Linh hoạt, rõ ràng, bảo mật</p>
         </div>
-      </form>
-      <form>
-        <div>
+      </form1>
+      <form1>
+        <div className="">
           <h5 class="card-title">
             Tour Singapore 3N2Đ: Khám Phá Quốc Đảo Sư Tử - Công Viên Fort Canning
           </h5>
           <p class="card-content">This is the content of the card.</p>
         </div>
-      </form>
+      </form1>
     </>
   );
 }

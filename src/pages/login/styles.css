@@ -7,6 +7,9 @@
   justify-content: center;
   
 }
+.login h1{
+  font-family: 'Times New Roman', Times, serif;
+}
 .background-video {
   position: absolute; /* Thiết lập phần tử có vị trí tuyệt đối,
     tức là nó sẽ được vị trí theo tọa độ xác định bằng thuộc tính "top","left","right" và "bottom" */
@@ -28,27 +31,30 @@
 }
 .login h1 {
   padding: 16px;
+  text-family: VNI-Pagon;
   text-transform: uppercase;
   color: aliceblue !important;
 
 }
 
 .login-form {
-  width: 600px;
+  width: 500px;
 }
+
 
 .login-form-forgot {
   float: center;
 }
 
 .login-form-button {
-  width: 400px;
+  width: 300px;
 }
+
 
 .login-form-button {
   background-color: #84fab0;
+  
 }
-
 .login-container {
   width: 100%;
 }

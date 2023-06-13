@@ -2,22 +2,43 @@
 .imageContent{
 border: 1px solid ;/* tạo dòng kẻ*/
 font-family: 'Times New Roman', Times, serif;
-
-
 }
-.imageContent h1 {    
+.imageContent h1 {  
+   margin-left: 110px;
+   margin-bottom: 10px; /*giãn dưới*/
 }
+.imageContent p {
+   margin-left: 110px;
+   margin-bottom: 30px;
+}
+
 .inf{
   background: #d9d9d9;
-   width: 800px;
-   height:100px;
+   width: 750px;
+   height:120px;
+   margin-left: auto;
+   margin-right: 580px;
+   margin-bottom: 50px;
 }
-form:nth-child(2) {
+.inf input[type="text"] {
+   margin-left: 30px;
+   margin-top: 10px;
+}
+
+.ant-picker-input {
+   padding-left: 30px;
+}
+.ant-picker-input input{
+   margin-right: 10px;
+}
+
+form1:nth-child(2) {
    display:flex;
    justify-content: space-between;
    margin-top: 20px;
+   margin-bottom: 50px;
 }
-form:nth-child(3) {
+form1:nth-child(3) {
    display:flex;
    justify-content: space-between;
    background-image: url('./../../Assets/image/beach1.jpg');
@@ -25,5 +46,7 @@ form:nth-child(3) {
    /* hoặc background-size: contain; */
    background-repeat: no-repeat;
    background-position: center center;
-
+   height: 400px;
+   text-align: center
 }
+

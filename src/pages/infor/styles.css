@@ -1,0 +1,30 @@
+.Row {
+    background-color: #f0f0f0;
+    
+    
+}
+
+.tt  {
+    margin-left: 150px;
+    font-family: 'Times New Roman', Times, serif;
+    border: 1px solid #ccc;
+    padding-bottom: 30px;/* căn chỉnh phần tuwr này có thể thay đổi chiều dài */
+    padding-left: 30px; /* căn cả lớp cho các thành phần*/
+    background: #ffffff;
+}
+
+.tt p {
+    margin-top: 10px;
+}
+
+.gia {
+    width: 500px;
+    margin-left: 80px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    background: #ffffff;
+}

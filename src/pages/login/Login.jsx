@@ -33,7 +33,7 @@ function Login() {
                 }
               ]}
               style={{
-                width: '700px',
+                width: '400px',
                 margin: '0 auto',
                 marginTop: '20px',
                 color: ''
@@ -54,7 +54,7 @@ function Login() {
                 }
               ]}
               style={{
-                width: '700px',
+                width: '400px',
                 margin: '0 auto',
                 marginTop: '20px',
                 marginBottom: '20px' /*dưới  */
@@ -77,7 +77,7 @@ function Login() {
                   color: '#1f1f1f',
                   fontWeight: 'bolder',
                   fontFamily: 'VNI-Pagon',
-                  marginLeft: '300px' // Khoảng cách trái
+                  marginLeft: '200px' // Khoảng cách trái
                 }}>
                 Forgot password
               </a>
@@ -119,7 +119,7 @@ function Login() {
                   type="primary"
                   htmlType="submit"
                   className="login-form-button"
-                  style={{ color: '#000000', fontFamily: 'VNI-Pagon' }}>
+                  style={{ color: '#000000', fontFamily: 'VNI-Pagon', weight: '500px' }}>
                   Continue with Facebook
                 </Button>
               </a>

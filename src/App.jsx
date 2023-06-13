@@ -7,6 +7,8 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Tours from './pages/tours/Tours';
 import Hotel from './pages/hotel/Hotel';
+import Infor from './pages/infor/Infor';
+import Payment from './pages/payment/Payment';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/tours" element={<Tours />} />
           <Route path="/hotel" element={<Hotel />} />
+          <Route path="/infor" element={<Infor />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </main>
