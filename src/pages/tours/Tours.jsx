@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles.css';
-import { DatePicker, Space } from 'antd';
+import { DatePicker, Space, Divider, Row, Col, Button } from 'antd';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
-import beach1 from '../../Assets/image/beach1.jpg';
+
 dayjs.extend(customParseFormat);
 function Tours() {
   const { RangePicker } = DatePicker;
@@ -58,26 +58,100 @@ function Tours() {
       </form1>
       <form1>
         <div>
-          <h5>Tư Vấn Chuyên Nghiệp</h5>
+          <img
+            class=""
+            data-src="/du-lich/content/img/icon-support.svg"
+            alt="Tư Vấn Chuyên Nghiệp"
+            src="/du-lich/content/img/icon-support.svg"></img>
+
           <p>Hỗ trợ nhiệt tình, chăm sóc chu đáo</p>
         </div>
         <div>
-          <h5>Trải Nghiệm Đa Dạng</h5>
+          <img
+            class=""
+            data-src="/du-lich/content/img/icon-location.svg"
+            alt="Trải nghiệm đa dạng"
+            src="/du-lich/content/img/icon-location.svg"
+          />
+
           <p>Chọn tour phù hợp, giá tour hợp lý</p>
         </div>
         <div>
-          <h5>Thanh Toán An Toàn</h5>
+          <img
+            class=""
+            data-src="/du-lich/content/img/icon-payment.svg"
+            alt="Thanh Toán An Toàn"
+            src="/du-lich/content/img/icon-payment.svg"></img>
           <p>Linh hoạt, rõ ràng, bảo mật</p>
         </div>
       </form1>
-      <form1>
-        <div className="">
-          <h5 class="card-title">
-            Tour Singapore 3N2Đ: Khám Phá Quốc Đảo Sư Tử - Công Viên Fort Canning
-          </h5>
-          <p class="card-content">This is the content of the card.</p>
+      <div className="font">
+        <Divider orientation="left"></Divider>
+        <div style={{ marginLeft: '50px' }}>
+          <h5>Tour Du Lịch Hè Giá Tốt</h5>
+          <p>Chơi Hè Thả Ga, Không Lo Về Giá</p>
         </div>
-      </form1>
+        <Row justify="space-around">
+          <Col span={4}>
+            <Button className="button">
+              <img
+                className="img"
+                src="https://data.webnhiepanh.com/wp-content/uploads/2020/11/21105453/phong-canh-1.jpg"
+                alt="Tour"></img>
+              <div className="image-overlay">
+                <p className="image-text">
+                  <h4>Tour</h4>
+                  <h6>Giá rẻ</h6>
+                </p>
+              </div>
+            </Button>
+          </Col>
+
+          <Col span={4}>
+            <Button className="button">
+              <img
+                className="img"
+                src="https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="Ảnh"></img>
+              <div className="image-overlay">
+                <p className="image-text">
+                  <h4>Tour</h4>
+                  <h6>Giá rẻ</h6>
+                </p>
+              </div>
+            </Button>
+          </Col>
+          <Col span={4}>
+            <Button className="button">
+              <img
+                className="img"
+                src="https://images.pexels.com/photos/2387418/pexels-photo-2387418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="Ảnh"></img>
+              <div className="image-overlay">
+                <p className="image-text">
+                  <h4>Tour</h4>
+                  <h6>Giá rẻ</h6>
+                </p>
+              </div>
+            </Button>
+          </Col>
+          <Col span={4}>
+            <Button className="button">
+              <img
+                className="img"
+                src="https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="Ảnh"></img>
+              <div className="image-overlay">
+                <p className="image-text">
+                  <p>Tour</p>
+                  <p>Giá rẻ</p>
+                  <p>Tổng tiền </p>
+                </p>
+              </div>
+            </Button>
+          </Col>
+        </Row>
+      </div>
     </>
   );
 }
