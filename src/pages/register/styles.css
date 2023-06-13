@@ -1,31 +1,31 @@
 .gradient-custom-3 {
-    color: aliceblue;
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url("../../Assets/beach1.jpg");
-
-    }
-    .gradient-custom-4 {
    
-    background: #99FFFF;
-    
-    
-    background: -webkit-linear-gradient(to right, rgb(79, 164, 174), rgba(143, 211, 244, 1));
-    
-    
-    background: linear-gradient(to right, rgb(92, 146, 174), rgb(127, 161, 178))
-    }
+  background: #ffffff;
+  }
+  .gradient-custom-4 {
+ 
+  background: #84fab0;
+  
+  
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+  
+  
+  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+  }
+  .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;/*điều chỉnh cách một phần tử HTML hiển thị bên trong khung chứa*/
+    z-index: -1;
+  }
 
-    .card {
-      border-radius: 15px;
-      background-color: #0000004d;
-    }
-.form-check label a u:hover{
-  color:#99FFFF
-}
-.end p{
-  color: azure;
-}
-.end p a u:hover{
-  color:#99FFFF;
-}
-   
+  .card {
+    border-radius: 15px;
+    font-family: VNI-Pagon;
+  }
+
+
+  
