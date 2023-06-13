@@ -1,72 +1,56 @@
-.hotel {
-    color: aliceblue;
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+.hotelpage {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    margin: auto;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    padding-left: 30px;
-    padding-right: 10px;
-    background-image: url("../../Assets/hotel.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-    .hotelContent {
-        width: 75%;
-        height: 17%;
-        display: flex;
-        row-gap: 3rem;
-        padding-left: 15px ;
-        margin: 0px 0px 15px;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: center;
-        margin:auto;
-        color: var(--whiteColor);
-        z-index: 100;
+    flex-direction: row;
+}
 
-        .textDiv{
-            .smallText{
-               font-size: 40px;
-            } 
-            .hotelTitle{
-                position: relative;
-                font-size: 20px;
-            }
-        }
-        
+.banner-container {
+   
+    height: 450px;
+    background-image: url('../../Assets/image/hotelimg.png');
+    padding-bottom: 40px;
+    padding-left: 170px;
+}
+
+.banner-content {
+    font-family: 'Times New Roman', Times, serif;
+    color: aliceblue;
+    justify-content: center;
+    padding-top: 50px;
+    margin-bottom: 30px;
+    .smallText {
+        font-size: 40px;
     }
-    .con{
-        padding: 0 300px;
-        border-radius: 10px;
-    }
-    .cardDiv {
-       
-        background-color: #0000004d;
-      
-    }
-    
-    .cardDiv input{
-        justify-content: center;
-        
-        font-size: 15px;
-        width: 95%;
-        height: 25%;
-    }
-    .dateInput {
+    .hotelTitle {
         font-size: 20px;
     }
-    .dateInput input{
-        width: 95%;
-        height: 25%;
+}
+
+.card-content {
+    position: relative;
+    width: 870px;
+    background-color: #0000004d;
+    color: aliceblue;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    .destinationInput{
+        margin-bottom: 20px;
+        .inputcity {
+              border-color: antiquewhite;
+              width: 820px;
+              height: 60px;
+       
+        }
+        .inputdate {
+        margin-right: 30px;
+        justify-content: center ;
+           .input{
+               padding: 0 15px;
+            }
+            .btn{
+                 background-color: rgb(200, 214, 47);
+        }
+
     }
-    .hotel__section {
-      margin: 36px;
-    }
-    
-} 
-    
+}
+}
