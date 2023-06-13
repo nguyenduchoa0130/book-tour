@@ -1,10 +1,11 @@
 import React from 'react';
 import './styles.css';
 
+
 const Register = () => {
   return (
-    <section class="vh-100 bg-image">
-         
+    
+
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -43,13 +44,13 @@ const Register = () => {
                   </label>
                 </div>
 
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center mb-5">
                   <button type="button"
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                 </div>
                 
                 <div class="end">
-                <p class="text-center text-muted ">Have already an account? <a href="#!"
+                <p class="text-center text-muted mb-1">Have already an account? <a href="#!"
                     class="text-body"><u>Login here</u></a></p>
                 </div>
               </form>
@@ -60,7 +61,7 @@ const Register = () => {
       </div>
     </div>
   </div>
-</section>
+
   );
 };
 
