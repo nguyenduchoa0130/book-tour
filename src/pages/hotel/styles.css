@@ -14,7 +14,7 @@
   background-image: url('./../../Assets/image/hotel.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-
+}
   .hotelContent {
     width: 75%;
     height: 17%;
@@ -28,17 +28,41 @@
     margin: auto;
     color: var(--whiteColor);
     z-index: 100;
-
-    .textDiv {
+  }
+    .textDiv {}
       .smallText {
         font-size: 40px;
       }
       .hotelTitle {
-        position: relative;
+        position: relative;}
+.hotelpage {
+    position: relative;
+    flex-direction: row;
+}
+
+.banner-container {
+   
+    height: 450px;
+    background-image: url('../../Assets/image/hotelimg.png');
+    padding-bottom: 40px;
+    padding-left: 170px;
+}
+
+.banner-content {
+    font-family: 'Times New Roman', Times, serif;
+    color: aliceblue;
+    justify-content: center;
+    padding-top: 50px;
+    margin-bottom: 30px;
+}
+    .smallText {
+        font-size: 40px;
+    }
+    .hotelTitle {
         font-size: 20px;
       }
-    }
-  }
+   
+  
   .con {
     padding: 0 300px;
     border-radius: 10px;
@@ -64,4 +88,32 @@
   .hotel__section {
     margin: 36px;
   }
-}
+
+
+.card-content {
+    position: relative;
+    width: 870px;
+    background-color: #0000004d;
+    color: aliceblue;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;}
+    .destinationInput{
+        margin-bottom: 20px;}
+        .inputcity {
+              border-color: antiquewhite;
+              width: 820px;
+              height: 60px;
+       
+        }
+        .inputdate {
+        margin-right: 30px;
+        justify-content: center ;}
+           .input{
+               padding: 0 15px;
+            }
+            .btn{
+                 background-color: rgb(200, 214, 47);
+        }
+    
+
