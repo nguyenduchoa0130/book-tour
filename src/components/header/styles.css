@@ -50,35 +50,20 @@
   list-style: none;
   margin: 0;
   padding-top: 0px;
-
+  color:#fff;
   align-items: center;
   justify-content: space-between;
+}
+.account:hover{
+  color: #26bed6;
 }
 .account img {
   width: 38px;
   height: auto;
+  margin-right: 10px;
   margin-left: 50px; 
 }
-.taikhoan {
-  position: relative;
-  background-color: #003c71; /* Green background */
-  border: none; /* Remove border */
-  color: white; /* White text */
-  padding: 15px 10px 15px; /* Padding for button tren  phai duoi trai*/
-
-  text-align: center; /* Center text */
-  text-decoration: none; /* Remove underline */
-  display: inline-block; /* Make display inline */
-
-  margin: 4px 2px; /* Add margin */
-  cursor: pointer; /* Add cursor pointer */
-  border-radius: 10px; /* Add border radius */
-}
-
-.taikhoan:hover {
-  display: inline-block;
-  color: #26bed6;
-}
+ 
 
 .contact {
   display: inline-block;
@@ -105,43 +90,10 @@
   color: #26bed6;
 }
 
-.user-account{
-  display: none;
-  top:055px;
-  width: 246px;
-  position: absolute;
-  color:black;
-  background: #fff;
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-  list-style: none; /*bo dau cham the li */
-  margin: 8px -15px 0px 0px;
-  padding: 8px 0px;
-}
-.btn-login-header{
-  width: 246px;
-  padding : 8px 12px 12px;
-}
 
-.btn-login{
-  width:222px;
-  color:#fff;
-  font-size: 16px;
-  background: #26bed6;
-  padding: 8px;
-}
-.btn-login:hover{
-  color:#003c71
-}
-.register-text{
-  padding-left: 0px;
-  padding-right: 0px;
-}
-.register-link{
-  color :#26bed6;
-
-}
-.register-link:hover{
-  color :#003c71;
-
+.dropdown-menu{
+  
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #003c71;
 }
