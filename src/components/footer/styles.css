@@ -3,7 +3,7 @@
   display: flex;
   height: 300px;
   background-color: #d6d9db;
-  margin: 40px 10px 0x;
+  margin: 40px 10px 0x;/* tren phải dưới trái */
   padding: 10px 15px;
   margin-right: 50%;
   display: flex;
@@ -15,9 +15,33 @@
   display: flex;
   align-items: center;/* bắt đầu căn chỉnh vị trí trung tâm */
   justify-content: center;
+ font-family: VNI-Pagon;
+     
 }
-.hover:hover { /* tsao khong được*/
-  color: black;
-  
+.hover {
+  color: #f79321;
+  font-size: 50px;
+  font-family: 'Times New Roman', Times, serif;
 }
+.name { 
+  /*Khi áp dụng vertical-align: top;
+    cho một phần tử,
+    nó sẽ được căn chỉnh với phần trên cùng
+    của các phần tử khác trong hàng ngang.*/
+
+    vertical-align: middle;
+    font-size: 30px;
+    /* xoay vị tri*/ 
+    transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+
+}
+
+.hover:hover {
+  color: #00474f !important;   
+}
+
 

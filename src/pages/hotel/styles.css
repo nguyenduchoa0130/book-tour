@@ -1,67 +1,139 @@
 .hotel {
-  color: aliceblue;
   width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
   position: relative;
   display: flex;
+
+  align-items: center;
   justify-content: center;
-  align-items: stretch;
-  margin: auto;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  padding-left: 30px;
-  padding-right: 10px;
-  /* background-image: url('../../Assets/hotel.jpg'); */
-  background-size: cover;
-  background-repeat: no-repeat;
+  flex-direction: column;
+
+  .background-video {
+    position: absolute;
+    height: 500px;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    object-fit: cover;
+  }
 
   .hotelContent {
-    width: 75%;
-    height: 17%;
-    display: flex;
+    width: 100%;
+    height: max-content;
+    padding-top: 50px;
+    display: grid;
     row-gap: 3rem;
-    padding-left: 15px;
-    margin: 0px 0px 15px;
-    flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    margin: auto;
-    color: var(--whiteColor);
+    margin-left: 50px;
+
     z-index: 100;
 
     .textDiv {
+      padding: 10px 0;
+      color: #ffff;
+
       .smallText {
-        font-size: 40px;
+        position: relative;
+        font-size: 30px;
       }
+
       .hotelTitle {
         position: relative;
-        font-size: 20px;
+        font-size: 18px;
       }
     }
   }
-  .con {
-    padding: 0 300px;
-    border-radius: 10px;
-  }
   .cardDiv {
-    background-color: #0000004d;
-  }
+    position: relative;
+    display: grid;
+    padding: 20px 40px;
+    background: #e2d8d84d;
+    color: #323434;
+    border-radius: 10px;
 
-  .cardDiv input {
-    justify-content: center;
+    .destinationInput {
+      padding-bottom: 16px;
+    }
+    .dateInput {
+      padding-bottom: 18px;
+    }
+    .label {
+      padding-bottom: 20px;
+      font-size: 13px;
+    }
 
-    font-size: 15px;
-    width: 95%;
-    height: 25%;
-  }
-  .dateInput {
-    font-size: 20px;
-  }
-  .dateInput input {
-    width: 95%;
-    height: 25%;
-  }
-  .hotel__section {
-    margin: 36px;
+    .label_total {
+      align-items: center;
+
+      .total {
+        color: #323434;
+        font-size: 18px;
+        padding-bottom: 10px;
+      }
+    }
+
+    .input {
+      height: 35px;
+      padding-top: 10px;
+      outline: none;
+      border-radius: 10px;
+      background: #cdd7d7;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      .inputtext {
+        background: #cdd7d7;
+        border: none;
+        outline: none;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
+        font-size: 13px;
+        font-weight: 500;
+        padding-left: 10px;
+
+        &::placeholder {
+          font-size: 13px;
+        }
+      }
+
+      .inputdate {
+        background: #cdd7d7;
+        border: none;
+        outline: none;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
+        font-size: 13px;
+        font-weight: 500;
+        padding-left: 10px;
+      }
+
+      .icon {
+        font-size: 18px;
+        color: #65d9dd !important;
+        margin-left: 10px;
+      }
+    }
+
+    .searchOptions {
+      position: absolute;
+      background: #3fe8ee;
+      width: max-content;
+      bottom: -0.7rem;
+      column-gap: 0.8rem;
+      padding: 5px 1rem;
+      border-radius: 3rem;
+      left: 50%;
+      transform: translate(-50%);
+      justify-content: center;
+      cursor: pointer;
+
+      .icon {
+        font-size: 18px;
+      }
+      .span {
+        font-size: 13px;
+      }
+    }
   }
 }

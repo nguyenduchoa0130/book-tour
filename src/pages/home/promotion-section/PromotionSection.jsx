@@ -6,10 +6,10 @@ import PromotionCard from '../../../components/promotion-card/PromotionCard';
 const PromotionSection = ({ primaryTitle, secondaryTitle, cards }) => {
   return (
     <>
-      <div className='promotion-section'>
+      <div className="promotion-section">
         <h2>{primaryTitle}</h2>
         <h6>{secondaryTitle}</h6>
-        <div className='promotion-section-cards'>
+        <div className="promotion-section-cards">
           {cards.map((card, idx) => (
             <PromotionCard
               title={card.title}
@@ -28,8 +28,7 @@ const PromotionSection = ({ primaryTitle, secondaryTitle, cards }) => {
 PromotionSection.propTypes = {
   primaryTitle: PropTypes.string.isRequired,
   secondaryTitle: PropTypes.string.isRequired,
-  cards: PropTypes.array,
+  cards: PropTypes.array
 };
 
 export default PromotionSection;
-
