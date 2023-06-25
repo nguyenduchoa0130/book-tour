@@ -1,0 +1,67 @@
+.trip {
+    background-color: #d9d9d9;
+    
+}
+h3 {
+    
+    text-align: center;
+}
+.phuongtien {
+    display: flex;
+    justify-content: space-between;
+    
+    background-color: aliceblue-;
+    margin-top : 10px;
+    width: 50%;
+    heigth: 100%;
+    margin-left: 5%;
+    margin-top: 1%;
+    background-color: #fff;
+    font-size: 18px;
+}
+
+frame {
+    width: 50%;
+    heigth:100%;
+    margin-left: 5%;
+    margin-top: 1%;
+    background-color: #fff;  
+    font-family:'Times New Roman',
+        Times,
+        serif;
+    
+}
+.chitiet image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
+        padding-top: 20px;
+    
+}
+.gioithieu h4 {
+    padding-left: 20px;
+    padding-top: 20px;
+   color: #001d66;
+   font-family: 'Times New Roman', Times, serif;
+  
+}
+.gioithieu p{
+    margin-top : 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+ .chitiet h4 {
+    font-weight: bolder;
+    color: #001d66;
+    padding-left: 20px;
+        padding-top: 20px;
+ }
+ .chitiet h5 {
+    font-weight: bold;
+    color: #434343;
+    padding-left: 30px;
+        
+ }
