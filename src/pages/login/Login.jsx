@@ -83,7 +83,7 @@ function Login() {
               </a>
             </Form.Item>
 
-            <div className="button">
+            <div className="button1">
               <Form.Item>
                 <Button
                   type="primary"

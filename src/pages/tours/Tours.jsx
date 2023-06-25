@@ -93,7 +93,7 @@ function Tours() {
         </div>
         <Row justify="space-around">
           <Col span={4}>
-            <Button className="button">
+            <Button className="button" onclick="document.location='default.asp'">
               <img
                 className="img"
                 src="https://data.webnhiepanh.com/wp-content/uploads/2020/11/21105453/phong-canh-1.jpg"

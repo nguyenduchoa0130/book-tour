@@ -9,7 +9,7 @@ import Tours from './pages/tours/Tours';
 import Hotel from './pages/hotel/Hotel';
 import Infor from './pages/infor/Infor';
 import Payment from './pages/payment/Payment';
-import Test from './pages/test/Test';
+import Trip from './pages/trip/Trip';
 function App() {
   return (
     <>
@@ -22,7 +22,8 @@ function App() {
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/infor" element={<Infor />} />
           <Route path="/payment" element={<Payment />} />
-          <Route path="/test" element={<Test />} />
+
+          <Route path="/trip" element={<Trip />} />
 
           <Route path="/" element={<Home />} />
         </Routes>
