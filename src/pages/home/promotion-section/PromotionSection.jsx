@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
-import PromotionCard from '../../../components/promotion-card/PromotionCard';
+import PromotionCard from '../../../common/components/promotion-card/PromotionCard';
 
 const PromotionSection = ({ primaryTitle, secondaryTitle, cards }) => {
   return (

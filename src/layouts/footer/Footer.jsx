@@ -1,18 +1,22 @@
-import React from 'react';
-import './styles.css';
-import { Card, FloatButton, List } from 'antd';
 import {
-  PhoneFilled,
-  LinkedinFilled,
   FacebookFilled,
   InstagramFilled,
+  LinkedinFilled,
+  PhoneFilled,
   QuestionCircleFilled
 } from '@ant-design/icons';
-import { Col, Row } from 'antd';
+import { Col, FloatButton, Row } from 'antd';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import 'layouts/footer/styles.css';
+
+const HIDDEN_HEADERS = ['/admin', '/register'];
+
 function Footer() {
+  const location = useLocation();
   return (
     <>
-      <div className="footer" style={{ fontFamily: 'VNI-Pagon' }}>
+      <div className={`footer ${HIDDEN_HEADERS.includes(location.pathname) ? 'hidden' : ''}`}>
         <div>
           <Row>
             <Col span={12}>
