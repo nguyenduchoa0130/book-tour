@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 
 const LoadingSpinner = () => {
   const isLoading = useSelector(selectIsLoading);
-  console.log(isLoading);
+
   return (
     <>
       {isLoading && (

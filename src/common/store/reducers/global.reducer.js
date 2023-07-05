@@ -1,7 +1,7 @@
 import { HIDE_LOADING, SHOW_LOADING } from './../actions/global.actions';
 
 const initialState = {
-  isLoading: true
+  isLoading: false
 };
 
 const globalReducer = (state = initialState, action) => {

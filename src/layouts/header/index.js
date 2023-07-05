@@ -1,2 +1,2 @@
-import Header from 'src/layouts/header/Header';
+import Header from './Header';
 export default Header;
