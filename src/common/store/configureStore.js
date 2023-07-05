@@ -1,6 +1,11 @@
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from '@redux-devtools/extension';
+import globalReducer from './reducers/global.reducer';
 
-const rootReducer = combineReducers();
+const middleware = [];
+const rootReducer = combineReducers({
+  global: globalReducer
+});
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middleware)));
 export default store;

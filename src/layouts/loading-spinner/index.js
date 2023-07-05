@@ -1,2 +1,2 @@
-import LoadingSpinner from 'layouts/loading-spinner/LoadingSpinner';
+import LoadingSpinner from './LoadingSpinner';
 export default LoadingSpinner;
