@@ -1,0 +1,18 @@
+.header {
+  padding-left: 56px;
+  background-color: var(--dark);
+}
+
+.header__logo {
+  font-size: 36px;
+  color: #fff;
+}
+
+.header__nav {
+  border: none;
+  height: var(--header-height);
+}
+
+.header__nav li {
+  line-height: var(--header-height);
+}
