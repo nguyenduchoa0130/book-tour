@@ -1,3 +1,10 @@
+:root {
+  --primary-color: rgb(0, 50, 133);
+  --header-height: 54px;
+  --footer-height: 254.19px;
+  --dark: #001529;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,12 +15,27 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
 body {
-  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+body * {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+span {
+  display: inline-block;
 }
 
 a {
-  text-decoration: none;
+  display: inline-block;
+  text-decoration: none !important;
 }
 
 h1,
@@ -23,13 +45,13 @@ h4,
 h5,
 h6,
 p {
-  margin: 0;
+  margin: 0 !important;
 }
 
 h1,
 h2,
 h3 {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 img {
@@ -37,4 +59,43 @@ img {
   max-width: 100%;
   object-fit: cover;
   border-radius: inherit;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+/* Customize */
+.center-position {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flex-row-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.flex-col-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.flex-row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
 }

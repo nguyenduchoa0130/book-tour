@@ -1,0 +1,12 @@
+.layout__header {
+  height: fit-content;
+  line-height: unset;
+}
+
+.layout__content {
+  min-height: calc(100% - var(--header-height) - var(--footer-height));
+}
+
+.layout__footer {
+  color: #fff !important;
+}

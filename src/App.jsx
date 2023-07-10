@@ -1,35 +1,40 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
-import Register from './pages/register/Register';
-import Home from './pages/home/Home';
-import Login from './pages/login/Login';
-import Tours from './pages/tours/Tours';
-import Hotel from './pages/hotel/Hotel';
-import Infor from './pages/infor/Infor';
-import Payment from './pages/payment/Payment';
-import Trip from './pages/trip/Trip';
-function App() {
+import Footer from './layouts/footer';
+import Header from './layouts/header';
+import LoadingSpinner from './layouts/loading-spinner';
+import styles from './styles.module.css';
+
+// Pages
+import Home from './pages/home';
+import Hotels from './pages/hotels';
+import Login from './pages/login';
+import Register from './pages/register';
+import Tours from './pages/tours';
+import Admin from './pages/admin';
+
+const App = () => {
   return (
     <>
-      <Header />
-      <main>
+      <header className={styles.layout__header}>
+        <Header />
+      </header>
+      <main className={styles.layout__content}>
         <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/dang-nhap" element={<Login />} />
+          <Route path="/dang-ky" element={<Register />} />
+          <Route path="/khach-san" element={<Hotels />} />
           <Route path="/tours" element={<Tours />} />
-          <Route path="/hotel" element={<Hotel />} />
-          <Route path="/infor" element={<Infor />} />
-          <Route path="/payment" element={<Payment />} />
-
-          <Route path="/trip" element={<Trip />} />
-
           <Route path="/" element={<Home />} />
         </Routes>
       </main>
-      <Footer />
+      <footer className={styles.layout__footer}>
+        <Footer />
+      </footer>
+      <LoadingSpinner />
     </>
   );
-}
+};
+
 export default App;
