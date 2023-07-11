@@ -1,8 +1,8 @@
 import BaseService from './base.service';
 
-class TourService extends BaseService {
+class ToursService extends BaseService {
   constructor() {
-    super('/tours');
+    super('/api/tours');
   }
 
   async getTours() {
@@ -51,5 +51,4 @@ class TourService extends BaseService {
   }
 }
 
-const tourService = new TourService();
-export default tourService;
+export const tourService = new ToursService();

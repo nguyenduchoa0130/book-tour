@@ -1,8 +1,8 @@
 import BaseService from './base.service';
 
-class RoleService extends BaseService {
+class RolesService extends BaseService {
   constructor() {
-    super('/roles');
+    super('/api/roles');
   }
 
   async getRoles() {
@@ -15,5 +15,4 @@ class RoleService extends BaseService {
   }
 }
 
-const roleService = new RoleService();
-export default roleService;
+export const roleService = new RolesService();
