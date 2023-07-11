@@ -5,9 +5,27 @@ class TourService extends BaseService {
     super('/tours');
   }
 
+  async getTours() {
+    try {
+      const { data } = await this.axiosClient.get(`${this.path}/_getAll`);
+      return data.value;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getTour(tourId) {
+    try {
+      const { data } = await this.axiosClient.get(`${this.path}/_getOne/${tourId}`);
+      return data.value;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async create(payload) {
     try {
-      const { data } = await this.axiosClient.post(`${ this._path }/_create`, payload);
+      const { data } = await this.axiosClient.post(`${this.path}/_create`, payload);
       return data;
     } catch (error) {
       throw error;
@@ -16,7 +34,7 @@ class TourService extends BaseService {
 
   async update(tourId, payload) {
     try {
-      const { data } = await this.axiosClient.patch(`${ this._path }/_update/${ tourId }`, payload);
+      const { data } = await this.axiosClient.patch(`${this.path}/_update/${tourId}`, payload);
       return data;
     } catch (error) {
       throw error;
@@ -25,7 +43,7 @@ class TourService extends BaseService {
 
   async delete(tourId) {
     try {
-      const { data } = await this.axiosClient.delete(`${ this._path }/_delete/${ tourId }`);
+      const { data } = await this.axiosClient.delete(`${this.path}/_delete/${tourId}`);
       return data;
     } catch (error) {
       throw error;

@@ -7,8 +7,8 @@ class RoleService extends BaseService {
 
   async getRoles() {
     try {
-      const roles = await this.axiosClient.get(`${ this.path }`);
-      return roles;
+      const { data } = await this.axiosClient.get(`${this.path}/_getAll`);
+      return data.value;
     } catch (error) {
       throw error;
     }
