@@ -29,12 +29,13 @@ function Header() {
       return Object.keys(menuConfigs).reduce((items, field) => {
         const menuItem = menuConfigs[field];
         if (menuItem.isDefault) {
-          items.push(menuItem);
+          items.push(menuItem.props);
         } else {
-          const isLoggedIn = !!user;
-          if (isLoggedIn && menuItem.isLoggedIn) {
-            isLoggedIn && (menuItem.label = `${user.HoVaTen}`);
-            items.push(menuItem);
+          if (user && menuItem.isLoggedIn) {
+            if (user) {
+              menuItem.props.label = `Chào, ${user.HoVaTen.split(' ').pop()} <3`;
+            }
+            items.push(menuItem.props);
           }
         }
         return items;
@@ -54,10 +55,9 @@ function Header() {
           onClick={navigate}
           selectedKeys={[current]}
           mode='horizontal'
-          items={menuItems}
           theme='dark'
           className={styles.header__nav}
-          style={{ flexBasis: '50%' }}
+          items={menuItems}
         />
       </div>
     </>
