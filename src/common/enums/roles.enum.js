@@ -1,5 +1,3 @@
-export const RolesEnum = {
-  KhachHang: 1,
-  HuongDanVien: 2,
-  NguoiQuanLy: 3,
-};
+export const KhachHang = 1;
+export const HuongDanVien = 2;
+export const NguoiQuanLy = 3;
