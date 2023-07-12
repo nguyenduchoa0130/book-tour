@@ -38,3 +38,17 @@ export const signUp = (payload) => {
     }
   };
 };
+
+export const signOut = () => {
+  return async (dispatch) => {
+    try {
+      dispatch(showLoading());
+      await authService.signOut();
+      dispatch({ type: SIGN_OUT });
+    } catch (error) {
+      throw error;
+    } finally {
+      dispatch(hideLoading());
+    }
+  };
+};

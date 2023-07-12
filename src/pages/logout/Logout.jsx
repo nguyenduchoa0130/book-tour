@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { UserActions } from '../../common/store/actions';
 
 const Logout = () => {
-  return <div>Logout</div>;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const signOut = async () => {
+      await dispatch(UserActions.signOut());
+      navigate('/');
+    };
+    signOut();
+  }, []);
+  return <></>;
 };
 
 export default Logout;

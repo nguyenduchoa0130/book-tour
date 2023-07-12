@@ -31,8 +31,9 @@ function Header() {
         if (menuItem.isDefault) {
           items.push(menuItem.props);
         } else {
-          if (user && menuItem.isLoggedIn) {
-            if (user) {
+          const isLoggedIn = !!user;
+          if (isLoggedIn === menuItem.isLoggedIn) {
+            if (isLoggedIn) {
               menuItem.props.label = `Chào, ${user.HoVaTen.split(' ').pop()} <3`;
             }
             items.push(menuItem.props);

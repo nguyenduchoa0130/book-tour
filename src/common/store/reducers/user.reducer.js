@@ -11,6 +11,9 @@ const userReducer = (state = initialState, action) => {
         ...payload,
       };
     }
+    case UserActions.SIGN_OUT: {
+      return null;
+    }
     default: {
       return state;
     }

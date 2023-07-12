@@ -22,6 +22,15 @@ class AuthService extends BaseService {
       throw error;
     }
   }
+
+  async signOut() {
+    try {
+      await this.axiosClient.get(`${this.path}/sign-out`);
+      return true;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export const authService = new AuthService();

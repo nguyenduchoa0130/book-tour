@@ -3,6 +3,7 @@ import AlertUtil from './alert.util';
 
 const axiosClient = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_BASE_URL,
+  withCredentials: true,
 });
 
 axiosClient.interceptors.response.use(
