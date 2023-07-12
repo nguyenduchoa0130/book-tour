@@ -1,16 +1,14 @@
-const SHOW_LOADING = '[Global] show loading';
-const HIDE_LOADING = '[Global] hide loading';
+export const SHOW_LOADING = '[Global] show loading';
+export const HIDE_LOADING = '[Global] hide loading';
 
-const showLoading = () => {
+export const showLoading = () => {
   return {
-    type: SHOW_LOADING
+    type: SHOW_LOADING,
   };
 };
 
-const hideLoading = () => {
+export const hideLoading = () => {
   return {
-    type: HIDE_LOADING
+    type: HIDE_LOADING,
   };
 };
-
-export { SHOW_LOADING, HIDE_LOADING, showLoading, hideLoading };

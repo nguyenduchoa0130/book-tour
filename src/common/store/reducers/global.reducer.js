@@ -1,22 +1,22 @@
-import { HIDE_LOADING, SHOW_LOADING } from './../actions/global.actions';
+import { GlobalActions } from './../actions';
 
 const initialState = {
-  isLoading: false
+  isLoading: false,
 };
 
 const globalReducer = (state = initialState, action) => {
   const { type } = action;
   switch (type) {
-    case SHOW_LOADING: {
+    case GlobalActions.SHOW_LOADING: {
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     }
-    case HIDE_LOADING: {
+    case GlobalActions.HIDE_LOADING: {
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
       };
     }
     default: {
