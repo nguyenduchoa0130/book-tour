@@ -1,0 +1,47 @@
+.background-img {
+    height: 500px;
+    background-image: url(https://cdn2.ivivu.com/2023/07/04/10/tour-top-20230703-11.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.search-container {
+    padding-left: 300px;
+    padding-top: 40px;
+}
+
+.title {
+    color: white !important;
+    font-size: 40px !important;
+}
+
+.description {
+    color: white !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    padding-bottom: 20px;
+}
+
+.search-body {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    width: 640px;
+}
+
+.search-date {
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+.select-address-item {
+    width: 600px;
+}
+
+.select-date-item {
+    width: 250px;
+}
