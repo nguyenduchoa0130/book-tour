@@ -46,7 +46,7 @@ const menuConfigs = {
   },
   Admin: {
     props: {
-      label: <NavLink to='/admin'>Admin</NavLink>,
+      label: <NavLink to='/admin/quan-ly-nguoi-dung'>Admin</NavLink>,
       key: '/admin',
       icon: <HddOutlined />,
     },

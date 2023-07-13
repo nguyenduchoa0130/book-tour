@@ -69,9 +69,9 @@ const App = () => {
                 <Logout />
               </Auth>
             }
-          />
+          /> 
           <Route
-            path='/admin'
+            path='/admin/*'
             element={
               <Auth rules={[checkNQLRole]}>
                 <Admin />
