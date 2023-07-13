@@ -21,7 +21,7 @@ const App = () => {
       </header>
       <main className={styles.layout__content}>
         <Routes>
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/*" element={<Admin />} />
           <Route path="/dang-nhap" element={<Login />} />
           <Route path="/dang-ky" element={<Register />} />
           <Route path="/khach-san" element={<Hotels />} />
