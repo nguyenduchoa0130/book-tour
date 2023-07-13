@@ -92,8 +92,8 @@ const LoginForm = () => {
         <Form.Item
           label='Vai trò'
           name='role'
-          validateStatus={errors.role ? 'error' : ''}
-          help={errors.role && errors.role.message}>
+          validateStatus={errors.typeOfUser ? 'error' : ''}
+          help={errors.typeOfUser && errors.typeOfUser.message}>
           <Controller
             name='typeOfUser'
             control={control}
@@ -116,8 +116,8 @@ const LoginForm = () => {
         </Form.Item>
         <div className='py-2'>
           <NavLink to='/dang-ky' className='w-100 d-inline-block'>
-            <Button className='btn-success w-100' size='large'>
-              Đăng Ký Tài Khoản
+            <Button className='btn-success w-100' htmlType='button' size='large'>
+              Tạo tài khoản mới
             </Button>
           </NavLink>
         </div>

@@ -12,6 +12,12 @@ axiosClient.interceptors.response.use(
   },
   (err) => {
     const message = err.response.data.message || err.message;
+    if (err.response.status === 401) {
+      localStorage.setItem('persist:root', JSON.stringify({}));
+      setTimeout(() => {
+        window.location.href = window.location.origin + '/dang-nhap';
+      }, 100);
+    }
     AlertUtil.showError(message);
     return Promise.reject(err);
   },

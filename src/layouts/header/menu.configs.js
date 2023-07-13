@@ -34,16 +34,6 @@ const menuConfigs = {
     isLoggedIn: false,
     permissions: [],
   },
-  HotelsPage: {
-    props: {
-      label: <NavLink to='/khach-san'>Khách sạn</NavLink>,
-      key: '/khach-san',
-      icon: <BankOutlined />,
-    },
-    isDefault: true,
-    isLoggedIn: false,
-    permissions: [],
-  },
   Admin: {
     props: {
       label: <NavLink to='/admin'>Admin</NavLink>,

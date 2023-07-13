@@ -12,7 +12,6 @@ import LoadingSpinner from './layouts/loading-spinner';
 import Admin from './pages/admin';
 import History from './pages/history';
 import Home from './pages/home';
-import Hotels from './pages/hotels';
 import Login from './pages/login';
 import Logout from './pages/logout';
 import PersonalInfo from './pages/personal-info';
@@ -71,7 +70,7 @@ const App = () => {
             }
           />
           <Route
-            path='/admin'
+            path='/admin/'
             element={
               <Auth rules={[checkNQLRole]}>
                 <Admin />
@@ -94,7 +93,6 @@ const App = () => {
               </Auth>
             }
           />
-          <Route path='/khach-san' element={<Hotels />} />
           <Route path='/tours' element={<Tours />} />
           <Route path='/' element={<Home />} />
         </Routes>
