@@ -3,19 +3,21 @@ import React from 'react';
 import styles from './styles.module.css';
 import cx from 'classnames';
 
-const ServiceCard = ({ img, width = 'initial', height = 'initial', title }) => {
+const ServiceCard = ({ img, width = 'initial', height = 'initial', title, onExplore }) => {
   return (
     <>
       <div
         className={cx(styles.card, 'position-relative')}
         style={{
           width,
-          height
+          height,
         }}>
-        <img src={img} alt={title} className="w-100 h-100" />
+        <img src={img} alt={title} className='w-100 h-100' />
         <div className={styles['card__overlay']}>
           <Typography.Title style={{ color: '#fff' }}>{title}</Typography.Title>
-          <Button size="large">Đặt ngay</Button>
+          <Button size='large' onClick={onExplore}>
+            Đặt ngay
+          </Button>
         </div>
       </div>
     </>

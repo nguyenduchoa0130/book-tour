@@ -21,7 +21,7 @@ const Auth = ({ rules, children }) => {
         case 'CHECK_ROLE': {
           if (!isLoggedIn) {
             AlertUtil.showWarning('Bạn chưa đăng nhập !!');
-            navigate(-1);
+            navigate('/dang-nhap');
           } else if (rule.value.includes(user.role)) {
             AlertUtil.showWarning(rule.message);
             navigate(-1);
