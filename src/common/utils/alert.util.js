@@ -15,8 +15,15 @@ const AlertUtil = {
       icon: 'error',
     });
   },
-  showConfirm: (question, message) => {
+  showWarning: (message) => {
     Swal.fire({
+      title: 'Cánh Báo',
+      text: message,
+      icon: 'warning',
+    });
+  },
+  showConfirm: (question, message) => {
+    return Swal.fire({
       title: question,
       text: message,
       icon: 'question',
