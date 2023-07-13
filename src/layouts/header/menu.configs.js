@@ -1,53 +1,108 @@
-import { BankOutlined, CompassOutlined, HomeOutlined, UserOutlined, HddOutlined, LoginOutlined, UserAddOutlined } from '@ant-design/icons';
+import {
+  BankOutlined,
+  CompassOutlined,
+  HomeOutlined,
+  UserOutlined,
+  HddOutlined,
+  LoginOutlined,
+  UserAddOutlined,
+  InfoOutlined,
+  HistoryOutlined,
+  LogoutOutlined,
+} from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
+import { RolesEnum } from '../../common/enums';
 
-const MenuConfigs = {
+const menuConfigs = {
   HomePage: {
-    label: <NavLink to='/'>Trang chủ</NavLink>,
-    key: '/',
-    icon: <HomeOutlined />,
+    props: {
+      label: <NavLink to='/'>Trang chủ</NavLink>,
+      key: '/',
+      icon: <HomeOutlined />,
+    },
+    isDefault: true,
     isLoggedIn: false,
-    permissions: []
+    permissions: [],
   },
   ToursPage: {
-    label: <NavLink to='/tours'>Tours</NavLink>,
-    key: '/tours',
-    icon: <CompassOutlined />,
+    props: {
+      label: <NavLink to='/tours'>Tours</NavLink>,
+      key: '/tours',
+      icon: <CompassOutlined />,
+    },
+    isDefault: true,
     isLoggedIn: false,
-    permissions: []
+    permissions: [],
   },
   HotelsPage: {
-    label: <NavLink to='/khach-san'>Khách sạn</NavLink>,
-    key: '/khach-san',
-    icon: <BankOutlined />,
+    props: {
+      label: <NavLink to='/khach-san'>Khách sạn</NavLink>,
+      key: '/khach-san',
+      icon: <BankOutlined />,
+    },
+    isDefault: true,
     isLoggedIn: false,
-    permissions: []
+    permissions: [],
   },
   Admin: {
-    label: <NavLink to='/admin'>Admin</NavLink>,
-    key: '/admin',
-    icon: <HddOutlined />,
+    props: {
+      label: <NavLink to='/admin'>Admin</NavLink>,
+      key: '/admin',
+      icon: <HddOutlined />,
+    },
+    isDefault: true,
+    isLoggedIn: false,
+    permissions: [RolesEnum.NguoiQuanLy],
+  },
+  NotLoggedInMenu: {
+    props: {
+      label: 'Bạn chưa đăng nhập?',
+      key: 'auth',
+      icon: <UserOutlined />,
+      children: [
+        {
+          label: <NavLink to='/dang-nhap'>Đăng nhập</NavLink>,
+          icon: <LoginOutlined />,
+          key: '/dang-nhap',
+        },
+        {
+          label: <NavLink to='/dang-ky'>Đăng ký</NavLink>,
+          icon: <UserAddOutlined />,
+          key: '/dang-ky',
+        },
+      ],
+    },
+    isDefault: false,
     isLoggedIn: false,
     permissions: [],
   },
-  AuthMenu: {
-    label: 'Bạn chưa đăng nhập?',
-    key: 'auth',
-    icon: <UserOutlined />,
-    isLoggedIn: false,
+  LoggedInMenu: {
+    props: {
+      label: '',
+      key: 'user',
+      icon: <UserOutlined />,
+      children: [
+        {
+          label: <NavLink to='/thong-tin-ca-nhan'>Thông tin cá nhân</NavLink>,
+          icon: <InfoOutlined />,
+          key: '/thong-tin-ca-nhan',
+        },
+        {
+          label: <NavLink to='/lich-su-giao-dich'>Lịch sử giao dịch</NavLink>,
+          icon: <HistoryOutlined />,
+          key: '/lich-su-giao-dich',
+        },
+        {
+          label: <NavLink to='/dang-xuat'>Đăng xuất</NavLink>,
+          icon: <LogoutOutlined />,
+          key: '/dang-xuat',
+        },
+      ],
+    },
+    isDefault: false,
+    isLoggedIn: true,
     permissions: [],
-    children: [
-      {
-        label: <NavLink to='/dang-nhap'>Đăng nhập</NavLink>,
-        icon: <LoginOutlined />,
-        key: '/dang-nhap'
-      },
-      {
-        label: <NavLink to='/dang-ky'>Đăng ký</NavLink>,
-        icon: <UserAddOutlined />,
-        key: '/dang-ky'
-      }
-    ]
   },
 };
-export default MenuConfigs;
+
+export default menuConfigs;

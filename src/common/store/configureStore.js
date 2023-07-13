@@ -3,21 +3,27 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
+
 import globalReducer from './reducers/global.reducer';
+import rolesReducer from './reducers/roles.reducer';
+import userReducer from './reducers/user.reducer';
 
 const middleware = [thunk];
 
 const rootReducer = combineReducers({
-  global: globalReducer
+  global: globalReducer,
+  roles: rolesReducer,
+  user: userReducer,
 });
 
-const persistedReducer = persistReducer({
-  key: 'root',
-  storage
-}, rootReducer);
-
+const persistedReducer = persistReducer(
+  {
+    key: 'root',
+    storage,
+  },
+  rootReducer,
+);
 
 const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(...middleware)));
 const persistor = persistStore(store);
 export { persistor, store };
-

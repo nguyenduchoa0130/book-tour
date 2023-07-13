@@ -71,6 +71,11 @@ ul {
   width: 100%;
 }
 
+/* Lib */
+.swal2-container {
+  z-index: 9999;
+}
+
 /* Customize */
 .center-position {
   position: absolute;

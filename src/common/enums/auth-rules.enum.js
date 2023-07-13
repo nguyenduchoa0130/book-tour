@@ -1,0 +1,3 @@
+export const CHECK_IS_LOGGED_IN = 'CHECK_IS_LOGGED_IN';
+export const CHECK_ROLES = 'CHECK_ROLES';
+export const CHECK_IS_NOT_LOGGED = 'CHECK_IS_NOT_LOGGED';

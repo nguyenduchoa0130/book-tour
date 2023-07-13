@@ -1,7 +1,5 @@
 import { createSelector } from 'reselect';
 
-const selectGlobalFeature = state => state.global;
+const selectGlobalFeature = (rootState) => rootState.global;
 
-const selectIsLoading = createSelector(selectGlobalFeature, global => global.isLoading);
-
-export { selectIsLoading };
+export const selectIsLoading = createSelector(selectGlobalFeature, (feature) => feature.isLoading);
