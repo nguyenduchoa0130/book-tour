@@ -70,7 +70,7 @@ const App = () => {
             }
           />
           <Route
-            path='/admin/'
+            path='/admin/*'
             element={
               <Auth rules={[checkNQLRole]}>
                 <Admin />

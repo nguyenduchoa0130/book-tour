@@ -13,8 +13,10 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import ManageUser from './ManageUser/ManageUser';
-import ManageHotel from './ManageHotel/ManageHotel';
 import ManageTour from './ManageTour/ManageTour';
+import ManageTourer from './ManageTourer/ManageTourer';
+import AddUser from './AddUser/AddUser';
+import AddTour from './AddTour/AddTour';
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -28,12 +30,11 @@ const items = [
   getItem('Quản lý', 'sub1', <SettingOutlined />, [
     getItem('Quản lý người dùng', 'quan-ly-nguoi-dung', <UserOutlined />),
     getItem('Quản lý tour', 'quan-ly-tours', <TwitterOutlined />),
-    getItem('Quản lý khách sạn', 'quan-ly-khach-san', <HomeOutlined />),
+    getItem('Quản lý danh sách đặt tour', 'quan-ly-danh-sach-dat-tour', <HomeOutlined />),
   ]),
   getItem('Tạo mới', 'sub2', <AppstoreOutlined />, [
-    getItem('Tạo mới người dùng', '9', <UserAddOutlined />),
-    getItem('Tạo mới tour', '10', <TwitterOutlined />),
-    getItem('Tạo mới khách sạn', '11', <HomeOutlined />),
+    getItem('Tạo mới người dùng', 'them-nguoi-dung', <UserAddOutlined />),
+    getItem('Tạo mới tour', 'them-tours', <TwitterOutlined />),
   ]),
 ];
 
@@ -77,9 +78,11 @@ const Admin = () => {
     </div>
     <div>
       <Routes>
-        <Route path="/quan-ly-khach-san" element={<ManageHotel />} />
+        <Route path="/quan-ly-danh-sach-dat-tour" element={<ManageTourer />} />
         <Route path="/quan-ly-nguoi-dung" element={<ManageUser />} />
         <Route path="/quan-ly-tours" element={<ManageTour />} />
+        <Route path="/them-nguoi-dung" element={<AddUser />} />
+        <Route path="/them-tours" element={<AddTour />} />
       </Routes>
     </div>
   </div>;
