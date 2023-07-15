@@ -2,11 +2,11 @@ import { LockOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Typography } from 'antd';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { NavLink, useNavigate } from 'react-router-dom';
-import styles from './styles.module.css';
 import { useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { UserActions } from '../../common/store/actions';
 import AlertUtil from '../../common/utils/alert.util';
+import styles from './styles.module.css';
 
 const Register = () => {
   const {
