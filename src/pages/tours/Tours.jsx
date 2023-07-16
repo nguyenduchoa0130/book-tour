@@ -1,76 +1,52 @@
+import { SearchOutlined } from '@ant-design/icons';
+import { Button, DatePicker, Input, Select, Typography } from 'antd';
 import React from 'react';
-import Search from '../../components/search/Search';
-import BookingCard from '../../common/components/booking-card';
-import './style.css'
+import provinces from './../../provinces.json';
+import styles from './styles.module.css';
+
 const Tours = () => {
-
-  const dataTo = [
-    {
-      value: 'Mỹ',
-      label: 'Mỹ',
-    },
-    {
-      value: 'Úc',
-      label: 'Úc',
-    },
-    {
-      value: 'Canada',
-      label: 'Canada',
-    },
-  ]
-
-  const dataFrom = [
-    {
-      value: 'Hồ Chí Minh',
-      label: 'Hồ Chí Minh',
-    },
-    {
-      value: 'Hà Nội',
-      label: 'Hà Nội',
-    },
-    {
-      value: 'Đà Nẵng',
-      label: 'Đà Nẵng',
-    },
-  ]
-  const onResult = (value) => {
-    console.log(value)
-  }
-  return <>
-    <Search
-      title="Du lịch theo cá tính"
-      description="Trải nghiệm trọn vẹn - Giá cả phải chăng"
-      searchTo={{ dataTo: dataTo, placeholderTo: "Bạn muốn đi đâu" }}
-      searchFrom={{ dataFrom: dataFrom, placeholderFrom: "Bạn đến từ đâu" }}
-      onResult={onResult}
-    />
-    <div className='tour-container'>
-      <h2>Tour du lịch hè tốt</h2>
-      <h5>Chơi hè thả ga, không lo về vé</h5>
-      <div className='tour-gird'>
-        <BookingCard
-          title="Tour Phú Quốc 3 ngày 2 đêm - Đảo sư tử - Công viên Fort Caning"
-          img="https://i.pinimg.com/736x/72/e2/ce/72e2ce79110644e6c37d9ccb31c648ad.jpg"
+  return (
+    <>
+      <div className={styles['search-container']}>
+        <img
+          src='https://cdn2.ivivu.com/2023/07/04/10/tour-top-20230703-11.png'
+          alt='Search'
+          className='w-100 h-100'
         />
-        <BookingCard
-          title="Tour Phú Quốc 3 ngày 2 đêm - Đảo sư tử - Công viên Fort Caning"
-          img="https://i.pinimg.com/736x/72/e2/ce/72e2ce79110644e6c37d9ccb31c648ad.jpg"
-        />
-        <BookingCard
-          title="Tour Phú Quốc 3 ngày 2 đêm - Đảo sư tử - Công viên Fort Caning"
-          img="https://i.pinimg.com/736x/72/e2/ce/72e2ce79110644e6c37d9ccb31c648ad.jpg"
-        />
-        <BookingCard
-          title="Tour Phú Quốc 3 ngày 2 đêm - Đảo sư tử - Công viên Fort Caning"
-          img="https://i.pinimg.com/736x/72/e2/ce/72e2ce79110644e6c37d9ccb31c648ad.jpg"
-        />
-        <BookingCard
-          title="Tour Phú Quốc 3 ngày 2 đêm - Đảo sư tử - Công viên Fort Caning"
-          img="https://i.pinimg.com/736x/72/e2/ce/72e2ce79110644e6c37d9ccb31c648ad.jpg"
-        />
+        <div className={styles['search']}>
+          <Typography.Title className={styles.title}>Bạn muốn đi đâu ?</Typography.Title>
+          <Input placeholder='Tìm kiếm' prefix={<SearchOutlined />} size='large' />
+          <div className='row w-100 pt-2'>
+            <div className='col-md-5 col-xs-12'>
+              <DatePicker
+                className='w-100'
+                size='large'
+                placeholder='Chọn ngày bắt đầu'
+                format='DD-MM-YYYY'
+              />
+            </div>
+            <div className='col-md-5 col-xs-12'>
+              <Select
+                showSearch
+                allowClear
+                className='w-100'
+                placeholder='Chọn địa điểm bạn muốn đến'
+                size='large'
+                options={provinces}
+              />
+            </div>
+            <div className='col-md-2 col-xs-12'>
+              <div className='text-center'>
+                <Button type='primary' size='large'>
+                  Tìm kiếm
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </>;
+    </>
+  );
 };
 
 export default Tours;

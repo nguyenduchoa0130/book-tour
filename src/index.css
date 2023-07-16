@@ -36,6 +36,7 @@ span {
 a {
   display: inline-block;
   text-decoration: none !important;
+  color: inherit;
 }
 
 h1,
@@ -106,4 +107,9 @@ ul {
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  gap: 8px;
+}
+
+.height-content-screen {
+  height: calc(100% - var(--header-height) - var(--footer-height));
 }

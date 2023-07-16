@@ -19,7 +19,7 @@ const LoginForm = () => {
     defaultValues: {
       username: '',
       password: '',
-      typeOfUser: '',
+      typeOfUser: null,
     },
   });
   const dispatch = useDispatch();

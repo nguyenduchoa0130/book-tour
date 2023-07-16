@@ -1,14 +1,13 @@
 import {
-  BankOutlined,
   CompassOutlined,
-  HomeOutlined,
-  UserOutlined,
   HddOutlined,
-  LoginOutlined,
-  UserAddOutlined,
-  InfoOutlined,
   HistoryOutlined,
+  HomeOutlined,
+  InfoOutlined,
+  LoginOutlined,
   LogoutOutlined,
+  UserAddOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
 import { RolesEnum } from '../../common/enums';
@@ -36,7 +35,7 @@ const menuConfigs = {
   },
   Admin: {
     props: {
-      label: <NavLink to='/admin/quan-ly-nguoi-dung'>Admin</NavLink>,
+      label: <NavLink to='/admin'>Admin</NavLink>,
       key: '/admin',
       icon: <HddOutlined />,
     },
