@@ -11,14 +11,14 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html,
+body,
+#root {
+  height: 100%;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -70,14 +70,13 @@ ul {
   margin: 0;
 }
 
-#root {
-  height: 100%;
-  width: 100%;
-}
-
 /* Lib */
 .swal2-container {
   z-index: 9999;
+}
+
+.ant-card-body {
+  padding: 8px 16px !important;
 }
 
 /* Customize */
@@ -108,8 +107,4 @@ ul {
   justify-content: space-between;
   flex-direction: row;
   gap: 8px;
-}
-
-.height-content-screen {
-  height: calc(100% - var(--header-height) - var(--footer-height));
 }

@@ -1,15 +1,15 @@
 import {
   CalendarOutlined,
   CompassOutlined,
+  DeleteOutlined,
   HomeOutlined,
   PlusOutlined,
+  PullRequestOutlined,
   TableOutlined,
   UserAddOutlined,
   UserOutlined,
-  PullRequestOutlined,
-  FileDoneOutlined,
-  DeleteOutlined,
   WarningOutlined,
+  CheckOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import React, { useEffect } from 'react';
@@ -69,7 +69,7 @@ const menuItems = [
       {
         label: <NavLink to='tours/da-xu-ly'>Đã xử lý</NavLink>,
         key: '/admin/tours/da-xu-ly',
-        icon: <FileDoneOutlined />,
+        icon: <CheckOutlined />,
       },
       {
         label: <NavLink to='tours/yeu-cau-huy'>Yêu cầu huỷ</NavLink>,

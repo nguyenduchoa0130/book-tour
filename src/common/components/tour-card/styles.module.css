@@ -1,0 +1,34 @@
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image {
+  max-height: 240px;
+}
+
+.card-title {
+  font-size: 16px !important;
+  color: #003c71 !important;
+  text-transform: capitalize;
+}
+
+.card-price {
+  font-size: 22px;
+  color: #f79321;
+  padding-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media only screen and (min-width: 768px) {
+  .card {
+    width: 320px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .card {
+    width: 420px;
+  }
+}

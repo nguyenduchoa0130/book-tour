@@ -53,49 +53,44 @@ const PersonalInfo = () => {
   return (
     <>
       <div className={styles['personal-info']}>
-        <div className='container'>
-          <h2 className='pb-4 text-center text-uppercase text-primary'>Thông Tin Người dùng</h2>
-          <div className='px-5'>
-            <div className='form-group'>
-              <div className='flex-row-between'>
-                <h6>Tài khoản:</h6>
-                <span>{user.TenTaiKhoan}</span>
-              </div>
-            </div>
-            <div className='form-group'>
-              <div className='flex-row-between'>
-                <h6>Mật khẩu:</h6>
-                <span>********</span>
-              </div>
-            </div>
-            <div className='form-group'>
-              <div className='flex-row-between'>
-                <h6>Họ và tên:</h6>
-                <span>{user.HoVaTen}</span>
-              </div>
-            </div>
-            <div className='form-group'>
-              <div className='flex-row-between'>
-                <h6>Số điện thoại:</h6>
-                <span>{user.Sdt}</span>
-              </div>
-            </div>
-            <div className='form-group'>
-              <div className='flex-row-between'>
-                <h6>Địa chỉ:</h6>
-                <span>{user.DiaChi}</span>
-              </div>
-            </div>
-            <div className='form-group text-center'>
-              <Button type='primary' onClick={showModal}>
-                Cập nhật
-              </Button>
+        <h2 className='pb-4 text-center text-uppercase'>Thông Tin Người dùng</h2>
+        <div className='py-4 px-5 w-50 border rounded'>
+          <div className='form-group'>
+            <div className='flex-row-between'>
+              <h6>Tài khoản:</h6>
+              <span>{user.TenTaiKhoan}</span>
             </div>
           </div>
-          <Divider />
+          <div className='form-group'>
+            <div className='flex-row-between'>
+              <h6>Mật khẩu:</h6>
+              <span>********</span>
+            </div>
+          </div>
+          <div className='form-group'>
+            <div className='flex-row-between'>
+              <h6>Họ và tên:</h6>
+              <span>{user.HoVaTen}</span>
+            </div>
+          </div>
+          <div className='form-group'>
+            <div className='flex-row-between'>
+              <h6>Số điện thoại:</h6>
+              <span>{user.Sdt}</span>
+            </div>
+          </div>
+          <div className='form-group'>
+            <div className='flex-row-between'>
+              <h6>Địa chỉ:</h6>
+              <span>{user.DiaChi}</span>
+            </div>
+          </div>
+          <div className='form-group text-center'>
+            <Button type='primary' onClick={showModal}>
+              Cập nhật
+            </Button>
+          </div>
         </div>
-        <h2 className='pb-4 text-center text-uppercase text-primary'>lịch sử đặt tour</h2>
-        <div className='py-2'></div>
       </div>
       <Modal
         open={isModalOpen}

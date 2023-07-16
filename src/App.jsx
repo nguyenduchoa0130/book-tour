@@ -24,8 +24,10 @@ import History from './pages/history';
 import Home from './pages/home';
 import Login from './pages/login';
 import Logout from './pages/logout';
+import Payment from './pages/payment';
 import PersonalInfo from './pages/personal-info';
 import Register from './pages/register';
+import TourDetail from './pages/tour-detail';
 import Tours from './pages/tours';
 
 const checkIsLoggedRule = {
@@ -63,7 +65,7 @@ const App = () => {
             }
           />
           <Route
-            path='/lich-su-giao-dich'
+            path='/lich-su-dat-tour'
             element={
               <Auth rules={[checkIsLoggedRule]}>
                 <History />
@@ -112,6 +114,8 @@ const App = () => {
             }
           />
           <Route path='/tours' element={<Tours />} />
+          <Route path='/tours/:tourId' element={<TourDetail />} />
+          <Route path='/thanh-toan' element={<Payment />} />
           <Route path='/' element={<Home />} />
         </Routes>
       </main>
