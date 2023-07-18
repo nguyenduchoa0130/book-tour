@@ -18,7 +18,7 @@ export const getRoles = () => {
       const roles = await roleService.getRoles();
       dispatch(setRoles(roles));
     } catch (error) {
-      AlertUtil(error?.response?.data?.message || error.message);
+      AlertUtil.showError(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());
     }

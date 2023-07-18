@@ -26,7 +26,7 @@ export const getTours = () => {
       const tours = await tourService.getTours();
       dispatch(setTours(tours));
     } catch (error) {
-      AlertUtil(error?.response?.data?.message || error.message);
+      AlertUtil.showError(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());
     }
@@ -41,7 +41,7 @@ export const createTour = (payload) => {
       dispatch(setNewTour(newTour));
       return newTour;
     } catch (error) {
-      AlertUtil(error?.response?.data?.message || error.message);
+      AlertUtil.showError(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());
     }

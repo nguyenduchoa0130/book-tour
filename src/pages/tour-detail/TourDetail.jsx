@@ -1,21 +1,37 @@
+import { ArrowLeftOutlined, DollarCircleOutlined } from '@ant-design/icons';
 import { Badge, Button, Descriptions, Divider, Empty, FloatButton, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { tourService } from '../../common/services';
 import { GlobalActions } from '../../common/store/actions';
 import { GlobalSelectors } from '../../common/store/selectors';
 import AlertUtil from '../../common/utils/alert.util';
 import DateUtils from '../../common/utils/date.util';
 import styles from './styles.module.css';
-import { DollarCircleOutlined } from '@ant-design/icons';
 
 const TourDetail = () => {
   const { tourId } = useParams();
   const [tour, setTour] = useState(null);
   const isLoading = useSelector(GlobalSelectors.selectIsLoading);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const navigateToPayload = () => {
+    const cacheTour = {
+      id: tour.id,
+      TenTour: tour.TenTour,
+      Gia: tour.Gia,
+      DiaDiem: tour.DiaDiem,
+      SoLuongNguoi: tour.SoLuongNguoi,
+      NgayBatDau: tour.NgayBatDau,
+      NgayKetThuc: tour.NgayKetThuc,
+      ChiTietThoiGian: tour.ChiTietThoiGian,
+    };
+    localStorage.setItem('bookingTour', JSON.stringify(cacheTour));
+    navigate('/thanh-toan');
+  };
 
   useEffect(() => {
     const getTourById = async () => {
@@ -41,13 +57,21 @@ const TourDetail = () => {
           {tour ? (
             <>
               <div className='container pt-4'>
+                <Button
+                  type='text'
+                  icon={<ArrowLeftOutlined />}
+                  className='flex-row-center'
+                  onClick={() => navigate('/tours')}>
+                  Quay lại
+                </Button>
                 <div className={styles['tour-detail-header']}>
                   <Typography.Title className='text-capitalize'>{tour.TenTour}</Typography.Title>
                   <Button
                     type='primary'
                     className='flex-row-center'
                     size='large'
-                    icon={<DollarCircleOutlined />}>
+                    icon={<DollarCircleOutlined />}
+                    onClick={navigateToPayload}>
                     Đặt ngay
                   </Button>
                 </div>

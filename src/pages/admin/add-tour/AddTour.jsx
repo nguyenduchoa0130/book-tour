@@ -246,7 +246,7 @@ const AddTour = () => {
                 />
               </Form.Item>
               <div className='text-right'>
-                <Button type='primary' danger onClick={handleRemoveDetail}>
+                <Button type='primary' danger onClick={() => handleRemoveDetail(index)}>
                   Xoá chi tiết
                 </Button>
               </div>

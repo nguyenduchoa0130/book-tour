@@ -27,7 +27,7 @@ export const getUsers = () => {
       dispatch(setUsers(users));
       return users;
     } catch (error) {
-      AlertUtil(error?.response?.data?.message || error.message);
+      AlertUtil.showError(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());
     }
@@ -42,7 +42,7 @@ export const createUser = (payload) => {
       dispatch(setNewUser(newUser));
       return newUser;
     } catch (error) {
-      AlertUtil(error?.response?.data?.message || error.message);
+      AlertUtil.showError(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());
     }
