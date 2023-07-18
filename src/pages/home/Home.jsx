@@ -16,7 +16,7 @@ const Home = () => {
           <Typography.Title level={2} className='text-center'>
             Dịch Vụ
           </Typography.Title>
-          <div className='flex-row-center py-3' id='homeServices'>
+          <div className='flex-row-center py-3 container' id='homeServices'>
             <Space size='large' direction='horizontal'>
               {homeServiceConfigs.map((config, idx) => (
                 <ServiceCard

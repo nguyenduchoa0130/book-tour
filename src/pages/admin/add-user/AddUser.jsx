@@ -2,6 +2,10 @@ import { LockOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Select, Typography } from 'antd';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { RolesSelectors } from '../../../common/store/selectors';
+import { AdminActions } from '../../../common/store/actions';
+import AlertUtil from '../../../common/utils/alert.util';
 
 const AddUser = () => {
   const {
@@ -9,6 +13,7 @@ const AddUser = () => {
     control,
     formState: { errors },
     watch,
+    reset,
   } = useForm({
     defaultValues: {
       username: '',
@@ -20,9 +25,22 @@ const AddUser = () => {
       typeOfUser: null,
     },
   });
+  const roles = useSelector(RolesSelectors.selectRoles);
+  const dispatch = useDispatch();
 
-  const onSubmit = (formData) => {
-    console.log(formData);
+  const onSubmit = async (formData) => {
+    const { confirmPassword, ...payload } = formData;
+    await dispatch(AdminActions.createUser(payload));
+    AlertUtil.showSuccess('Tạo người dùng thành công');
+    reset({
+      username: '',
+      password: '',
+      confirmPassword: '',
+      fullName: '',
+      address: '',
+      phone: '',
+      typeOfUser: null,
+    });
   };
 
   return (
@@ -142,12 +160,23 @@ const AddUser = () => {
           />
         </Form.Item>
 
-        <Form.Item label='Loại người dùng' name='typeOfUser'>
+        <Form.Item
+          label='Loại người dùng'
+          name='typeOfUser'
+          validateStatus={errors.typeOfUser ? 'error' : ''}
+          help={errors.typeOfUser && errors.typeOfUser.message}>
           <Controller
             name='typeOfUser'
             control={control}
-            rules={{ required: true }}
-            render={({ field }) => <Select size='large' placeholder='Chọn loại người dùng' />}
+            rules={{ required: 'Vui lòng chọn loại người dùng' }}
+            render={({ field }) => (
+              <Select
+                {...field}
+                size='large'
+                placeholder='Chọn loại người dùng'
+                options={roles.map((item) => ({ label: item.name, value: item.id }))}
+              />
+            )}
           />
         </Form.Item>
 

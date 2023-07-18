@@ -111,7 +111,7 @@ const LoginForm = () => {
         </Form.Item>
         <Form.Item className='pt-1 mb-3'>
           <Button type='primary' htmlType='submit' className='w-100' size='large'>
-            Gửi
+            Đăng nhập
           </Button>
         </Form.Item>
         <div className='py-2'>

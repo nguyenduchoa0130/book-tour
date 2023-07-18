@@ -1,5 +1,6 @@
 import {
   CalendarOutlined,
+  CheckOutlined,
   CompassOutlined,
   DeleteOutlined,
   HomeOutlined,
@@ -9,11 +10,10 @@ import {
   UserAddOutlined,
   UserOutlined,
   WarningOutlined,
-  CheckOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
-import React, { useEffect } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 import styles from './styles.module.css';
 
 const menuItems = [
@@ -86,12 +86,6 @@ const menuItems = [
 ];
 
 const Admin = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location.pathname]);
-
   return (
     <>
       <div className='row w-100'>

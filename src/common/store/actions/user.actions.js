@@ -1,4 +1,5 @@
 import { authService } from '../../services';
+import AlertUtil from '../../utils/alert.util';
 import { hideLoading, showLoading } from './global.actions';
 
 export const SET_USER = '[User] set user';
@@ -18,7 +19,7 @@ export const signIn = (payload) => {
       const user = await authService.signIn(payload);
       dispatch(setUser(user));
     } catch (error) {
-      throw error;
+      AlertUtil(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());
     }
@@ -32,7 +33,7 @@ export const signUp = (payload) => {
       const user = await authService.signUp(payload);
       dispatch(setUser(user));
     } catch (error) {
-      throw error;
+      AlertUtil(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());
     }
@@ -46,7 +47,7 @@ export const signOut = () => {
       await authService.signOut();
       dispatch({ type: SIGN_OUT });
     } catch (error) {
-      throw error;
+      AlertUtil(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());
     }

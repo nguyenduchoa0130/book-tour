@@ -1,0 +1,10 @@
+.tour-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tour-detail-header h1 {
+  flex: 1;
+  padding-right: 16px;
+}
