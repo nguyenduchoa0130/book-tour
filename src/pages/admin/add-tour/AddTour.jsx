@@ -57,7 +57,7 @@ const AddTour = () => {
     for (const key in data) {
       const rawValue = data[key];
       if (key.includes('Date')) {
-        formData.append(key, rawValue.$d);
+        formData.append(key, new Date(rawValue.$d).toLocaleString());
       } else if (key === 'tourImages') {
         rawValue.forEach((file) => {
           formData.append('tourImages', file);
