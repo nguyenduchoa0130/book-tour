@@ -13,7 +13,6 @@ const AddTour = () => {
     handleSubmit,
     setValue,
     reset,
-    resetField,
     formState: { errors },
   } = useForm({
     defaultValues: {
