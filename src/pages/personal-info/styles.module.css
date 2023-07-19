@@ -1,0 +1,9 @@
+.personal-info {
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+  padding: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

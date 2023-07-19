@@ -7,19 +7,24 @@ const HomeCarousel = () => {
     <div className={styles['carousel-container']}>
       <Carousel autoplay>
         {carouselConfigs.map((config, idx) => (
-          <div key={`carousel-${idx}`} className="position-relative">
-            <div className="center-position">
-              <Typography.Title level={1} className="text-center" style={{ color: '#fff' }}>
+          <div key={`carousel-${idx}`} className='position-relative'>
+            <div className='center-position'>
+              <Typography.Title
+                level={1}
+                className='text-center text-nowrap'
+                style={{ color: '#fff' }}>
                 {config.sologan}
               </Typography.Title>
-              <div className="flex-row-center mt-3">
-                <Button size="large">Khám phá ngay</Button>
-              </div>
             </div>
             <img src={config.img} alt={config.sologan} />
           </div>
         ))}
       </Carousel>
+      <div className='center-position mt-5'>
+        <Button size='large'>
+          <a href='#homeServices'>Khám phá ngay</a>
+        </Button>
+      </div>
     </div>
   );
 };

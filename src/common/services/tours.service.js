@@ -25,7 +25,11 @@ class ToursService extends BaseService {
 
   async create(payload) {
     try {
-      const { data } = await this.axiosClient.post(`${this.path}/_create`, payload);
+      const { data } = await this.axiosClient.post(`${this.path}/_create`, payload, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return data;
     } catch (error) {
       throw error;

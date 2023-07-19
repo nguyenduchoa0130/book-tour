@@ -1,4 +1,5 @@
 import { roleService } from '../../services';
+import AlertUtil from '../../utils/alert.util';
 import { hideLoading, showLoading } from './global.actions';
 
 export const SET_ROLES = '[Roles] set roles';
@@ -17,7 +18,7 @@ export const getRoles = () => {
       const roles = await roleService.getRoles();
       dispatch(setRoles(roles));
     } catch (error) {
-      throw error;
+      AlertUtil.showError(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());
     }

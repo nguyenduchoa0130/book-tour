@@ -1,24 +1,34 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { AuthRulesEnum, RolesEnum } from './common/enums';
 import styles from './styles.module.css';
 
 // Layouts
+import Auth from './layouts/auth';
 import Footer from './layouts/footer';
 import Header from './layouts/header';
-import Auth from './layouts/auth';
 import LoadingSpinner from './layouts/loading-spinner';
 
 // Pages
 import Admin from './pages/admin';
+import AddTour from './pages/admin/add-tour';
+import AddUser from './pages/admin/add-user';
+import ConfirmedTours from './pages/admin/confirmed-tours';
+import Dashboard from './pages/admin/dashboard';
+import DeletedTours from './pages/admin/deleted-tours';
+import InProgressTours from './pages/admin/in-progress-tours';
+import ListTours from './pages/admin/list-tours';
+import ListUsers from './pages/admin/list-users';
+import RequestCancelationTours from './pages/admin/request-cancelation-tours';
 import History from './pages/history';
 import Home from './pages/home';
-import Hotels from './pages/hotels';
 import Login from './pages/login';
 import Logout from './pages/logout';
+import Payment from './pages/payment';
 import PersonalInfo from './pages/personal-info';
 import Register from './pages/register';
+import TourDetail from './pages/tour-detail';
 import Tours from './pages/tours';
-import { AuthRulesEnum, RolesEnum } from './common/enums';
 
 const checkIsLoggedRule = {
   name: AuthRulesEnum.CHECK_IS_LOGGED_IN,
@@ -55,7 +65,7 @@ const App = () => {
             }
           />
           <Route
-            path='/lich-su-giao-dich'
+            path='/lich-su-dat-tour'
             element={
               <Auth rules={[checkIsLoggedRule]}>
                 <History />
@@ -69,15 +79,24 @@ const App = () => {
                 <Logout />
               </Auth>
             }
-          /> 
+          />
           <Route
-            path='/admin/*'
+            path='/admin'
             element={
               <Auth rules={[checkNQLRole]}>
                 <Admin />
               </Auth>
-            }
-          />
+            }>
+            <Route index element={<Dashboard />} />
+            <Route path='nguoi-dung/danh-sach' element={<ListUsers />} />
+            <Route path='nguoi-dung/tao-moi' element={<AddUser />} />
+            <Route path='tours/danh-sach' element={<ListTours />} />
+            <Route path='tours/tao-moi' element={<AddTour />} />
+            <Route path='tours/cho-xu-ly' element={<InProgressTours />} />
+            <Route path='tours/da-xu-ly' element={<ConfirmedTours />} />
+            <Route path='tours/yeu-cau-huy' element={<RequestCancelationTours />} />
+            <Route path='tours/da-huy' element={<DeletedTours />} />
+          </Route>
           <Route
             path='/dang-nhap'
             element={
@@ -94,8 +113,9 @@ const App = () => {
               </Auth>
             }
           />
-          <Route path='/khach-san' element={<Hotels />} />
           <Route path='/tours' element={<Tours />} />
+          <Route path='/tours/:tourId' element={<TourDetail />} />
+          <Route path='/thanh-toan' element={<Payment />} />
           <Route path='/' element={<Home />} />
         </Routes>
       </main>

@@ -1,91 +1,110 @@
-import React, { useState } from 'react';
-import { Button, Menu } from 'antd';
-import { Route, Routes } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
 import {
-  AppstoreOutlined,
-  UserAddOutlined,
-  TwitterOutlined,
+  CalendarOutlined,
+  CheckOutlined,
+  CompassOutlined,
+  DeleteOutlined,
   HomeOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  SettingOutlined,
+  PlusOutlined,
+  PullRequestOutlined,
+  TableOutlined,
+  UserAddOutlined,
   UserOutlined,
+  WarningOutlined,
 } from '@ant-design/icons';
-import ManageUser from './ManageUser/ManageUser';
-import ManageTour from './ManageTour/ManageTour';
-import ManageTourer from './ManageTourer/ManageTourer';
-import AddUser from './AddUser/AddUser';
-import AddTour from './AddTour/AddTour';
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
-const items = [
-  getItem('Quản lý', 'sub1', <SettingOutlined />, [
-    getItem('Quản lý người dùng', 'quan-ly-nguoi-dung', <UserOutlined />),
-    getItem('Quản lý tour', 'quan-ly-tours', <TwitterOutlined />),
-    getItem('Quản lý danh sách đặt tour', 'quan-ly-danh-sach-dat-tour', <HomeOutlined />),
-  ]),
-  getItem('Tạo mới', 'sub2', <AppstoreOutlined />, [
-    getItem('Tạo mới người dùng', 'them-nguoi-dung', <UserAddOutlined />),
-    getItem('Tạo mới tour', 'them-tours', <TwitterOutlined />),
-  ]),
+import { Menu } from 'antd';
+import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import styles from './styles.module.css';
+
+const menuItems = [
+  {
+    label: <NavLink to=''>Trang chủ</NavLink>,
+    icon: <HomeOutlined />,
+    key: '/admin',
+  },
+  {
+    label: 'Quản lý người dùng',
+    icon: <UserOutlined />,
+    key: '/admin/nguoi-dung',
+    children: [
+      {
+        label: <NavLink to='nguoi-dung/danh-sach'>Danh sách người dùng</NavLink>,
+        key: '/admin/nguoi-dung/danh-sach',
+        icon: <TableOutlined />,
+      },
+      {
+        label: <NavLink to='nguoi-dung/tao-moi'>Tạo tài khoản</NavLink>,
+        key: '/admin/nguoi-dung/tao-moi',
+        icon: <UserAddOutlined />,
+      },
+    ],
+  },
+  {
+    label: 'Quản lý tour',
+    icon: <CompassOutlined />,
+    key: '/admin/tours',
+    children: [
+      {
+        label: <NavLink to='tours/danh-sach'>Danh sách tour</NavLink>,
+        key: '/admin/tours/danh-sach',
+        icon: <TableOutlined />,
+      },
+      {
+        label: <NavLink to='tours/tao-moi'>Tạo tour</NavLink>,
+        key: '/admin/tours/tao-moi',
+        icon: <PlusOutlined />,
+      },
+    ],
+  },
+  {
+    label: 'Quản lý đặt tour',
+    icon: <CalendarOutlined />,
+    key: '/admin/quan-li-tours',
+    children: [
+      {
+        label: <NavLink to='tours/cho-xu-ly'>Chờ xử lý</NavLink>,
+        key: '/admin/tours/cho-xu-ly',
+        icon: <PullRequestOutlined />,
+      },
+      {
+        label: <NavLink to='tours/da-xu-ly'>Đã xử lý</NavLink>,
+        key: '/admin/tours/da-xu-ly',
+        icon: <CheckOutlined />,
+      },
+      {
+        label: <NavLink to='tours/yeu-cau-huy'>Yêu cầu huỷ</NavLink>,
+        key: '/admin/tours/yeu-cau-huy',
+        icon: <WarningOutlined />,
+      },
+      {
+        label: <NavLink to='tours/da-huy'>Đã huỷ</NavLink>,
+        key: '/admin/tours/da-huy',
+        icon: <DeleteOutlined />,
+      },
+    ],
+  },
 ];
 
 const Admin = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const navigate = useNavigate();
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
-  const onNavigate = (e) => {
-    navigate(e.key);
-  };
-  return <div
-    style={{
-      display: 'flex'
-    }}>
-    <div
-      style={{
-        marginTop: '-43px',
-      }}
-    >
-      <Button
-        type="primary"
-        onClick={toggleCollapsed}
-        style={{
-          marginBottom: '11px',
-        }}
-      >
-        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </Button>
-      <Menu
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        mode="inline"
-        theme="dark"
-        inlineCollapsed={collapsed}
-        items={items}
-        style={{ minHeight: '80vh' }}
-        onClick={onNavigate}
-      />
-    </div>
-    <div>
-      <Routes>
-        <Route path="/quan-ly-danh-sach-dat-tour" element={<ManageTourer />} />
-        <Route path="/quan-ly-nguoi-dung" element={<ManageUser />} />
-        <Route path="/quan-ly-tours" element={<ManageTour />} />
-        <Route path="/them-nguoi-dung" element={<AddUser />} />
-        <Route path="/them-tours" element={<AddTour />} />
-      </Routes>
-    </div>
-  </div>;
+  return (
+    <>
+      <div className='row w-100'>
+        <div className='col-3'>
+          <Menu
+            mode='inline'
+            items={menuItems}
+            className={styles['admin-menu']}
+            defaultSelectedKeys={['']}
+          />
+        </div>
+        <div className='col-9'>
+          <div className={styles['admin-content']}>
+            <Outlet />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Admin;

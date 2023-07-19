@@ -1,14 +1,13 @@
 import {
-  BankOutlined,
   CompassOutlined,
-  HomeOutlined,
-  UserOutlined,
   HddOutlined,
-  LoginOutlined,
-  UserAddOutlined,
-  InfoOutlined,
   HistoryOutlined,
+  HomeOutlined,
+  InfoOutlined,
+  LoginOutlined,
   LogoutOutlined,
+  UserAddOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
 import { RolesEnum } from '../../common/enums';
@@ -34,19 +33,9 @@ const menuConfigs = {
     isLoggedIn: false,
     permissions: [],
   },
-  HotelsPage: {
-    props: {
-      label: <NavLink to='/khach-san'>Khách sạn</NavLink>,
-      key: '/khach-san',
-      icon: <BankOutlined />,
-    },
-    isDefault: true,
-    isLoggedIn: false,
-    permissions: [],
-  },
   Admin: {
     props: {
-      label: <NavLink to='/admin/quan-ly-nguoi-dung'>Admin</NavLink>,
+      label: <NavLink to='/admin'>Admin</NavLink>,
       key: '/admin',
       icon: <HddOutlined />,
     },
@@ -88,7 +77,7 @@ const menuConfigs = {
           key: '/thong-tin-ca-nhan',
         },
         {
-          label: <NavLink to='/lich-su-giao-dich'>Lịch sử giao dịch</NavLink>,
+          label: <NavLink to='/lich-su-giao-dich'>Lịch sử đặt tour</NavLink>,
           icon: <HistoryOutlined />,
           key: '/lich-su-giao-dich',
         },

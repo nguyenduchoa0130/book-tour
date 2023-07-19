@@ -1,0 +1,35 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-image {
+  max-height: 240px;
+}
+
+.card-title {
+  font-size: 16px !important;
+  color: #003c71 !important;
+  text-transform: capitalize;
+}
+
+.card-price {
+  font-size: 22px;
+  color: #f79321;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.card-detail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  color: grey !important;
+  width: 100%;
+  font-size: 16px;
+  padding: 4px 0;
+}
