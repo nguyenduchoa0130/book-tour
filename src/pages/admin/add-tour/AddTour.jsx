@@ -34,8 +34,8 @@ const AddTour = () => {
     control,
     name: 'details',
   });
-  const [tourImages, setTourImages] = useState([]);
   const dispatch = useDispatch();
+  const [tourImages, setTourImages] = useState([]);
 
   const handleTourImagesChange = ({ fileList: newFileList }) => {
     const files = newFileList.map((item) => item.originFileObj);
@@ -57,7 +57,7 @@ const AddTour = () => {
     for (const key in data) {
       const rawValue = data[key];
       if (key.includes('Date')) {
-        formData.append(key, new Date(rawValue.$d).toLocaleString());
+        formData.append(key, new Date(rawValue.$d).JSON());
       } else if (key === 'tourImages') {
         rawValue.forEach((file) => {
           formData.append('tourImages', file);

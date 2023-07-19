@@ -31,7 +31,7 @@ const LoginForm = () => {
   // Declare methods
   const onSubmit = async (payload) => {
     await dispatch(UserActions.signIn(payload));
-    navigate('/');
+    navigate(-1);
   };
 
   // Declare hooks

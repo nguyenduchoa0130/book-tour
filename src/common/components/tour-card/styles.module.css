@@ -12,6 +12,9 @@
   font-size: 16px !important;
   color: #003c71 !important;
   text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-price {

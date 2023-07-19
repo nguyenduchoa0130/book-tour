@@ -26,15 +26,13 @@ const TourCard = ({ tour }) => {
                 {tour.TenTour}
               </Typography.Title>
             </Tooltip>
-            <div className='flex-row-between'>
-              <div className={styles['card-detail']}>
-                <ClockCircleOutlined />
-                <Typography.Text>{tour.ChiTietThoiGian}</Typography.Text>
-              </div>
-              <div className={styles['card-detail']}>
-                <UsergroupAddOutlined />
-                <Typography.Text>{tour.SoLuongNguoi} người</Typography.Text>
-              </div>
+            <div className={styles['card-detail']}>
+              <UsergroupAddOutlined />
+              <Typography.Text>{tour.SoLuongNguoi} người</Typography.Text>
+            </div>
+            <div className={styles['card-detail']}>
+              <ClockCircleOutlined />
+              <Typography.Text>{tour.ChiTietThoiGian}</Typography.Text>
             </div>
             <div className={styles['card-detail']}>
               <CalendarOutlined />

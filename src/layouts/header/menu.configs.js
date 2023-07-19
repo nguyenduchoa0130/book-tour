@@ -77,7 +77,7 @@ const menuConfigs = {
           key: '/thong-tin-ca-nhan',
         },
         {
-          label: <NavLink to='/lich-su-giao-dich'>Lịch sử đặt tour</NavLink>,
+          label: <NavLink to='/lich-su-dat-tour'>Lịch sử đặt tour</NavLink>,
           icon: <HistoryOutlined />,
           key: '/lich-su-giao-dich',
         },

@@ -5,19 +5,4 @@ const axiosClient = axios.create({
   withCredentials: true,
 });
 
-axiosClient.interceptors.response.use(
-  (res) => {
-    return res;
-  },
-  (err) => {
-    if (err?.response?.status === 401) {
-      localStorage.setItem('persist:root', JSON.stringify({}));
-      setTimeout(() => {
-        window.location.href = window.location.origin + '/dang-nhap';
-      }, 100);
-    }
-    return Promise.reject(err);
-  },
-);
-
 export default axiosClient;
