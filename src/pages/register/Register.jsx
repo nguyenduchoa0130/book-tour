@@ -1,4 +1,4 @@
-import { LockOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
+import { LockOutlined, MailOutlined, PhoneOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Typography } from 'antd';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -22,6 +22,7 @@ const Register = () => {
       fullName: '',
       address: '',
       phone: '',
+      email: '',
     },
   });
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const Register = () => {
           <Typography.Title level={1} className='text-center py-3 text-uppercase'>
             đăng ký tài khoản
           </Typography.Title>
+
           <Form.Item
             label='Tên đăng nhập'
             name='username'
@@ -64,6 +66,22 @@ const Register = () => {
               )}
             />
           </Form.Item>
+
+          <Form.Item
+            label='Email'
+            name='email'
+            validateStatus={errors.email ? 'error' : ''}
+            help={errors.email && errors.email.message}>
+            <Controller
+              name='email'
+              control={control}
+              rules={{ required: 'Vui lòng nhập email' }}
+              render={({ field }) => (
+                <Input {...field} placeholder='Email' prefix={<MailOutlined />} size='large' />
+              )}
+            />
+          </Form.Item>
+
           <div className='row'>
             <div className='col-md-6 col-xs-12'>
               <Form.Item

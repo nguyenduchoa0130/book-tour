@@ -37,7 +37,7 @@ const menuConfigs = {
   TourGuide: {
     props: {
       label: <NavLink to='/huong-dan-vien'>Hướng Dẫn Viên</NavLink>,
-      key: '/huong-dang-vien',
+      key: '/huong-dan-vien',
       icon: <UnorderedListOutlined />,
     },
     isDefault: true,

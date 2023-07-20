@@ -5,7 +5,7 @@
 
 @media only screen and (min-width: 1921px) {
   .tours-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -17,7 +17,7 @@
 
 @media only screen and (max-width: 1440px) {
   .tours-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

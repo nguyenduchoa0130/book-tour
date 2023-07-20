@@ -1,12 +1,18 @@
-import { CalendarOutlined, ClockCircleOutlined, UsergroupAddOutlined } from '@ant-design/icons';
-import { Badge, Card, Tooltip, Typography } from 'antd';
+import {
+  CalendarOutlined,
+  ClockCircleOutlined,
+  EditOutlined,
+  InfoOutlined,
+  UsergroupAddOutlined,
+} from '@ant-design/icons';
+import { Badge, Button, Card, Tooltip, Typography } from 'antd';
 import React from 'react';
 import { NumericFormat } from 'react-number-format';
 import { NavLink } from 'react-router-dom';
 import DateUtils from '../../utils/date.util';
 import styles from './styles.module.css';
 
-const TourCard = ({ tour }) => {
+const TourCard = ({ tour, isAdmin }) => {
   return (
     <>
       <NavLink to={`/tours/${tour.id}`}>
@@ -50,6 +56,18 @@ const TourCard = ({ tour }) => {
                 suffix=' VND'
               />
             </Typography.Text>
+            {isAdmin && (
+              <>
+                <div className='py-2 flex-row-between'>
+                  <Button type='primary' icon={<InfoOutlined />} className='w-100 btn-success'>
+                    Chi tiết
+                  </Button>
+                  <Button type='primary' icon={<EditOutlined />} className='w-100'>
+                    Sửa
+                  </Button>
+                </div>
+              </>
+            )}
           </Card>
         </Badge.Ribbon>
       </NavLink>
