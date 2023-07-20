@@ -62,7 +62,7 @@ const History = () => {
 
   const subTableCols = [
     {
-      title: 'Tên',
+      title: 'Họ và tên',
       dataIndex: 'KhachHang',
       key: 'sub-khach-hang',
     },
@@ -136,16 +136,32 @@ const History = () => {
                           </NavLink>
                         </Descriptions.Item>
                       </Descriptions>
-                      <Descriptions title='Chi tiết hướng dẫn viên'>
-                        <Descriptions.Item label='Hướng dẫn viên'>
-                          {record?.HuongDanVien?.HoVaTen}
-                        </Descriptions.Item>
-                        <Descriptions.Item label='Số điện thoại'>
-                          {record?.HuongDanVien?.Sdt}
-                        </Descriptions.Item>
-                      </Descriptions>
-                      <Typography.Title level={5}>Danh sách người đi</Typography.Title>
-                      <Table columns={subTableCols} dataSource={record?.ChiTietThanhToans} />
+                      {record.TrangThai === 'Đã Huỷ' ? (
+                        <>
+                          <Descriptions title='Lý do huỷ'>
+                            <Typography.Text>
+                              <em className='text-danger px-4'>{record?.LyDo}</em>
+                            </Typography.Text>
+                          </Descriptions>
+                        </>
+                      ) : (
+                        <>
+                          <Descriptions title='Chi tiết hướng dẫn viên'>
+                            <Descriptions.Item label='Hướng dẫn viên'>
+                              {record?.HuongDanVien?.HoVaTen}
+                            </Descriptions.Item>
+                            <Descriptions.Item label='Số điện thoại'>
+                              {record?.HuongDanVien?.Sdt}
+                            </Descriptions.Item>
+                          </Descriptions>
+                          <Typography.Title level={5}>Danh sách người đi</Typography.Title>
+                          <Table
+                            columns={subTableCols}
+                            dataSource={record?.ChiTietThanhToans}
+                            pagination={{ pageSize: 3 }}
+                          />
+                        </>
+                      )}
                     </>
                   ),
                 }}

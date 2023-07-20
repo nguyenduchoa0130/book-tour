@@ -47,6 +47,12 @@ const PersonalInfo = () => {
           </div>
           <div className='form-group'>
             <div className='flex-row-between'>
+              <h6>Email:</h6>
+              <span>{user.Email}</span>
+            </div>
+          </div>
+          <div className='form-group'>
+            <div className='flex-row-between'>
               <h6>Số điện thoại:</h6>
               <span>{user.Sdt}</span>
             </div>
