@@ -18,8 +18,10 @@ export const signIn = (payload) => {
       dispatch(showLoading());
       const user = await authService.signIn(payload);
       dispatch(setUser(user));
+      return true;
     } catch (error) {
       AlertUtil.showError(error?.response?.data?.message || error.message);
+      return false;
     } finally {
       dispatch(hideLoading());
     }

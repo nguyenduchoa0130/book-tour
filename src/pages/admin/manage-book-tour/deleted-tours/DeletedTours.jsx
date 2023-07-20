@@ -1,4 +1,4 @@
-import { Button, Space, Table, Tag } from 'antd';
+import { Table, Tag } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 import { useDispatch } from 'react-redux';
@@ -47,16 +47,13 @@ const DeletedTour = () => {
       title: 'Trạng thái',
       dataIndex: 'TrangThai',
       key: 'trang-thai',
-      render: (val) => <Tag color='#108ee9'>{val}</Tag>,
+      render: (val) => <Tag color='#f50'>{val}</Tag>,
     },
     {
-      title: '',
-      key: 'actions',
-      render: (_, record) => (
-        <Space direction='horizontal' size='middle'>
-          <Button type='primary'>Xử lý</Button>
-        </Space>
-      ),
+      title: 'Ngày huỷ',
+      dataIndex: 'NgayXuLy',
+      key: 'ngay-cap-nhat',
+      render: (val) => new Date(val).toLocaleString(),
     },
   ];
   const [dataSource, setDataSource] = useState([]);

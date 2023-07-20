@@ -78,18 +78,19 @@ const InProgressTours = () => {
     },
   ];
 
+  const getData = async () => {
+    try {
+      dispatch(GlobalActions.showLoading());
+      const data = await paymentService.getBookingTour('cho-xac-nhan');
+      setDataSource(data);
+    } catch (error) {
+      AlertUtil.showError(error?.response?.data?.message || error.message);
+    } finally {
+      dispatch(GlobalActions.hideLoading());
+    }
+  };
+
   useEffect(() => {
-    const getData = async () => {
-      try {
-        dispatch(GlobalActions.showLoading());
-        const data = await paymentService.getBookingTour('cho-xac-nhan');
-        setDataSource(data);
-      } catch (error) {
-        AlertUtil.showError(error?.response?.data?.message || error.message);
-      } finally {
-        dispatch(GlobalActions.hideLoading());
-      }
-    };
     getData();
   }, []);
 
@@ -102,8 +103,13 @@ const InProgressTours = () => {
         title='Xử lý đơn đặt tour'
         footer={null}
         onCancel={handleCloseModal}
-        width={700}>
-        <HandleRequest bookingTour={selectedBooking} onClose={handleCloseModal} />
+        width={700}
+        destroyOnClose>
+        <HandleRequest
+          bookingTour={selectedBooking}
+          onClose={handleCloseModal}
+          onAfterHandling={() => getData()}
+        />
       </Modal>
     </>
   );

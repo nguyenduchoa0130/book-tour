@@ -47,12 +47,13 @@ const ConfirmedTour = () => {
       title: 'Trạng thái',
       dataIndex: 'TrangThai',
       key: 'trang-thai',
-      render: (val) => <Tag color='#108ee9'>{val}</Tag>,
+      render: (val) => <Tag color='#87d068'>{val}</Tag>,
     },
     {
-      title: 'Hướng dẫn viên',
-      dataIndex: 'Tour',
-      key: 'huong-dan-vien',
+      title: 'Ngày xác nhận',
+      dataIndex: 'NgayXuLy',
+      key: 'ngay-cap-nhat',
+      render: (val) => new Date(val).toLocaleString(),
     },
   ];
   const [dataSource, setDataSource] = useState([]);

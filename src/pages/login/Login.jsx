@@ -30,8 +30,12 @@ const LoginForm = () => {
 
   // Declare methods
   const onSubmit = async (payload) => {
-    await dispatch(UserActions.signIn(payload));
-    navigate(-1);
+    const res = await dispatch(UserActions.signIn(payload));
+    if (res) {
+      setTimeout(() => {
+        navigate(-1);
+      }, 300);
+    }
   };
 
   // Declare hooks
@@ -99,7 +103,7 @@ const LoginForm = () => {
             control={control}
             rules={{ required: 'Vui lòng chọn vai trò !!' }}
             render={({ field }) => (
-              <Select placeholder='Chọn vai trò' {...field} allowClear>
+              <Select placeholder='Chọn vai trò' {...field} allowClear size='large'>
                 {roles.map((role) => (
                   <Option key={`role-${role.id}`} value={role.id}>
                     {role.name}

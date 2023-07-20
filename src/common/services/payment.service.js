@@ -40,6 +40,15 @@ class PaymentService extends BaseService {
       throw error;
     }
   }
+
+  async updatePayment(paymentId, payload) {
+    try {
+      const { data } = await this.axiosClient.patch(`${this.path}/_update/${paymentId}`, payload);
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export const paymentService = new PaymentService();

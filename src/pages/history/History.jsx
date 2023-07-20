@@ -75,11 +75,6 @@ const History = () => {
               </Button>
             </NavLink>
           </Tooltip>
-          <Tooltip title='Huỷ'>
-            <Button type='primary' danger className='flex-row-center' size='small'>
-              Huỷ
-            </Button>
-          </Tooltip>
         </Space>
       ),
     },
