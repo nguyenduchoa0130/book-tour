@@ -12,7 +12,7 @@ const tagColorMap = {
   'Chờ Xác Nhận': '#108ee9',
   'Thành Công': '#87d068',
   'Yêu Cầu Huỷ': 'magenta',
-  'Không Thành Công': 'red',
+  'Đã Huỷ': '#f50',
 };
 
 const History = () => {

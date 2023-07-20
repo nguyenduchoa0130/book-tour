@@ -25,6 +25,7 @@ import Payment from './pages/payment';
 import PersonalInfo from './pages/personal-info';
 import Register from './pages/register';
 import TourDetail from './pages/tour-detail';
+import TourGuide from './pages/tour-guide';
 import Tours from './pages/tours';
 
 const checkIsLoggedRule = {
@@ -53,6 +54,14 @@ const App = () => {
       </header>
       <main className={styles.layout__content}>
         <Routes>
+          <Route
+            path='/huong-dan-vien'
+            element={
+              <Auth rules={[checkIsLoggedRule]}>
+                <TourGuide />
+              </Auth>
+            }
+          />
           <Route
             path='/thong-tin-ca-nhan'
             element={

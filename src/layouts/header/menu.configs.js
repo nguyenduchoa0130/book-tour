@@ -1,11 +1,12 @@
 import {
   CompassOutlined,
-  HddOutlined,
   HistoryOutlined,
   HomeOutlined,
   InfoOutlined,
   LoginOutlined,
   LogoutOutlined,
+  SettingOutlined,
+  UnorderedListOutlined,
   UserAddOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -33,11 +34,21 @@ const menuConfigs = {
     isLoggedIn: false,
     permissions: [],
   },
+  TourGuide: {
+    props: {
+      label: <NavLink to='/huong-dan-vien'>Hướng Dẫn Viên</NavLink>,
+      key: '/huong-dang-vien',
+      icon: <UnorderedListOutlined />,
+    },
+    isDefault: true,
+    isLoggedIn: false,
+    permissions: [],
+  },
   Admin: {
     props: {
       label: <NavLink to='/admin'>Admin</NavLink>,
       key: '/admin',
-      icon: <HddOutlined />,
+      icon: <SettingOutlined />,
     },
     isDefault: true,
     isLoggedIn: false,
