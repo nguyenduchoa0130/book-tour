@@ -27,6 +27,7 @@ const AlertUtil = {
       title: question,
       text: message,
       icon: 'question',
+      showCancelButton: true,
     });
   },
 };

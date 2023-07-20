@@ -62,7 +62,7 @@ const TourDetail = () => {
                   icon={<ArrowLeftOutlined />}
                   className='flex-row-center'
                   onClick={() => navigate('/tours')}>
-                  Quay lại
+                  Quay lại danh sách tour
                 </Button>
                 <div className={styles['tour-detail-header']}>
                   <Typography.Title className='text-capitalize'>{tour.TenTour}</Typography.Title>
@@ -84,6 +84,8 @@ const TourDetail = () => {
                         thumbnail: img.url,
                       }))}
                       autoPlay
+                      showFullscreenButton={false}
+                      showPlayButton={false}
                     />
                   </Badge.Ribbon>
                   <Divider />
