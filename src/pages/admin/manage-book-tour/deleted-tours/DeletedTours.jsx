@@ -1,4 +1,4 @@
-import { Table, Tag } from 'antd';
+import { Descriptions, Table, Tag, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 import { useDispatch } from 'react-redux';
@@ -24,18 +24,6 @@ const DeletedTour = () => {
       dataIndex: 'Tour',
       key: 'ten-tour',
       render: (val) => val?.TenTour,
-    },
-    {
-      title: 'Giá',
-      dataIndex: 'SoTien',
-      key: 'gia',
-      render: (val) => <NumericFormat value={val} thousandSeparator displayType='text' />,
-    },
-    {
-      title: 'Địa điểm',
-      dataIndex: 'Tour',
-      key: 'gia',
-      render: (val) => val?.DiaDiem,
     },
     {
       title: 'Ngày đặt',
@@ -76,7 +64,45 @@ const DeletedTour = () => {
 
   return (
     <>
-      <Table columns={cols} dataSource={dataSource} />
+      <Table
+        rowKey='id'
+        columns={cols}
+        dataSource={dataSource}
+        pagination={{ pageSize: 8 }}
+        expandable={{
+          expandedRowRender: (record) => (
+            <>
+              <Descriptions title='Khách hàng'>
+                <Descriptions.Item label='Khách hàng'>
+                  {record?.KhachHang?.HoVaTen}
+                </Descriptions.Item>
+                <Descriptions.Item label='Số điện thoại'>{record?.SdtNguoiDat}</Descriptions.Item>
+              </Descriptions>
+              <Descriptions title='Chi tiết đặt tour'>
+                <Descriptions.Item label='Tour'>{record?.Tour?.TenTour}</Descriptions.Item>
+                <Descriptions.Item label='Địa điểm'>{record?.Tour?.DiaDiem}</Descriptions.Item>
+                <Descriptions.Item label='Giá'>
+                  <NumericFormat value={record?.Tour?.Gia} thousandSeparator displayType='text' />
+                </Descriptions.Item>
+                <Descriptions.Item label='Từ ngày'>
+                  {new Date(record?.Tour?.NgayBatDau).toLocaleDateString()}
+                </Descriptions.Item>
+                <Descriptions.Item label='Đến ngày'>
+                  {new Date(record?.Tour?.NgayKetThuc).toLocaleDateString()}
+                </Descriptions.Item>
+                <Descriptions.Item label='Thời lượng'>
+                  {record?.Tour?.ChiTietThoiGian}
+                </Descriptions.Item>
+              </Descriptions>
+              <Descriptions title='Lý do huỷ'>
+                <Typography.Text>
+                  <em className='text-danger px-4'>{record?.LyDo}</em>
+                </Typography.Text>
+              </Descriptions>
+            </>
+          ),
+        }}
+      />
     </>
   );
 };
