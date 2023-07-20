@@ -81,6 +81,12 @@ ul {
   padding: 8px 16px !important;
 }
 
+.ant-table-cell {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 /* Customize */
 .center-position {
   position: absolute;

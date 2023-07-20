@@ -13,13 +13,10 @@ import LoadingSpinner from './layouts/loading-spinner';
 import Admin from './pages/admin';
 import AddTour from './pages/admin/add-tour';
 import AddUser from './pages/admin/add-user';
-import ConfirmedTours from './pages/admin/confirmed-tours';
 import Dashboard from './pages/admin/dashboard';
-import DeletedTours from './pages/admin/deleted-tours';
-import InProgressTours from './pages/admin/in-progress-tours';
 import ListTours from './pages/admin/list-tours';
 import ListUsers from './pages/admin/list-users';
-import RequestCancelationTours from './pages/admin/request-cancelation-tours';
+import ManageBookTour from './pages/admin/manage-book-tour';
 import History from './pages/history';
 import Home from './pages/home';
 import Login from './pages/login';
@@ -92,10 +89,7 @@ const App = () => {
             <Route path='nguoi-dung/tao-moi' element={<AddUser />} />
             <Route path='tours/danh-sach' element={<ListTours />} />
             <Route path='tours/tao-moi' element={<AddTour />} />
-            <Route path='tours/cho-xu-ly' element={<InProgressTours />} />
-            <Route path='tours/da-xu-ly' element={<ConfirmedTours />} />
-            <Route path='tours/yeu-cau-huy' element={<RequestCancelationTours />} />
-            <Route path='tours/da-huy' element={<DeletedTours />} />
+            <Route path='quan-li-dat-tour' element={<ManageBookTour />} />
           </Route>
           <Route
             path='/dang-nhap'

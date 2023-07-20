@@ -31,6 +31,15 @@ class UsersService extends BaseService {
       throw error;
     }
   }
+
+  async getTourGuides() {
+    try {
+      const { data } = await this.axiosClient.get(`${this.path}/_getTourGuides`);
+      return data.value;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export const userServices = new UsersService();

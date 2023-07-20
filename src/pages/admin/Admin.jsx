@@ -57,31 +57,9 @@ const menuItems = [
     ],
   },
   {
-    label: 'Quản lý đặt tour',
+    label: <NavLink to='quan-li-dat-tour'>Quản lý đặt tour</NavLink>,
     icon: <CalendarOutlined />,
-    key: '/admin/quan-li-tours',
-    children: [
-      {
-        label: <NavLink to='tours/cho-xu-ly'>Chờ xử lý</NavLink>,
-        key: '/admin/tours/cho-xu-ly',
-        icon: <PullRequestOutlined />,
-      },
-      {
-        label: <NavLink to='tours/da-xu-ly'>Đã xử lý</NavLink>,
-        key: '/admin/tours/da-xu-ly',
-        icon: <CheckOutlined />,
-      },
-      {
-        label: <NavLink to='tours/yeu-cau-huy'>Yêu cầu huỷ</NavLink>,
-        key: '/admin/tours/yeu-cau-huy',
-        icon: <WarningOutlined />,
-      },
-      {
-        label: <NavLink to='tours/da-huy'>Đã huỷ</NavLink>,
-        key: '/admin/tours/da-huy',
-        icon: <DeleteOutlined />,
-      },
-    ],
+    key: '/admin/quan-li-dat-tour',
   },
 ];
 

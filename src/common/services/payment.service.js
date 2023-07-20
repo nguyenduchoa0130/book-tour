@@ -31,6 +31,15 @@ class PaymentService extends BaseService {
       throw error;
     }
   }
+
+  async getBookingTour(requestType) {
+    try {
+      const { data } = await this.axiosClient.get(`${this.path}/_getAll/${requestType}`);
+      return data.value;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export const paymentService = new PaymentService();
