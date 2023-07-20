@@ -1,10 +1,11 @@
-import { Table, Tag } from 'antd';
+import { Descriptions, Table, Tag, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 import { useDispatch } from 'react-redux';
 import { paymentService } from '../../../../common/services';
 import { GlobalActions } from '../../../../common/store/actions';
 import AlertUtil from '../../../../common/utils/alert.util';
+import { NavLink } from 'react-router-dom';
 
 const ConfirmedTour = () => {
   const cols = [
@@ -26,18 +27,6 @@ const ConfirmedTour = () => {
       render: (val) => val?.TenTour,
     },
     {
-      title: 'Giá',
-      dataIndex: 'SoTien',
-      key: 'gia',
-      render: (val) => <NumericFormat value={val} thousandSeparator displayType='text' />,
-    },
-    {
-      title: 'Địa điểm',
-      dataIndex: 'Tour',
-      key: 'gia',
-      render: (val) => val?.DiaDiem,
-    },
-    {
       title: 'Ngày đặt',
       dataIndex: 'NgayDat',
       key: 'ngay-dat',
@@ -48,6 +37,12 @@ const ConfirmedTour = () => {
       dataIndex: 'TrangThai',
       key: 'trang-thai',
       render: (val) => <Tag color='#87d068'>{val}</Tag>,
+    },
+    {
+      title: 'Hướng dẫn viên',
+      dataIndex: 'HuongDanVien',
+      key: 'huong-dan-vien',
+      render: (val) => val.HoVaTen,
     },
     {
       title: 'Ngày xác nhận',
@@ -76,7 +71,53 @@ const ConfirmedTour = () => {
 
   return (
     <>
-      <Table columns={cols} dataSource={dataSource} />
+      <Table
+        rowKey='id'
+        columns={cols}
+        dataSource={dataSource}
+        expandable={{
+          expandedRowRender: (record) => (
+            <>
+              <Descriptions title='Khách hàng'>
+                <Descriptions.Item label='Khách hàng'>
+                  {record?.KhachHang?.HoVaTen}
+                </Descriptions.Item>
+                <Descriptions.Item label='Số điện thoại'>{record?.SdtNguoiDat}</Descriptions.Item>
+              </Descriptions>
+              <Descriptions title='Chi tiết tour'>
+                <Descriptions.Item label='Tour'>{record?.Tour?.TenTour}</Descriptions.Item>
+                <Descriptions.Item label='Địa điểm'>{record?.Tour?.DiaDiem}</Descriptions.Item>
+                <Descriptions.Item label='Giá'>
+                  <NumericFormat value={record?.Tour?.Gia} thousandSeparator displayType='text' />
+                </Descriptions.Item>
+                <Descriptions.Item label='Từ ngày'>
+                  {new Date(record?.Tour?.NgayBatDau).toLocaleDateString()}
+                </Descriptions.Item>
+                <Descriptions.Item label='Đến ngày'>
+                  {new Date(record?.Tour?.NgayKetThuc).toLocaleDateString()}
+                </Descriptions.Item>
+                <Descriptions.Item label='Thời lượng'>
+                  {record?.Tour?.ChiTietThoiGian}
+                </Descriptions.Item>
+                <Descriptions.Item label='Xem thêm'>
+                  <NavLink to={`/tours/${record?.TourId}`} className='text-primary'>
+                    Chi tiết tour
+                  </NavLink>
+                </Descriptions.Item>
+              </Descriptions>
+              <Descriptions title='Chi tiết hướng dẫn viên'>
+                <Descriptions.Item label='Hướng dẫn viên'>
+                  {record?.HuongDanVien?.HoVaTen}
+                </Descriptions.Item>
+                <Descriptions.Item label='Số điện thoại'>
+                  {record?.HuongDanVien?.Sdt}
+                </Descriptions.Item>
+              </Descriptions>
+            </>
+          ),
+        }}
+        pagination={{ pageSize: 8 }}
+      />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { Button, Divider, Empty, Space, Table, Tag, Tooltip, Typography } from 'antd';
+import { Descriptions, Divider, Empty, Table, Tag, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,27 +23,16 @@ const History = () => {
       key: 'id',
     },
     {
-      title: 'Số thẻ',
-      dataIndex: 'SoThe',
-      key: 'so-the',
-    },
-    {
       title: 'Tour',
       dataIndex: 'Tour',
       key: 'ten-tour',
       render: (val) => val.TenTour,
     },
     {
-      title: 'Tổng tiền',
+      title: 'Giá',
       dataIndex: 'SoTien',
       key: 'so-tien',
       render: (val) => <NumericFormat value={val} thousandSeparator displayType='text' />,
-    },
-    {
-      title: 'Thời gian',
-      dataIndex: 'Tour',
-      key: 'thoi-gian',
-      render: (val) => val.ChiTietThoiGian,
     },
     {
       title: 'Ngày đặt',
@@ -58,27 +47,32 @@ const History = () => {
       render: (val) => <Tag color={tagColorMap[val]}>{val}</Tag>,
     },
     {
-      title: 'Hướng dẫn viên',
-      dataIndex: 'Tour',
+      title: 'HDV',
+      dataIndex: 'HuongDanVien',
       key: 'huong-dan-vien',
-      render: (val) => val.HuongDanVien && val.HuongDanVien.HoVaTen,
+      render: (val) => val?.HoVaTen,
     },
     {
-      title: '',
-      key: 'action',
-      render: (_, record) => (
-        <Space size='middle' direction='horizontal'>
-          <Tooltip title='Chi tiết tour'>
-            <NavLink to={`/tours/${record.TourId}`}>
-              <Button type='dashed' className='flex-row-center' size='small'>
-                Chi tiết
-              </Button>
-            </NavLink>
-          </Tooltip>
-        </Space>
-      ),
+      title: 'Ngày xử lý yêu cầu',
+      dataIndex: 'NgayXuLy',
+      key: 'ngay-cap-nhat',
+      render: (val) => new Date(val).toLocaleString(),
     },
   ];
+
+  const subTableCols = [
+    {
+      title: 'Tên',
+      dataIndex: 'KhachHang',
+      key: 'sub-khach-hang',
+    },
+    {
+      title: 'Số điện thoại',
+      dataIndex: 'Sdt',
+      key: 'sub-sdt',
+    },
+  ];
+
   const dispatch = useDispatch();
   const [paymentHistories, setPaymentHistories] = useState([]);
   const isLoading = useSelector(GlobalSelectors.selectIsLoading);
@@ -107,7 +101,55 @@ const History = () => {
         {!isLoading ? (
           <>
             {paymentHistories.length ? (
-              <Table columns={columns} dataSource={paymentHistories} />
+              <Table
+                rowKey='id'
+                columns={columns}
+                dataSource={paymentHistories}
+                pagination={{ pageSize: 8 }}
+                expandable={{
+                  expandedRowRender: (record) => (
+                    <>
+                      <Descriptions title='Chi tiết tour'>
+                        <Descriptions.Item label='Tour'>{record?.Tour?.TenTour}</Descriptions.Item>
+                        <Descriptions.Item label='Địa điểm'>
+                          {record?.Tour?.DiaDiem}
+                        </Descriptions.Item>
+                        <Descriptions.Item label='Giá'>
+                          <NumericFormat
+                            value={record?.Tour?.Gia}
+                            thousandSeparator
+                            displayType='text'
+                          />
+                        </Descriptions.Item>
+                        <Descriptions.Item label='Từ ngày'>
+                          {new Date(record?.Tour?.NgayBatDau).toLocaleDateString()}
+                        </Descriptions.Item>
+                        <Descriptions.Item label='Đến ngày'>
+                          {new Date(record?.Tour?.NgayKetThuc).toLocaleDateString()}
+                        </Descriptions.Item>
+                        <Descriptions.Item label='Thời lượng'>
+                          {record?.Tour?.ChiTietThoiGian}
+                        </Descriptions.Item>
+                        <Descriptions.Item label='Xem thêm'>
+                          <NavLink to={`/tours/${record?.TourId}`} className='text-primary'>
+                            Chi tiết tour
+                          </NavLink>
+                        </Descriptions.Item>
+                      </Descriptions>
+                      <Descriptions title='Chi tiết hướng dẫn viên'>
+                        <Descriptions.Item label='Hướng dẫn viên'>
+                          {record?.HuongDanVien?.HoVaTen}
+                        </Descriptions.Item>
+                        <Descriptions.Item label='Số điện thoại'>
+                          {record?.HuongDanVien?.Sdt}
+                        </Descriptions.Item>
+                      </Descriptions>
+                      <Typography.Title level={5}>Danh sách người đi</Typography.Title>
+                      <Table columns={subTableCols} dataSource={record?.ChiTietThanhToans} />
+                    </>
+                  ),
+                }}
+              />
             ) : (
               <div className='flex-row-center h-100'>
                 <Empty />
