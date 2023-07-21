@@ -5,9 +5,21 @@ class ToursService extends BaseService {
     super('/api/tours');
   }
 
-  async getTours() {
+  async getTours(keyword = '', startDate = '', place = '') {
     try {
-      const { data } = await this.axiosClient.get(`${this.path}/_getAll`);
+      const query = [];
+      if (keyword.trim()) {
+        query.push(`keyword=${keyword.trim()}`);
+      }
+      if (startDate) {
+        const date = new Date(startDate).toLocaleDateString();
+        query.push(`startDate=${date}`);
+      }
+      if (place) {
+        query.push(`place=${place}`);
+      }
+      const url = `${this.path}/_getAll` + (query.length ? `?${query.join('&')}` : '');
+      const { data } = await this.axiosClient.get(url);
       return data.value;
     } catch (error) {
       throw error;

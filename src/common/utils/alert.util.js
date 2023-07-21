@@ -17,7 +17,7 @@ const AlertUtil = {
   },
   showWarning: (message) => {
     return Swal.fire({
-      title: 'Cánh Báo',
+      title: 'Cảnh Báo',
       text: message,
       icon: 'warning',
     });

@@ -26,33 +26,31 @@ function Header() {
 
   useEffect(() => {
     const buildMenu = () => {
-      return Object.keys(menuConfigs).reduce(
-        (items, field) => {
-          const menuItem = menuConfigs[field];
-          if (menuItem.isDefault) {
-            items.push(menuItem.props);
-          } else {
-            if (user) {
-              if (menuItem.isLoggedIn)
-                if (menuItem.permissions.length) {
-                  if (menuItem.permissions.includes(user.VaiTro)) {
-                    items.push(menuItem.props);
-                  }
-                } else {
-                  menuItem.props.label = `Chào, ${user?.HoVaTen}`;
+      return Object.keys(menuConfigs).reduce((items, field) => {
+        const menuItem = menuConfigs[field];
+        if (menuItem.isDefault) {
+          items.push(menuItem.props);
+        } else {
+          if (user) {
+            if (menuItem.isLoggedIn)
+              if (menuItem.permissions.length) {
+                if (menuItem.permissions.includes(user.VaiTro)) {
                   items.push(menuItem.props);
                 }
-            } else {
-              if (!menuItem.isLoggedIn) {
+              } else {
+                menuItem.props.label = `Chào, ${user?.HoVaTen.split(' ').slice(-1)[0]}`;
                 items.push(menuItem.props);
               }
+          } else {
+            if (!menuItem.isLoggedIn) {
+              items.push(menuItem.props);
             }
           }
-          return items;
-        },
-        [user],
-      );
+        }
+        return items;
+      }, []);
     };
+
     const items = buildMenu();
     setMenuItems(items);
   }, [user]);

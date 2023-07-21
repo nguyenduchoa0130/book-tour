@@ -14,7 +14,7 @@ const Auth = ({ rule, children }) => {
     if (rule.isLoggedIn) {
       if (!user || (rule.roles.length && !rule.roles.includes(user?.VaiTro))) {
         setIsValid(false);
-        AlertUtil.showWarning('Bạn không được phép truy cập vào trang này !!').then(() => {
+        AlertUtil.showWarning('Bạn không được phép truy cập vào trang này').then(() => {
           navigate(-1);
         });
       }
