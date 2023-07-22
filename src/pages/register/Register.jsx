@@ -30,9 +30,11 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const { confirmPassword, ...payload } = data;
-    await dispatch(UserActions.signUp(payload));
-    AlertUtil.showSuccess('Đăng ký thành công');
-    navigate('/');
+    const res = await dispatch(UserActions.signUp(payload));
+    if (res) {
+      AlertUtil.showSuccess('Đăng ký thành công');
+      navigate('/');
+    }
   };
 
   return (
@@ -55,7 +57,14 @@ const Register = () => {
             <Controller
               name='username'
               control={control}
-              rules={{ required: 'Vui lòng nhập tên đăng nhập' }}
+              rules={{
+                required: 'Vui lòng nhập tên đăng nhập',
+                pattern: {
+                  value: /^[a-zA-Z\d]{2,}$/,
+                  message:
+                    'Tên đăng nhập không hợp lệ, phải có từ 2 ký tự và không chứa ký tự đặc biệt....',
+                },
+              }}
               render={({ field }) => (
                 <Input
                   {...field}
@@ -75,7 +84,13 @@ const Register = () => {
             <Controller
               name='email'
               control={control}
-              rules={{ required: 'Vui lòng nhập email' }}
+              rules={{
+                required: 'Vui lòng nhập email',
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: 'Email không hợp lệ',
+                },
+              }}
               render={({ field }) => (
                 <Input {...field} placeholder='Email' prefix={<MailOutlined />} size='large' />
               )}
@@ -92,7 +107,10 @@ const Register = () => {
                 <Controller
                   name='password'
                   control={control}
-                  rules={{ required: 'Vui lòng nhập mật khẩu' }}
+                  rules={{
+                    required: 'Vui lòng nhập mật khẩu',
+                    minLength: { value: 6, message: 'Mật khẩu phải có ít nhất 6 ký tự' },
+                  }}
                   render={({ field }) => (
                     <Input.Password
                       {...field}
@@ -144,7 +162,13 @@ const Register = () => {
                 <Controller
                   name='fullName'
                   control={control}
-                  rules={{ required: 'Vui lòng nhập họ và tên' }}
+                  rules={{
+                    required: 'Vui lòng nhập họ và tên',
+                    minLength: {
+                      value: 1,
+                      message: 'Họ và tên không hợp lệ',
+                    },
+                  }}
                   render={({ field }) => (
                     <Input
                       {...field}
@@ -165,7 +189,14 @@ const Register = () => {
                 <Controller
                   name='phone'
                   control={control}
-                  rules={{ required: 'Vui lòng nhập số điện thoại' }}
+                  rules={{
+                    required: 'Vui lòng nhập số điện thoại',
+                    pattern: {
+                      value:
+                        /^(?:\+?84|0)(?:3[2-9]|5[25689]|7[0|6-9]|8[1-9]|9[0-9])(?:\d{7}|\d{8})$/,
+                      message: 'Số điện thoại không hợp lệ',
+                    },
+                  }}
                   render={({ field }) => (
                     <Input
                       {...field}
