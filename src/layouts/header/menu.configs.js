@@ -40,9 +40,9 @@ const menuConfigs = {
       key: '/huong-dan-vien',
       icon: <UnorderedListOutlined />,
     },
-    isDefault: true,
-    isLoggedIn: false,
-    permissions: [],
+    isDefault: false,
+    isLoggedIn: true,
+    permissions: [RolesEnum.HuongDanVien],
   },
   Admin: {
     props: {
@@ -50,8 +50,8 @@ const menuConfigs = {
       key: '/admin',
       icon: <SettingOutlined />,
     },
-    isDefault: true,
-    isLoggedIn: false,
+    isDefault: false,
+    isLoggedIn: true,
     permissions: [RolesEnum.NguoiQuanLy],
   },
   NotLoggedInMenu: {
@@ -90,7 +90,7 @@ const menuConfigs = {
         {
           label: <NavLink to='/lich-su-dat-tour'>Lịch sử đặt tour</NavLink>,
           icon: <HistoryOutlined />,
-          key: '/lich-su-giao-dich',
+          key: '/lich-su-dat-tour',
         },
         {
           label: <NavLink to='/dang-xuat'>Đăng xuất</NavLink>,

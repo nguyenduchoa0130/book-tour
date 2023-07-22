@@ -31,17 +31,26 @@ function Header() {
         if (menuItem.isDefault) {
           items.push(menuItem.props);
         } else {
-          const isLoggedIn = !!user;
-          if (isLoggedIn === menuItem.isLoggedIn) {
-            if (isLoggedIn) {
-              menuItem.props.label = `Chào, ${user.HoVaTen.split(' ').pop()} <3`;
+          if (user) {
+            if (menuItem.isLoggedIn)
+              if (menuItem.permissions.length) {
+                if (menuItem.permissions.includes(user.VaiTro)) {
+                  items.push(menuItem.props);
+                }
+              } else {
+                menuItem.props.label = `Chào, ${user?.HoVaTen.split(' ').slice(-1)[0]}`;
+                items.push(menuItem.props);
+              }
+          } else {
+            if (!menuItem.isLoggedIn) {
+              items.push(menuItem.props);
             }
-            items.push(menuItem.props);
           }
         }
         return items;
       }, []);
     };
+
     const items = buildMenu();
     setMenuItems(items);
   }, [user]);

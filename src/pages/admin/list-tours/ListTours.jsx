@@ -28,6 +28,7 @@ const ListTours = () => {
     };
     getTours();
   }, []);
+
   return (
     <>
       <h2>Danh sách tour</h2>

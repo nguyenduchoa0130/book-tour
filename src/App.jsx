@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { AuthRulesEnum, RolesEnum } from './common/enums';
+import { RolesEnum } from './common/enums';
 import styles from './styles.module.css';
 
 // Layouts
@@ -28,24 +28,6 @@ import TourDetail from './pages/tour-detail';
 import TourGuide from './pages/tour-guide';
 import Tours from './pages/tours';
 
-const checkIsLoggedRule = {
-  name: AuthRulesEnum.CHECK_IS_LOGGED_IN,
-  value: true,
-  message: 'Bạn chưa đăng nhập !!',
-};
-
-const checkIsNotLoggedInRule = {
-  name: AuthRulesEnum.CHECK_IS_NOT_LOGGED,
-  value: false,
-  message: 'Bạn đã đăng nhập !!',
-};
-
-const checkNQLRole = {
-  name: AuthRulesEnum.CHECK_ROLES,
-  value: [RolesEnum.NguoiQuanLy],
-  message: 'Bạn có thể truy cập trang này do chưa được cấp phép !!',
-};
-
 const App = () => {
   return (
     <>
@@ -57,7 +39,7 @@ const App = () => {
           <Route
             path='/huong-dan-vien'
             element={
-              <Auth rules={[checkIsLoggedRule]}>
+              <Auth rule={{ isLoggedIn: true, roles: [RolesEnum.HuongDanVien] }}>
                 <TourGuide />
               </Auth>
             }
@@ -65,7 +47,7 @@ const App = () => {
           <Route
             path='/thong-tin-ca-nhan'
             element={
-              <Auth rules={[checkIsLoggedRule]}>
+              <Auth rule={{ isLoggedIn: true, roles: [] }}>
                 <PersonalInfo />
               </Auth>
             }
@@ -73,7 +55,7 @@ const App = () => {
           <Route
             path='/lich-su-dat-tour'
             element={
-              <Auth rules={[checkIsLoggedRule]}>
+              <Auth rule={{ isLoggedIn: true, roles: [] }}>
                 <History />
               </Auth>
             }
@@ -81,7 +63,7 @@ const App = () => {
           <Route
             path='/dang-xuat'
             element={
-              <Auth rules={[checkIsLoggedRule]}>
+              <Auth rule={{ isLoggedIn: true, roles: [] }}>
                 <Logout />
               </Auth>
             }
@@ -89,7 +71,7 @@ const App = () => {
           <Route
             path='/admin'
             element={
-              <Auth rules={[checkNQLRole]}>
+              <Auth rule={{ isLoggedIn: true, roles: [RolesEnum.NguoiQuanLy] }}>
                 <Admin />
               </Auth>
             }>
@@ -103,7 +85,7 @@ const App = () => {
           <Route
             path='/dang-nhap'
             element={
-              <Auth rules={[checkIsNotLoggedInRule]}>
+              <Auth rule={[{ isLoggedIn: false, roles: [] }]}>
                 <Login />
               </Auth>
             }
@@ -111,7 +93,7 @@ const App = () => {
           <Route
             path='/dang-ky'
             element={
-              <Auth rules={[checkIsNotLoggedInRule]}>
+              <Auth rule={[{ isLoggedIn: false, roles: [] }]}>
                 <Register />
               </Auth>
             }

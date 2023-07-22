@@ -23,9 +23,6 @@ const Payment = () => {
     } else {
       setBookingTour(data);
     }
-    return () => {
-      console.log('run');
-    };
   }, []);
 
   return (

@@ -15,7 +15,7 @@ import styles from './styles.module.css';
 const TourCard = ({ tour, isAdmin }) => {
   return (
     <>
-      <NavLink to={`/tours/${tour.id}`}>
+      <NavLink to={`/tours/${tour.id}`} className='flex-row-center'>
         <Badge.Ribbon text={tour.DiaDiem} color='red' placement='start'>
           <Card
             hoverable
@@ -34,15 +34,17 @@ const TourCard = ({ tour, isAdmin }) => {
             </Tooltip>
             <div className={styles['card-detail']}>
               <UsergroupAddOutlined />
-              <Typography.Text>{tour.SoLuongNguoi} người</Typography.Text>
+              <Typography.Text className='no-wrap-content'>
+                {tour.SoLuongNguoi} người
+              </Typography.Text>
             </div>
             <div className={styles['card-detail']}>
               <ClockCircleOutlined />
-              <Typography.Text>{tour.ChiTietThoiGian}</Typography.Text>
+              <Typography.Text className='no-wrap-content'>{tour.ChiTietThoiGian}</Typography.Text>
             </div>
             <div className={styles['card-detail']}>
               <CalendarOutlined />
-              <Typography.Text>
+              <Typography.Text className='no-wrap-content'>
                 Từ {DateUtils.parseDateTime(tour.NgayBatDau)}
                 {' đến '} {DateUtils.parseDateTime(tour.NgayKetThuc)}
               </Typography.Text>

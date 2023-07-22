@@ -116,3 +116,9 @@ ul {
   flex-direction: row;
   gap: 8px;
 }
+
+.no-wrap-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
