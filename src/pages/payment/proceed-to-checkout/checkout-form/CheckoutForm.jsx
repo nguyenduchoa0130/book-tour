@@ -128,7 +128,13 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
               <Controller
                 control={control}
                 name='tourBookerPhone'
-                rules={{ required: 'Không được để trống !!' }}
+                rules={{
+                  required: 'Không được để trống !!',
+                  pattern: {
+                    value: /^(?:\+?84|0)(?:3[2-9]|5[25689]|7[0|6-9]|8[1-9]|9[0-9])(?:\d{7}|\d{8})$/,
+                    message: 'Số điện thoại không hợp lệ',
+                  },
+                }}
                 render={({ field }) => (
                   <Input {...field} placeholder='Nhập số điện thoại người đặt' size='large' />
                 )}
@@ -145,7 +151,13 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
           <Controller
             control={control}
             name='tourBookerEmail'
-            rules={{ required: 'Không được để trống !!' }}
+            rules={{
+              required: 'Không được để trống !!',
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'Email không hợp lệ',
+              },
+            }}
             render={({ field }) => <Input {...field} placeholder='Nhập email' size='large' />}
           />
         </Form.Item>
