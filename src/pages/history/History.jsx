@@ -57,7 +57,7 @@ const History = () => {
       title: 'Ngày xử lý yêu cầu',
       dataIndex: 'NgayXuLy',
       key: 'ngay-cap-nhat',
-      render: (val) => moment(val).format('HH:mm A, DD-MM-YYYY'),
+      render: (val) => val && moment(val).format('HH:mm A, DD-MM-YYYY'),
     },
   ];
 
