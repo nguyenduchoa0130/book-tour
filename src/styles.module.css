@@ -5,6 +5,7 @@
 
 .layout__content {
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  overflow: hidden auto;
 }
 
 .layout__footer {

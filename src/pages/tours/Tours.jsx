@@ -55,6 +55,7 @@ const Tours = () => {
                 size='large'
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
+                allowClear
               />
             </Form.Item>
             <div className='row pt-3'>

@@ -39,6 +39,7 @@ const AddUser = () => {
       fullName: '',
       address: '',
       phone: '',
+      email: '',
       typeOfUser: null,
     });
   };
@@ -92,6 +93,18 @@ const AddUser = () => {
             </Form.Item>
           </div>
         </div>
+        <Form.Item
+          label='Email'
+          name='email'
+          validateStatus={errors.email ? 'error' : ''}
+          help={errors.email && errors.email.message}>
+          <Controller
+            name='email'
+            control={control}
+            rules={{ required: 'Vui lòng nhập email' }}
+            render={({ field }) => <Input {...field} placeholder='Email' />}
+          />
+        </Form.Item>
         <div className='row'>
           <div className='col-md-6 col-xs-12'>
             <Form.Item
@@ -194,7 +207,7 @@ const AddUser = () => {
             name='address'
             control={control}
             render={({ field }) => (
-              <Input.TextArea {...field} rows={4} size='large' placeholder='Địa chỉ' />
+              <Input.TextArea {...field} rows={2} size='large' placeholder='Địa chỉ' />
             )}
           />
         </Form.Item>

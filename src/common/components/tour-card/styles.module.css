@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 100%;
   max-width: 320px;
+  height: 400px;
 }
 
 .card-image {

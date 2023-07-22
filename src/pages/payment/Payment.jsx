@@ -58,9 +58,6 @@ const Payment = () => {
               </Space>
             </div>
             <Divider />
-            <Typography.Title level={2} className='pb-2 text-uppercase text-center'>
-              THÔNG TIN THANH TOÁN
-            </Typography.Title>
             <CheckoutForm user={user} bookingTour={bookingTour} />
             <FloatButton.BackTop
               type='primary'

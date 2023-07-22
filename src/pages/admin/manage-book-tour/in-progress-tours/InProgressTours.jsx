@@ -6,6 +6,7 @@ import { paymentService } from '../../../../common/services';
 import { GlobalActions } from '../../../../common/store/actions';
 import AlertUtil from '../../../../common/utils/alert.util';
 import HandleRequest from './HandleRequest';
+import moment from 'moment';
 
 const InProgressTours = () => {
   const [dataSource, setDataSource] = useState([]);
@@ -57,7 +58,7 @@ const InProgressTours = () => {
       title: 'Ngày đặt',
       dataIndex: 'NgayDat',
       key: 'ngay-dat',
-      render: (val) => new Date(val).toLocaleString(),
+      render: (val) => moment(val).format('HH:mm A, DD-MM-YYYY'),
     },
     {
       title: 'Trạng thái',
@@ -104,7 +105,8 @@ const InProgressTours = () => {
         footer={null}
         onCancel={handleCloseModal}
         width={700}
-        destroyOnClose>
+        destroyOnClose
+        zIndex='999'>
         <HandleRequest
           bookingTour={selectedBooking}
           onClose={handleCloseModal}

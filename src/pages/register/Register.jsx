@@ -184,7 +184,7 @@ const Register = () => {
               name='address'
               control={control}
               render={({ field }) => (
-                <Input.TextArea {...field} rows={4} size='large' placeholder='Địa chỉ' />
+                <Input.TextArea {...field} rows={2} size='large' placeholder='Địa chỉ' />
               )}
             />
           </Form.Item>
