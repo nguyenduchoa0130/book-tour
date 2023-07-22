@@ -34,9 +34,6 @@ const ListTours = () => {
       <h2>Danh sách tour</h2>
       <hr />
       <div className='py-2'>
-        <Input prefix={<SearchOutlined />} size='large' placeholder='Tìm kiếm' />
-      </div>
-      <div className='py-2'>
         {!isLoading ? (
           <>
             {listTours.length ? (

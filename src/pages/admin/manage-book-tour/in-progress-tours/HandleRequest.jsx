@@ -1,12 +1,13 @@
-import { Button, Form, Input, Select, Space, Table } from 'antd';
+import { Button, Descriptions, Form, Select, Space, Table, Tag } from 'antd';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import { paymentService, userServices } from '../../../../common/services';
 import { GlobalActions } from '../../../../common/store/actions';
 import AlertUtil from '../../../../common/utils/alert.util';
-import DateUtils from '../../../../common/utils/date.util';
+import { UserSelectors } from '../../../../common/store/selectors';
 
 const HandleRequest = ({ bookingTour, onClose, onAfterHandling }) => {
   const [tourGuides, setTourGuides] = useState([]);
@@ -17,6 +18,7 @@ const HandleRequest = ({ bookingTour, onClose, onAfterHandling }) => {
     formState: { errors },
     reset,
   } = useForm({ defaultValues: { tourGuide: null } });
+  const user = useSelector(UserSelectors.selectUser);
 
   const cols = [
     {
@@ -36,14 +38,18 @@ const HandleRequest = ({ bookingTour, onClose, onAfterHandling }) => {
       HuongDanVienId: data.tourGuide,
       isSuccess: true,
       LyDo: null,
+      NguoiQuanLyId: user?.id,
     };
     try {
+      dispatch(GlobalActions.showLoading());
       await paymentService.updatePayment(bookingTour.id, payload);
       AlertUtil.showSuccess('Xử lý thành công');
       onAfterHandling();
       onClose();
     } catch (error) {
       AlertUtil.showError(error?.response?.data?.message || error.message);
+    } finally {
+      dispatch(GlobalActions.hideLoading());
     }
   };
 
@@ -63,14 +69,18 @@ const HandleRequest = ({ bookingTour, onClose, onAfterHandling }) => {
         const payload = {
           isSuccess: false,
           LyDo: reason,
+          NguoiQuanLyId: user?.id,
         };
         try {
+          dispatch(GlobalActions.showLoading());
           await paymentService.updatePayment(bookingTour.id, payload);
           AlertUtil.showSuccess('Xử lý thành công');
           onAfterHandling();
           onClose();
         } catch (error) {
           AlertUtil.showError(error?.response?.data?.message || error.message);
+        } finally {
+          dispatch(GlobalActions.hideLoading());
         }
       }
     }
@@ -98,44 +108,43 @@ const HandleRequest = ({ bookingTour, onClose, onAfterHandling }) => {
   return (
     <>
       <Form layout='vertical' onFinish={handleSubmit(handleConfirmPayment)}>
-        <Form.Item label='Tour'>
-          <Input readOnly value={bookingTour?.Tour?.TenTour} />
-        </Form.Item>
-
-        <Form.Item label='Địa điểm'>
-          <Input readOnly value={bookingTour?.Tour?.DiaDiem} />
-        </Form.Item>
-
-        <div className='row'>
-          <div className='col-md-6 col-xs-12'>
-            <Form.Item label='Từ ngày'>
-              <Input
-                readOnly
-                value={DateUtils.parseDateTime(new Date(bookingTour?.Tour?.NgayBatDau))}
-              />
-            </Form.Item>
-          </div>
-          <div className='col-md-6 col-xs-12'>
-            <Form.Item label='Từ ngày'>
-              <Input
-                readOnly
-                value={DateUtils.parseDateTime(new Date(bookingTour?.Tour?.NgayKetThuc))}
-              />
-            </Form.Item>
-          </div>
+        <div className='bg-light'>
+          <Descriptions title='' className='p-3'>
+            <Descriptions.Item label='Tên tour'>{bookingTour?.Tour?.TenTour}</Descriptions.Item>
+            <Descriptions.Item label='Địa điểm'>{bookingTour?.Tour?.DiaDiem}</Descriptions.Item>
+            <Descriptions.Item label='Từ ngày'>
+              {moment(bookingTour?.NgayBatDau).format('DD-MM-YYYY')}
+            </Descriptions.Item>
+            <Descriptions.Item label='Đến ngày'>
+              {moment(bookingTour?.NgayKetThuc).format('DD-MM-YYYY')}
+            </Descriptions.Item>
+            <Descriptions.Item label='Thời lượng'>
+              {bookingTour?.Tour?.ChiTietThoiGian}
+            </Descriptions.Item>
+          </Descriptions>
         </div>
 
-        <Form.Item label='Chi tiết thời gian'>
-          <Input readOnly value={bookingTour?.Tour?.ChiTietThoiGian} />
-        </Form.Item>
+        <div className='pt-2'>
+          <Descriptions title='Thông tin thanh toán' column={1}>
+            <Descriptions.Item label='Mã giao dịch'>{bookingTour?.UUID}</Descriptions.Item>
+            <Descriptions.Item label='Trạng thái'>
+              <Tag color='#87d068'>Đã thanh toán</Tag>
+            </Descriptions.Item>
+            <Descriptions.Item label='Vào lúc'>
+              {moment(bookingTour?.NgayDat).format('HH:mm A, DD-MM-YYYY')}
+            </Descriptions.Item>
+          </Descriptions>
+        </div>
 
-        <Form.Item label='Danh sách người đi'>
-          <Table
-            columns={cols}
-            dataSource={bookingTour?.ChiTietThanhToans || []}
-            pagination={{ pageSize: 3 }}
-          />
-        </Form.Item>
+        <div className='pt-2'>
+          <Form.Item label='Danh sách người đi' className='mb-0'>
+            <Table
+              columns={cols}
+              dataSource={bookingTour?.ChiTietThanhToans || []}
+              pagination={{ pageSize: 3 }}
+            />
+          </Form.Item>
+        </div>
 
         <Form.Item
           label='Hướng dẫn viên'
@@ -145,7 +154,7 @@ const HandleRequest = ({ bookingTour, onClose, onAfterHandling }) => {
           <Controller
             name='tourGuide'
             control={control}
-            rules={{ required: 'Không được để trống !!' }}
+            rules={{ required: 'Vui lòng chọn hướng dẫn viên' }}
             render={({ field }) => (
               <Select
                 {...field}
@@ -156,18 +165,20 @@ const HandleRequest = ({ bookingTour, onClose, onAfterHandling }) => {
           />
         </Form.Item>
 
-        <Form.Item>
-          <Space size='middle' className='w-100' style={{ justifyContent: 'flex-end' }}>
-            <Button type='primary' onClick={onClose} htmlType='button'>
+        <Form.Item className='mb-0'>
+          <div className='flex-row-between'>
+            <Button type='dashed' onClick={onClose} htmlType='button'>
               Huỷ
             </Button>
-            <Button type='primary' danger htmlType='button' onClick={handleCancel}>
-              Từ chối
-            </Button>
-            <Button type='primary' className='btn-success' htmlType='submit'>
-              Xác nhận
-            </Button>
-          </Space>
+            <Space size='middle' className='w-100' style={{ justifyContent: 'flex-end' }}>
+              <Button type='primary' danger htmlType='button' onClick={handleCancel}>
+                Từ chối
+              </Button>
+              <Button type='primary' htmlType='submit'>
+                Xác nhận
+              </Button>
+            </Space>
+          </div>
         </Form.Item>
       </Form>
     </>

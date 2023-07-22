@@ -21,13 +21,11 @@ const Auth = ({ rule, children }) => {
     } else {
       if (user) {
         setIsValid(false);
-        AlertUtil.showWarning('Bạn đã đăng nhập rồi !!').then(() => {
-          navigate(-1);
-        });
+        navigate(-1);
       }
     }
     setIsChecking(false);
-  }, []);
+  }, [rule]);
 
   return <>{!isChecking && isValid && children}</>;
 };

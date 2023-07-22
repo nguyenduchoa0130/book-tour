@@ -1,5 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, DatePicker, Form, Input, Select, Typography, Upload } from 'antd';
+import moment from 'moment';
 import React, { useState } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -13,6 +14,7 @@ const AddTour = () => {
     handleSubmit,
     setValue,
     reset,
+    watch,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -20,7 +22,7 @@ const AddTour = () => {
       startDate: '',
       endDate: '',
       place: null,
-      numberOfUsers: 1,
+      numberOfUsers: '',
       tourImages: [],
       price: '',
     },
@@ -53,6 +55,9 @@ const AddTour = () => {
   };
 
   const createTour = async (data) => {
+    if (!data.tourImages.length) {
+      return AlertUtil.showWarning('Vui lòng cung cấp hình ảnh của tour');
+    }
     const formData = new FormData();
     for (const key in data) {
       const rawValue = data[key];
@@ -125,7 +130,18 @@ const AddTour = () => {
               <Controller
                 name='endDate'
                 control={control}
-                rules={{ required: 'Vui lòng chọn ngày kết thúc !!' }}
+                rules={{
+                  required: 'Vui lòng chọn ngày kết thúc !!',
+                  validate: (val) => {
+                    if (
+                      watch('startDate') &&
+                      moment(watch('startDate').$d).isAfter(moment(val.$d))
+                    ) {
+                      return 'Ngày kết thúc phải lớn hơn ngày bắt đầu';
+                    }
+                    return null;
+                  },
+                }}
                 render={({ field }) => (
                   <DatePicker
                     {...field}
@@ -164,17 +180,29 @@ const AddTour = () => {
             </Form.Item>
           </div>
           <div className='col-md-6 col-xs-12'>
-            <Form.Item label='Số lượng người' name='typeOfUsers'>
+            <Form.Item
+              label='Số lượng người'
+              name='numberOfUsers'
+              validateStatus={errors.numberOfUsers ? 'error' : ''}
+              help={errors.numberOfUsers && errors.numberOfUsers.message}>
               <Controller
                 control={control}
                 name='numberOfUsers'
-                rules={{ required: 'Vui lòng nhập số lượng người' }}
+                rules={{
+                  required: 'Vui lòng nhập số lượng người',
+                  validate: (val) => {
+                    if (isNaN(+val) || parseInt(+val) <= 0) {
+                      return 'Số lượng người không hợp lệ';
+                    }
+                  },
+                }}
                 render={({ field }) => (
                   <Input
                     {...field}
                     placeholder='Nhập số lượng người'
                     size='large'
                     className='w-100'
+                    onBlur={(e) => field.onChange(+e.target.value)}
                   />
                 )}
               />
@@ -182,11 +210,22 @@ const AddTour = () => {
           </div>
         </div>
 
-        <Form.Item label='Giá' name='price'>
+        <Form.Item
+          label='Giá'
+          name='price'
+          validateStatus={errors.price ? 'error' : ''}
+          help={errors.price && errors.price.message}>
           <Controller
             control={control}
             name='price'
-            rules={{ required: 'Vui lòng nhập giá' }}
+            rules={{
+              required: 'Vui lòng nhập giá',
+              validate: (val) => {
+                if (isNaN(val) || parseInt(+val) <= 0) {
+                  return 'Giá tour không hợp lệ';
+                }
+              },
+            }}
             render={({ field }) => (
               <Input {...field} placeholder='Nhập giá' size='large' className='w-100' />
             )}

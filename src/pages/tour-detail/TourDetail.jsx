@@ -2,11 +2,13 @@ import { ArrowLeftOutlined, DollarCircleOutlined } from '@ant-design/icons';
 import { Badge, Button, Descriptions, Divider, Empty, FloatButton, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
+import { NumericFormat } from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { RolesEnum } from '../../common/enums';
 import { tourService } from '../../common/services';
 import { GlobalActions } from '../../common/store/actions';
-import { GlobalSelectors } from '../../common/store/selectors';
+import { GlobalSelectors, UserSelectors } from '../../common/store/selectors';
 import AlertUtil from '../../common/utils/alert.util';
 import DateUtils from '../../common/utils/date.util';
 import styles from './styles.module.css';
@@ -17,6 +19,7 @@ const TourDetail = () => {
   const isLoading = useSelector(GlobalSelectors.selectIsLoading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector(UserSelectors.selectUser);
 
   const navigateToPayload = () => {
     const cacheTour = {
@@ -66,14 +69,6 @@ const TourDetail = () => {
                 </Button>
                 <div className={styles['tour-detail-header']}>
                   <Typography.Title className='text-capitalize'>{tour.TenTour}</Typography.Title>
-                  <Button
-                    type='primary'
-                    className='flex-row-center'
-                    size='large'
-                    icon={<DollarCircleOutlined />}
-                    onClick={navigateToPayload}>
-                    Đặt ngay
-                  </Button>
                 </div>
                 <Divider />
                 <div className='py-2'>
@@ -88,6 +83,32 @@ const TourDetail = () => {
                       showPlayButton={false}
                     />
                   </Badge.Ribbon>
+                  <Divider />
+                  <div className='flex-row-between'>
+                    <Typography.Title>
+                      Giá:
+                      <span className='ml-3'>
+                        <NumericFormat
+                          value={tour?.Gia}
+                          displayType='text'
+                          thousandSeparator
+                          style={{
+                            color: '#f79321',
+                          }}
+                        />
+                      </span>
+                    </Typography.Title>
+                    {user?.VaiTro === RolesEnum.KhachHang && (
+                      <Button
+                        type='primary'
+                        size='large'
+                        className='p-4 w-25 flex-row-center text-uppercase'
+                        icon={<DollarCircleOutlined />}
+                        onClick={navigateToPayload}>
+                        Đặt tour
+                      </Button>
+                    )}
+                  </div>
                   <Divider />
                   <div className='py-2'>
                     <Descriptions title='Thông tin tour'>
@@ -109,8 +130,8 @@ const TourDetail = () => {
                   </div>
                   <Divider />
                   <div className='py-2'>
-                    <Typography.Title level={2} className='text-center text-capitalize'>
-                      Chương Trình Tour
+                    <Typography.Title level={2} className='text-center'>
+                      MÔ TẢ
                     </Typography.Title>
                     <Divider />
                     {tour?.ChiTietTours?.map((detail, idx, self) => (

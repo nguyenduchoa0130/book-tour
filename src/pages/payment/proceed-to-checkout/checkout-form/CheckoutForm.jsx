@@ -4,9 +4,11 @@ import { Button, Divider, Form, Input, Typography } from 'antd';
 import React from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { NumericFormat } from 'react-number-format';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { paymentService } from '../../../../common/services';
+import { GlobalActions } from '../../../../common/store/actions';
 import AlertUtil from '../../../../common/utils/alert.util';
 import styles from './styles.module.css';
 
@@ -14,6 +16,8 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   // Form
   const {
     control,
@@ -24,6 +28,7 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
       tourBookerId: user?.id,
       tourBookerName: user?.HoVaTen,
       tourBookerPhone: user?.Sdt,
+      tourBookerEmail: user?.email,
     },
   });
 
@@ -54,8 +59,10 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
       });
     } else {
       if (!stripe || !elements) {
-        AlertUtil.showError('Lỗi thanh toán. Thử lại sau !!');
-        return;
+        return AlertUtil.showError('Lỗi thanh toán. Thử lại sau !!');
+      }
+      if (!data.customers || !data.customers.length) {
+        return AlertUtil.showWarning('Vui lòng nhập danh sách người đi');
       }
       const payload = {
         UUID: uuidv4(),
@@ -66,8 +73,10 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
         SoTien: +bookingTour.Gia,
         SdtNguoiDat: data.tourBookerPhone,
         customers: data.customers,
+        Email: data.tourBookerEmail,
       };
       try {
+        dispatch(GlobalActions.showLoading());
         await paymentService.createPayment(payload);
         AlertUtil.showSuccess('Đặt tour thành công');
         localStorage.removeItem('bookingTour');
@@ -76,16 +85,16 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
         }, 200);
       } catch (error) {
         AlertUtil.showError(error?.response?.data?.message || error.message);
+      } finally {
+        GlobalActions.hideLoading();
       }
     }
   };
 
   return (
     <>
-      <PaymentElement onChange={console.log} />
-      <Divider />
       <Form layout='vertical' name='paymentForm' onFinish={handleSubmit(handlePayment)}>
-        <Typography.Title level={4} className='pb-2'>
+        <Typography.Title level={3} className='pb-2'>
           Thông tin người đặt
         </Typography.Title>
         <div className='row'>
@@ -100,7 +109,12 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
                 name='tourBookerName'
                 rules={{ required: 'Không được để trống !!' }}
                 render={({ field }) => (
-                  <Input {...field} placeholder='Nhập tên người đặt' size='large' />
+                  <Input
+                    {...field}
+                    placeholder='Nhập tên người đặt'
+                    size='large'
+                    readOnly={!!user}
+                  />
                 )}
               />
             </Form.Item>
@@ -123,10 +137,21 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
           </div>
         </div>
 
+        <Form.Item
+          label='Email'
+          name='tourBookerEmail'
+          validateStatus={errors.tourBookerEmail ? 'error' : ''}
+          help={errors.tourBookerEmail && errors.tourBookerEmail.message}>
+          <Controller
+            control={control}
+            name='tourBookerEmail'
+            rules={{ required: 'Không được để trống !!' }}
+            render={({ field }) => <Input {...field} placeholder='Nhập email' size='large' />}
+          />
+        </Form.Item>
+
         <div className='p-1'>
-          <Typography.Title level={4} className='pb-3'>
-            Danh sách khánh hàng
-          </Typography.Title>
+          <Typography.Text className='pb-3'>Danh sách người đi</Typography.Text>
           {customersFields.map((field, index, self) => (
             <div key={field.id} className='py-2'>
               <div className='row'>
@@ -179,10 +204,15 @@ const CheckoutForm = ({ paymentIntents, user, bookingTour }) => {
               type='dashed'
               onClick={handleAppendTourist}
               className='flex-row-center'>
-              Thêm khách hàng
+              Thêm người đi
             </Button>
           )}
         </div>
+        <Divider />
+        <Typography.Title level={3} className='py-2'>
+          Thông tin thanh toán
+        </Typography.Title>
+        <PaymentElement />
         <Divider />
         <div className={styles['payment-total']}>
           <Typography.Title level={2}>Số tiền phải thanh toán:</Typography.Title>

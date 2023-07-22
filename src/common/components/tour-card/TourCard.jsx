@@ -26,7 +26,8 @@ const TourCard = ({ tour, isAdmin }) => {
                 className={styles['card-image']}
               />
             }
-            className={styles.card}>
+            className={styles.card}
+            style={{ height: isAdmin ? '440px' : '400px' }}>
             <Tooltip>
               <Typography.Title level={4} className={styles['card-title']}>
                 {tour.TenTour}

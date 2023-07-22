@@ -30,17 +30,20 @@ const AddUser = () => {
 
   const onSubmit = async (formData) => {
     const { confirmPassword, ...payload } = formData;
-    await dispatch(AdminActions.createUser(payload));
-    AlertUtil.showSuccess('Tạo người dùng thành công');
-    reset({
-      username: '',
-      password: '',
-      confirmPassword: '',
-      fullName: '',
-      address: '',
-      phone: '',
-      typeOfUser: null,
-    });
+    const res = await dispatch(AdminActions.createUser(payload));
+    if (res) {
+      AlertUtil.showSuccess('Tạo người dùng thành công');
+      reset({
+        username: '',
+        password: '',
+        confirmPassword: '',
+        fullName: '',
+        address: '',
+        phone: '',
+        email: '',
+        typeOfUser: null,
+      });
+    }
   };
 
   return (
@@ -58,7 +61,14 @@ const AddUser = () => {
               <Controller
                 name='username'
                 control={control}
-                rules={{ required: 'Vui lòng nhập tên đăng nhập' }}
+                rules={{
+                  required: 'Vui lòng nhập tên đăng nhập',
+                  pattern: {
+                    value: /^[a-zA-Z\d]{2,}$/,
+                    message:
+                      'Tên đăng nhập không hợp lệ, phải có từ 2 ký tự và không chứa ký tự đặc biệt....',
+                  },
+                }}
                 render={({ field }) => (
                   <Input
                     {...field}
@@ -92,6 +102,24 @@ const AddUser = () => {
             </Form.Item>
           </div>
         </div>
+        <Form.Item
+          label='Email'
+          name='email'
+          validateStatus={errors.email ? 'error' : ''}
+          help={errors.email && errors.email.message}>
+          <Controller
+            name='email'
+            control={control}
+            rules={{
+              required: 'Vui lòng nhập email',
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'Email không hợp lệ',
+              },
+            }}
+            render={({ field }) => <Input {...field} placeholder='Email' size='large' />}
+          />
+        </Form.Item>
         <div className='row'>
           <div className='col-md-6 col-xs-12'>
             <Form.Item
@@ -102,7 +130,10 @@ const AddUser = () => {
               <Controller
                 name='password'
                 control={control}
-                rules={{ required: 'Vui lòng nhập mật khẩu' }}
+                rules={{
+                  required: 'Vui lòng nhập mật khẩu',
+                  minLength: { value: 6, message: 'Mật khẩu phải có ít nhất 6 ký tự' },
+                }}
                 render={({ field }) => (
                   <Input.Password
                     {...field}
@@ -154,7 +185,13 @@ const AddUser = () => {
               <Controller
                 name='fullName'
                 control={control}
-                rules={{ required: 'Vui lòng nhập họ và tên' }}
+                rules={{
+                  required: 'Vui lòng nhập họ và tên',
+                  minLength: {
+                    value: 1,
+                    message: 'Họ và tên không hợp lệ',
+                  },
+                }}
                 render={({ field }) => (
                   <Input
                     {...field}
@@ -175,7 +212,13 @@ const AddUser = () => {
               <Controller
                 name='phone'
                 control={control}
-                rules={{ required: 'Vui lòng nhập số điện thoại' }}
+                rules={{
+                  required: 'Vui lòng nhập số điện thoại',
+                  pattern: {
+                    value: /^(?:\+?84|0)(?:3[2-9]|5[25689]|7[0|6-9]|8[1-9]|9[0-9])(?:\d{7}|\d{8})$/,
+                    message: 'Số điện thoại không hợp lệ',
+                  },
+                }}
                 render={({ field }) => (
                   <Input
                     {...field}
@@ -194,7 +237,7 @@ const AddUser = () => {
             name='address'
             control={control}
             render={({ field }) => (
-              <Input.TextArea {...field} rows={4} size='large' placeholder='Địa chỉ' />
+              <Input.TextArea {...field} rows={2} size='large' placeholder='Địa chỉ' />
             )}
           />
         </Form.Item>

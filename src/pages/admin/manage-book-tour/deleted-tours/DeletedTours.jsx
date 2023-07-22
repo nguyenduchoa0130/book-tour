@@ -1,4 +1,5 @@
 import { Descriptions, Table, Tag, Typography } from 'antd';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 import { useDispatch } from 'react-redux';
@@ -29,7 +30,7 @@ const DeletedTour = () => {
       title: 'Ngày đặt',
       dataIndex: 'NgayDat',
       key: 'ngay-dat',
-      render: (val) => new Date(val).toLocaleString(),
+      render: (val) => moment(val).format('HH:mm A, DD-MM-YYYY'),
     },
     {
       title: 'Trạng thái',
@@ -38,10 +39,16 @@ const DeletedTour = () => {
       render: (val) => <Tag color='#f50'>{val}</Tag>,
     },
     {
+      title: 'Người huỷ',
+      dataIndex: 'NguoiQuanLy',
+      key: 'nguoi-huy',
+      render: (val) => val?.HoVaTen,
+    },
+    {
       title: 'Ngày huỷ',
       dataIndex: 'NgayXuLy',
       key: 'ngay-cap-nhat',
-      render: (val) => new Date(val).toLocaleString(),
+      render: (val) => moment(val).format('HH:mm A, DD-MM-YYYY'),
     },
   ];
   const [dataSource, setDataSource] = useState([]);
@@ -77,7 +84,19 @@ const DeletedTour = () => {
                   {record?.KhachHang?.HoVaTen}
                 </Descriptions.Item>
                 <Descriptions.Item label='Số điện thoại'>{record?.SdtNguoiDat}</Descriptions.Item>
+                <Descriptions.Item label='Email'>{record?.Email}</Descriptions.Item>
               </Descriptions>
+
+              <Descriptions title='Chi tiết thanh toán'>
+                <Descriptions.Item label='Mã giao dịch'>{record?.UUID}</Descriptions.Item>
+                <Descriptions.Item label='Trạng thái'>
+                  <Tag color='#87d068'>Đang hoàn trả tiền cho người dùng</Tag>
+                </Descriptions.Item>
+                <Descriptions.Item label='Vào lúc'>
+                  {moment(record?.NgayDat).format('HH:mm A, DD-MM-YYYY')}
+                </Descriptions.Item>
+              </Descriptions>
+
               <Descriptions title='Chi tiết đặt tour'>
                 <Descriptions.Item label='Tour'>{record?.Tour?.TenTour}</Descriptions.Item>
                 <Descriptions.Item label='Địa điểm'>{record?.Tour?.DiaDiem}</Descriptions.Item>
@@ -94,6 +113,7 @@ const DeletedTour = () => {
                   {record?.Tour?.ChiTietThoiGian}
                 </Descriptions.Item>
               </Descriptions>
+
               <Descriptions title='Lý do huỷ'>
                 <Typography.Text>
                   <em className='text-danger px-4'>{record?.LyDo}</em>
