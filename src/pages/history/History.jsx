@@ -1,4 +1,5 @@
 import { Descriptions, Divider, Empty, Table, Tag, Typography } from 'antd';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,7 +39,7 @@ const History = () => {
       title: 'Ngày đặt',
       dataIndex: 'NgayDat',
       key: 'ngay-dat',
-      render: (val) => new Date(val).toLocaleString(),
+      render: (val) => moment(val).format('HH:mm A, DD-MM-YYYY'),
     },
     {
       title: 'Trạng thái',
@@ -56,7 +57,7 @@ const History = () => {
       title: 'Ngày xử lý yêu cầu',
       dataIndex: 'NgayXuLy',
       key: 'ngay-cap-nhat',
-      render: (val) => new Date(val).toLocaleString(),
+      render: (val) => moment(val).format('HH:mm A, DD-MM-YYYY'),
     },
   ];
 
@@ -122,10 +123,10 @@ const History = () => {
                           />
                         </Descriptions.Item>
                         <Descriptions.Item label='Từ ngày'>
-                          {new Date(record?.Tour?.NgayBatDau).toLocaleDateString()}
+                          {moment(record?.Tour?.NgayBatDau).format('DD-MM-YYYY')}
                         </Descriptions.Item>
                         <Descriptions.Item label='Đến ngày'>
-                          {new Date(record?.Tour?.NgayKetThuc).toLocaleDateString()}
+                          {moment(record?.Tour?.NgayKetThuc).format('DD-MM-YYYY')}
                         </Descriptions.Item>
                         <Descriptions.Item label='Thời lượng'>
                           {record?.Tour?.ChiTietThoiGian}
@@ -134,6 +135,15 @@ const History = () => {
                           <NavLink to={`/tours/${record?.TourId}`} className='text-primary'>
                             Chi tiết tour
                           </NavLink>
+                        </Descriptions.Item>
+                      </Descriptions>
+                      <Descriptions title='Chi tiết thanh toán'>
+                        <Descriptions.Item label='Mã giao dịch'>{record?.UUID}</Descriptions.Item>
+                        <Descriptions.Item label='Trạng thái'>
+                          <Tag color='#87d068'>Đã thanh toán</Tag>
+                        </Descriptions.Item>
+                        <Descriptions.Item label='Vào ngày'>
+                          {moment(record?.NgayDat).format('HH:mm A, DD-MM-YYYY')}
                         </Descriptions.Item>
                       </Descriptions>
                       {record.TrangThai === 'Đã Huỷ' ? (
@@ -146,8 +156,8 @@ const History = () => {
                         </>
                       ) : (
                         <>
-                          <Descriptions title='Chi tiết hướng dẫn viên'>
-                            <Descriptions.Item label='Hướng dẫn viên'>
+                          <Descriptions title='Hướng dẫn viên'>
+                            <Descriptions.Item label='Họ và tên'>
                               {record?.HuongDanVien?.HoVaTen}
                             </Descriptions.Item>
                             <Descriptions.Item label='Số điện thoại'>

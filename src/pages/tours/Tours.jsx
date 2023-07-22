@@ -34,7 +34,7 @@ const Tours = () => {
   };
 
   useEffect(() => {
-    getTours(debounceKeyword, startDate?.$d?.toJSON(), place);
+    getTours(debounceKeyword, startDate?.$d?.toJSON() || new Date().toJSON(), place);
   }, [debounceKeyword, startDate, place]);
 
   return (
