@@ -18,10 +18,6 @@ const PersonalInfo = () => {
     setIsModalOpen(false);
   };
 
-  const handleSubmitForm = (data) => {
-    setIsModalOpen(false);
-  };
-
   return (
     <>
       <div className={styles['personal-info']}>

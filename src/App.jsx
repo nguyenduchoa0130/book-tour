@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, useRoutes } from 'react-router-dom';
 import { RolesEnum } from './common/enums';
 import styles from './styles.module.css';
 
@@ -22,88 +22,128 @@ import Home from './pages/home';
 import Login from './pages/login';
 import Logout from './pages/logout';
 import Payment from './pages/payment';
-import PersonalInfo from './pages/personal-info';
 import Register from './pages/register';
 import TourDetail from './pages/tour-detail';
 import TourGuide from './pages/tour-guide';
 import Tours from './pages/tours';
 
 const App = () => {
+  const routes = useRoutes([
+    {
+      path: '/admin',
+      element: (
+        <Auth rule={{ isLoggedIn: true, roles: [RolesEnum.NguoiQuanLy] }}>
+          <Admin />
+        </Auth>
+      ),
+      children: [
+        {
+          index: true,
+          element: <Dashboard />,
+        },
+        {
+          path: 'nguoi-dung/danh-sach',
+          element: <ListUsers />,
+        },
+        {
+          path: 'nguoi-dung/tao-moi',
+          element: <AddUser />,
+        },
+        {
+          path: 'tours/danh-sach',
+          element: <ListTours />,
+        },
+        {
+          path: 'tours/tao-moi',
+          element: <AddTour />,
+        },
+        {
+          path: 'quan-li-dat-tour',
+          element: <ManageBookTour />,
+        },
+      ],
+    },
+    {
+      path: '/huong-dan-vien',
+      element: (
+        <Auth rule={{ isLoggedIn: true, roles: [RolesEnum.HuongDanVien] }}>
+          <TourGuide />
+        </Auth>
+      ),
+    },
+    {
+      path: '/sale',
+      element: null,
+    },
+    {
+      path: '',
+      element: <Outlet />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: 'thong-tin-ca-nhan',
+          element: (
+            <Auth rule={{ isLoggedIn: true, roles: [RolesEnum.HuongDanVien] }}>
+              <TourGuide />
+            </Auth>
+          ),
+        },
+        {
+          path: 'lich-su-dat-tour',
+          element: (
+            <Auth rule={{ isLoggedIn: true, roles: [] }}>
+              <History />
+            </Auth>
+          ),
+        },
+        {
+          path: 'dang-xuat',
+          element: (
+            <Auth rule={{ isLoggedIn: true, roles: [] }}>
+              <Logout />
+            </Auth>
+          ),
+        },
+        {
+          path: 'dang-nhap',
+          element: (
+            <Auth rule={[{ isLoggedIn: false, roles: [] }]}>
+              <Login />
+            </Auth>
+          ),
+        },
+        {
+          path: 'dang-ky',
+          element: (
+            <Auth rule={[{ isLoggedIn: false, roles: [] }]}>
+              <Register />
+            </Auth>
+          ),
+        },
+        {
+          path: 'tours/:tourId',
+          element: <TourDetail />,
+        },
+        {
+          path: 'tours',
+          element: <Tours />,
+        },
+        {
+          path: 'thanh-toan',
+          element: <Payment />,
+        },
+      ],
+    },
+  ]);
   return (
     <>
       <header className={styles.layout__header}>
         <Header />
       </header>
-      <main className={styles.layout__content}>
-        <Routes>
-          <Route
-            path='/huong-dan-vien'
-            element={
-              <Auth rule={{ isLoggedIn: true, roles: [RolesEnum.HuongDanVien] }}>
-                <TourGuide />
-              </Auth>
-            }
-          />
-          <Route
-            path='/thong-tin-ca-nhan'
-            element={
-              <Auth rule={{ isLoggedIn: true, roles: [] }}>
-                <PersonalInfo />
-              </Auth>
-            }
-          />
-          <Route
-            path='/lich-su-dat-tour'
-            element={
-              <Auth rule={{ isLoggedIn: true, roles: [] }}>
-                <History />
-              </Auth>
-            }
-          />
-          <Route
-            path='/dang-xuat'
-            element={
-              <Auth rule={{ isLoggedIn: true, roles: [] }}>
-                <Logout />
-              </Auth>
-            }
-          />
-          <Route
-            path='/admin'
-            element={
-              <Auth rule={{ isLoggedIn: true, roles: [RolesEnum.NguoiQuanLy] }}>
-                <Admin />
-              </Auth>
-            }>
-            <Route index element={<Dashboard />} />
-            <Route path='nguoi-dung/danh-sach' element={<ListUsers />} />
-            <Route path='nguoi-dung/tao-moi' element={<AddUser />} />
-            <Route path='tours/danh-sach' element={<ListTours />} />
-            <Route path='tours/tao-moi' element={<AddTour />} />
-            <Route path='quan-li-dat-tour' element={<ManageBookTour />} />
-          </Route>
-          <Route
-            path='/dang-nhap'
-            element={
-              <Auth rule={[{ isLoggedIn: false, roles: [] }]}>
-                <Login />
-              </Auth>
-            }
-          />
-          <Route
-            path='/dang-ky'
-            element={
-              <Auth rule={[{ isLoggedIn: false, roles: [] }]}>
-                <Register />
-              </Auth>
-            }
-          />
-          <Route path='/tours' element={<Tours />} />
-          <Route path='/tours/:tourId' element={<TourDetail />} />
-          <Route path='/thanh-toan' element={<Payment />} />
-          <Route path='/' element={<Home />} />
-        </Routes>
-      </main>
+      <main className={styles.layout__content}>{routes}</main>
       <footer className={styles.layout__footer}>
         <Footer />
       </footer>

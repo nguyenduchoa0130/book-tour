@@ -1,15 +1,11 @@
 import {
   CalendarOutlined,
-  CheckOutlined,
   CompassOutlined,
-  DeleteOutlined,
   HomeOutlined,
   PlusOutlined,
-  PullRequestOutlined,
   TableOutlined,
   UserAddOutlined,
   UserOutlined,
-  WarningOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import React from 'react';
