@@ -25,7 +25,7 @@ class UsersService extends BaseService {
 
   async updateUser(userId, payload) {
     try {
-      const { data } = await this.axiosClient.post(`${this.path}/_update/${userId}`, payload);
+      const { data } = await this.axiosClient.patch(`${this.path}/_update/${userId}`, payload);
       return data.value;
     } catch (error) {
       throw error;
@@ -36,6 +36,14 @@ class UsersService extends BaseService {
     try {
       const { data } = await this.axiosClient.get(`${this.path}/_getTourGuides`);
       return data.value;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteUser(userId) {
+    try {
+      await this.axiosClient.delete(`${this.path}/_delete/${userId}`);
     } catch (error) {
       throw error;
     }

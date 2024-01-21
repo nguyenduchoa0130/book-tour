@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RolesSelectors } from '../../../common/store/selectors';
 import { AdminActions } from '../../../common/store/actions';
 import AlertUtil from '../../../common/utils/alert.util';
+import { RolesEnum } from '../../../common/enums';
 
-const AddUser = () => {
+const SaleAddUser = () => {
   const {
     handleSubmit,
     control,
@@ -22,7 +23,7 @@ const AddUser = () => {
       fullName: '',
       address: '',
       phone: '',
-      typeOfUser: null,
+      typeOfUser: RolesEnum.KhachHang,
     },
   });
   const roles = useSelector(RolesSelectors.selectRoles);
@@ -41,7 +42,7 @@ const AddUser = () => {
         address: '',
         phone: '',
         email: '',
-        typeOfUser: null,
+        typeOfUser: RolesEnum.KhachHang,
       });
     }
   };
@@ -95,7 +96,9 @@ const AddUser = () => {
                     {...field}
                     size='large'
                     placeholder='Chọn loại người dùng'
-                    options={roles.map((item) => ({ label: item.name, value: item.id }))}
+                    options={roles
+                      .filter((item) => item.id === RolesEnum.KhachHang)
+                      .map((item) => ({ label: item.name, value: item.id }))}
                   />
                 )}
               />
@@ -252,4 +255,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default SaleAddUser;

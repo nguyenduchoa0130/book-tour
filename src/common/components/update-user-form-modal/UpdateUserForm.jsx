@@ -8,13 +8,12 @@ import { RolesSelectors } from '../../store/selectors';
 const UpdateUserFormModal = ({ user, onCancel, isAdmin }) => {
   const {
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     control,
     watch,
     reset,
   } = useForm({
     defaultValues: {
-      oldPassword: user.password,
       newPassword: '',
       confirmNewPassword: '',
       fullName: user.HoVaTen,
@@ -45,69 +44,43 @@ const UpdateUserFormModal = ({ user, onCancel, isAdmin }) => {
           onFinish={handleSubmit(handleSubmitForm)}
           initialValues={{ remember: true }}>
           <Form.Item
-            label='Nhập lại mật khẩu cũ'
-            name='oldPassword'
-            validateStatus={errors.oldPassword ? 'error' : ''}
-            help={errors.oldPassword && errors.oldPassword.message}>
+            label='Mật khẩu'
+            name='password'
+            validateStatus={errors.password ? 'error' : ''}
+            help={errors.password && errors.password.message}>
             <Controller
+              name='password'
               control={control}
-              name='oldPassword'
-              rules={{ required: 'Vui lòng nhập lại mật khẩu cũ' }}
+              render={({ field }) => (
+                <Input.Password {...field} placeholder='Mật khẩu' prefix={<LockOutlined />} />
+              )}
+            />
+          </Form.Item>
+          <Form.Item
+            label='Nhập lại mật khẩu'
+            name='confirmPassword'
+            validateStatus={errors.confirmPassword ? 'error' : ''}
+            help={errors.confirmPassword && errors.confirmPassword.message}>
+            <Controller
+              name='confirmPassword'
+              control={control}
+              rules={{
+                required: 'Vui lòng nhập lại mật khẩu',
+                validate: (val) => {
+                  if (watch('password') !== val) {
+                    return 'Mật khẩu không khớp';
+                  }
+                },
+              }}
               render={({ field }) => (
                 <Input.Password
                   {...field}
-                  placeholder='Nhập lại mật khẩu cũ'
                   prefix={<LockOutlined />}
+                  placeholder='Nhập lại mật khẩu'
                 />
               )}
             />
           </Form.Item>
-
-          <div className='row'>
-            <div className='col-md-6 col-xs-12'>
-              <Form.Item
-                label='Mật khẩu'
-                name='password'
-                validateStatus={errors.password ? 'error' : ''}
-                help={errors.password && errors.password.message}>
-                <Controller
-                  name='password'
-                  control={control}
-                  rules={{ required: 'Vui lòng nhập mật khẩu' }}
-                  render={({ field }) => (
-                    <Input.Password {...field} placeholder='Mật khẩu' prefix={<LockOutlined />} />
-                  )}
-                />
-              </Form.Item>
-            </div>
-            <div className='col-md-6 col-xs-12'>
-              <Form.Item
-                label='Nhập lại mật khẩu'
-                name='confirmPassword'
-                validateStatus={errors.confirmPassword ? 'error' : ''}
-                help={errors.confirmPassword && errors.confirmPassword.message}>
-                <Controller
-                  name='confirmPassword'
-                  control={control}
-                  rules={{
-                    required: 'Vui lòng nhập lại mật khẩu',
-                    validate: (val) => {
-                      if (watch('password') !== val) {
-                        return 'Mật khẩu không khớp';
-                      }
-                    },
-                  }}
-                  render={({ field }) => (
-                    <Input.Password
-                      {...field}
-                      prefix={<LockOutlined />}
-                      placeholder='Nhập lại mật khẩu'
-                    />
-                  )}
-                />
-              </Form.Item>
-            </div>
-          </div>
 
           <Form.Item
             label='Họ và tên'
@@ -117,7 +90,6 @@ const UpdateUserFormModal = ({ user, onCancel, isAdmin }) => {
             <Controller
               name='fullName'
               control={control}
-              rules={{ required: 'Vui lòng nhập họ và tên' }}
               render={({ field }) => (
                 <Input {...field} prefix={<UserOutlined />} placeholder='Họ và tên' />
               )}
@@ -140,7 +112,6 @@ const UpdateUserFormModal = ({ user, onCancel, isAdmin }) => {
             <Controller
               name='phone'
               control={control}
-              rules={{ required: 'Vui lòng nhập số điện thoại' }}
               render={({ field }) => (
                 <Input {...field} prefix={<PhoneOutlined />} placeholder='Số điện thoại' />
               )}
@@ -172,7 +143,7 @@ const UpdateUserFormModal = ({ user, onCancel, isAdmin }) => {
             <Button onClick={onCancel} className='mr-2'>
               Huỷ
             </Button>
-            <Button type='primary' htmlType='submit'>
+            <Button type='primary' htmlType='submit' disabled={!isValid}>
               Cập nhật
             </Button>
           </div>

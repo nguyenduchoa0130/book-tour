@@ -29,7 +29,7 @@ const ManageBookTour = () => {
   };
   return (
     <>
-      <Typography.Title>Quản lý đặt tour</Typography.Title>
+      <Typography.Title className='text-uppercase'>Quản lý đặt tour</Typography.Title>
       <hr />
       <Tabs defaultActiveKey={activeTab} items={tabs} centered onChange={handleChangeTab} />
     </>

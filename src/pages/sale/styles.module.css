@@ -1,12 +1,12 @@
-.admin-menu,
-.admin-content {
+.sale-menu,
+.sale-content {
   min-height: calc(100vh - var(--header-height));
 }
 
-.admin-menu {
+.sale-menu {
   height: 100%;
 }
 
-.admin-content {
+.sale-content {
   padding: 16px 24px 0 0;
 }

@@ -24,7 +24,6 @@ export const getUsers = () => {
     try {
       dispatch(showLoading());
       const users = await userServices.getUsers();
-      dispatch(setUsers(users));
       return users;
     } catch (error) {
       AlertUtil.showError(error?.response?.data?.message || error.message);
@@ -39,9 +38,9 @@ export const createUser = (payload) => {
     try {
       dispatch(showLoading());
       const newUser = await userServices.createUser(payload);
-      dispatch(setNewUser(newUser));
       return newUser;
     } catch (error) {
+      console.log(error);
       AlertUtil.showError(error?.response?.data?.message || error.message);
     } finally {
       dispatch(hideLoading());

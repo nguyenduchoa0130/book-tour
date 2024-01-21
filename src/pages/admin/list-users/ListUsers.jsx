@@ -1,10 +1,12 @@
-import { DeleteOutlined, EditOutlined, SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Space, Table, Tabs } from 'antd';
+import { DeleteOutlined, EditOutlined, InfoOutlined, SearchOutlined } from '@ant-design/icons';
+import { Button, Input, Space, Table, Tabs, Tooltip, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { userServices } from '../../../common/services';
 import { GlobalActions } from '../../../common/store/actions';
 import AlertUtil from '../../../common/utils/alert.util';
+import { RolesEnum } from '../../../common/enums';
+import { NavLink } from 'react-router-dom';
 
 const ListUsers = () => {
   const [tabs, setTabs] = useState();
@@ -29,6 +31,11 @@ const ListUsers = () => {
       key: 'ho-va-ten',
     },
     {
+      title: 'Email',
+      dataIndex: 'Email',
+      key: 'email',
+    },
+    {
       title: 'Số điện thoại',
       dataIndex: 'Sdt',
       key: 'sdt',
@@ -43,21 +50,30 @@ const ListUsers = () => {
       key: 'action',
       render: (_, record) => (
         <Space size='middle'>
-          <Button
-            icon={<EditOutlined />}
-            shape='circle'
-            type='primary'
-            size='large'
-            className='flex-row-center'
-          />
-          <Button
-            icon={<DeleteOutlined />}
-            shape='circle'
-            type='primary'
-            danger
-            size='large'
-            className='flex-row-center'
-          />
+          {record.VaiTro === RolesEnum.KhachHang && (
+            <Tooltip title='Xem lịch sử đặt tour'>
+              <NavLink to={`/admin/nguoi-dung/lich-su-dat-tour/${record.id}`}>
+                <Button icon={<InfoOutlined />} shape='circle' className='flex-row-center' />
+              </NavLink>
+            </Tooltip>
+          )}
+          <Tooltip title='Sửa'>
+            <Button
+              icon={<EditOutlined />}
+              shape='circle'
+              type='primary'
+              className='flex-row-center'
+            />
+          </Tooltip>
+          <Tooltip title='Xoá'>
+            <Button
+              icon={<DeleteOutlined />}
+              shape='circle'
+              type='primary'
+              danger
+              className='flex-row-center'
+            />
+          </Tooltip>
         </Space>
       ),
     },
@@ -73,7 +89,6 @@ const ListUsers = () => {
     if (users.length) {
       const cloneUser = JSON.parse(JSON.stringify(users));
       const buildDisplayUsers = cloneUser.map((item) => {
-        console.log(defaultTab);
         if (item.role === defaultTab) {
           item.users = item.users.filter((u) => {
             const fullName = u.HoVaTen.toLowerCase();
@@ -113,7 +128,7 @@ const ListUsers = () => {
         return {
           key: item.role,
           label: item.role,
-          children: <Table columns={colConfigs} dataSource={item.users} />,
+          children: <Table columns={colConfigs} dataSource={item.users} rowKey='id' />,
         };
       });
       setTabs(items);
@@ -122,7 +137,7 @@ const ListUsers = () => {
 
   return (
     <>
-      <h2>Danh sách người dùng</h2>
+      <Typography.Title className='text-uppercase'>Danh sách người dùng</Typography.Title>
       <hr />
       <div className='py-2'>
         <Input

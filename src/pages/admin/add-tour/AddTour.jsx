@@ -82,7 +82,7 @@ const AddTour = () => {
 
   return (
     <>
-      <Typography.Title>Tạo tour</Typography.Title>
+      <Typography.Title className='text-uppercase'>Tạo tour</Typography.Title>
       <hr />
       <Form layout='vertical' name='addTourForm' onFinish={handleSubmit(createTour)}>
         <Form.Item

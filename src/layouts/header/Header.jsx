@@ -38,7 +38,7 @@ function Header() {
                   items.push(menuItem.props);
                 }
               } else {
-                menuItem.props.label = `Chào, ${user?.HoVaTen.split(' ').slice(-1)[0]}`;
+                menuItem.props.label = `Chào, ${user?.HoVaTen}`;
                 items.push(menuItem.props);
               }
           } else {

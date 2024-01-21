@@ -13,6 +13,7 @@ import LoadingSpinner from './layouts/loading-spinner';
 import Admin from './pages/admin';
 import AddTour from './pages/admin/add-tour';
 import AddUser from './pages/admin/add-user';
+import AdminHistoryPlaceTour from './pages/admin/admin-history-place-tour';
 import Dashboard from './pages/admin/dashboard';
 import ListTours from './pages/admin/list-tours';
 import ListUsers from './pages/admin/list-users';
@@ -22,7 +23,12 @@ import Home from './pages/home';
 import Login from './pages/login';
 import Logout from './pages/logout';
 import Payment from './pages/payment';
+import PersonalInfo from './pages/personal-info';
 import Register from './pages/register';
+import Sale from './pages/sale';
+import SaleAddUser from './pages/sale/sale-add-user';
+import SaleHistoryPlaceTour from './pages/sale/sale-history-place-tour';
+import SaleListUsers from './pages/sale/sale-list-users';
 import TourDetail from './pages/tour-detail';
 import TourGuide from './pages/tour-guide';
 import Tours from './pages/tours';
@@ -50,6 +56,10 @@ const App = () => {
           element: <AddUser />,
         },
         {
+          path: 'nguoi-dung/lich-su-dat-tour/:userId',
+          element: <AdminHistoryPlaceTour />,
+        },
+        {
           path: 'tours/danh-sach',
           element: <ListTours />,
         },
@@ -73,7 +83,33 @@ const App = () => {
     },
     {
       path: '/sale',
-      element: null,
+      element: (
+        <Auth rule={{ isLoggedIn: true, roles: [RolesEnum.Sale] }}>
+          <Sale />
+        </Auth>
+      ),
+      children: [
+        {
+          index: true,
+          element: <Dashboard />,
+        },
+        {
+          path: 'nguoi-dung/danh-sach',
+          element: <SaleListUsers />,
+        },
+        {
+          path: 'nguoi-dung/tao-moi',
+          element: <SaleAddUser />,
+        },
+        {
+          path: 'nguoi-dung/lich-su-dat-tour/:userId',
+          element: <SaleHistoryPlaceTour />,
+        },
+        {
+          path: 'tours/danh-sach',
+          element: <ListTours />,
+        },
+      ],
     },
     {
       path: '',
@@ -86,8 +122,8 @@ const App = () => {
         {
           path: 'thong-tin-ca-nhan',
           element: (
-            <Auth rule={{ isLoggedIn: true, roles: [RolesEnum.HuongDanVien] }}>
-              <TourGuide />
+            <Auth rule={{ isLoggedIn: true, roles: [] }}>
+              <PersonalInfo />
             </Auth>
           ),
         },

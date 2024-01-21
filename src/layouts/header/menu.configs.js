@@ -54,6 +54,16 @@ const menuConfigs = {
     isLoggedIn: true,
     permissions: [RolesEnum.NguoiQuanLy],
   },
+  Sale: {
+    props: {
+      label: <NavLink to='/sale'>Sale</NavLink>,
+      key: '/sale',
+      icon: <SettingOutlined />,
+    },
+    isDefault: false,
+    isLoggedIn: true,
+    permissions: [RolesEnum.Sale],
+  },
   NotLoggedInMenu: {
     props: {
       label: 'Bạn chưa đăng nhập?',

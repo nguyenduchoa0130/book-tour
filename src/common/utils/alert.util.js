@@ -28,6 +28,8 @@ const AlertUtil = {
       text: message,
       icon: 'question',
       showCancelButton: true,
+      cancelButtonText: 'Huỷ',
+      confirmButtonColor: 'red',
     });
   },
 };

@@ -59,18 +59,25 @@ const TourCard = ({ tour, isAdmin }) => {
                 suffix=' VND'
               />
             </Typography.Text>
-            {isAdmin && (
-              <>
-                <div className='py-2 flex-row-between'>
-                  <Button type='primary' icon={<InfoOutlined />} className='w-100 btn-success'>
-                    Chi tiết
-                  </Button>
-                  <Button type='primary' icon={<EditOutlined />} className='w-100'>
+
+            <div className='py-2 flex-row-between'>
+              <Button
+                type='primary'
+                icon={<InfoOutlined />}
+                className='w-100 d-flex justify-content-center align-items-center'>
+                Chi tiết
+              </Button>
+              {isAdmin && (
+                <>
+                  <Button
+                    type='primary'
+                    icon={<EditOutlined />}
+                    className='w-100 justify-content-center align-items-center'>
                     Sửa
                   </Button>
-                </div>
-              </>
-            )}
+                </>
+              )}
+            </div>
           </Card>
         </Badge.Ribbon>
       </NavLink>
