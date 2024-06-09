@@ -47,7 +47,7 @@ const Footer = () => {
       </div>
       <Divider plain style={{ backgroundColor: '#fff' }} />
       <div className={styles.footer_copyright}>
-        <p className="text-center">&copy; Project 2023</p>
+        <p className="text-center">&copy; Project {new Date().getFullYear()}</p>
       </div>
     </div>
   );
