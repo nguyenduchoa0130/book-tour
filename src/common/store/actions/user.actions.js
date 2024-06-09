@@ -34,6 +34,7 @@ export const signUp = (payload) => {
       dispatch(showLoading());
       const user = await authService.signUp(payload);
       dispatch(setUser(user));
+      return true;
     } catch (error) {
       AlertUtil.showError(error?.response?.data?.message || error.message);
     } finally {
